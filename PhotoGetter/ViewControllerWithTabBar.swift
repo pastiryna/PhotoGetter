@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource, UITabBarDelegate {
+class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource, UITabBarDelegate, UINavigationControllerDelegate {
     
     
     @IBOutlet weak var feedProfileTabBar: UITabBar!
@@ -22,13 +22,19 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
     var pageViewController: UIPageViewController!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.feedProfileTabBar.delegate = self
         
+       
+        
+        
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
+        
+        self.hidesBottomBarWhenPushed = true
         
         
         //add first page by default
@@ -37,7 +43,7 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         self.pageViewController.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
        
         self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.feedProfileTabBar.frame.size.height)
-        //self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 49)
+        
         self.addChildViewController(pageViewController)
         self.view.addSubview(pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
@@ -51,34 +57,34 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
       
-        var index = (viewController as! BaseViewController).pageIndex
-        self.setItemSelected(index)
-        if index  == 0 {
+//        var index = (viewController as! BaseViewController).pageIndex
+//        self.setItemSelected(index)
+//        if index  == 0 {
+//        return nil
+//       }
+//        else {
+//            index = index - 1
+//            
+//            return self.viewControllerAtIndex(index)
+//        
+//        }
         return nil
-       }
-        else {
-            index = index - 1
-            
-            return self.viewControllerAtIndex(index)
-        
-        }
-        
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
-        var index = (viewController as! BaseViewController).pageIndex
-        self.setItemSelected(index)
-        print("Current pageIndex \(index)")
-        if index == 2 {
-            return nil
-        }
-        else {
-            index = index + 1
-        }
-        
-        return self.viewControllerAtIndex(index)
-        
+//        var index = (viewController as! BaseViewController).pageIndex
+//        self.setItemSelected(index)
+//        print("Current pageIndex \(index)")
+//        if index == 2 {
+//            return nil
+//        }
+//        else {
+//            index = index + 1
+//        }
+//        
+//        return self.viewControllerAtIndex(index)
+        return nil
 
     }
     
@@ -148,11 +154,16 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         }
             else if currentIndex == 0 {
                 if item.tag == 1 {
-                    self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
-                    self.contentViewController.pageIndex = 1
+                    self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+                    self.contentViewController.pageIndex = 0
                     print("Camera from Feed")
                     print("From \(currentIndex) to \(item.tag)")
+                    
+                    let viewWithGallery = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
+                    //performSegueWithIdentifier("Modal", sender: self)
+                    self.presentViewController(viewWithGallery, animated: true, completion: nil)
                     changePageInPageViewController(self.contentViewController, direction: "forward")
+                    self.feedProfileTabBar.selectedItem = self.feedBarItem
                     return
                 }
                 else if item.tag == 2 {
@@ -175,18 +186,22 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
                     }
                     else if item.tag == 1 {
                         self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
-                        self.contentViewController.pageIndex = 1
+                        self.contentViewController.pageIndex = 2
                         print("Camera from Profile")
                         print("From \(currentIndex) to \(item.tag)")
+                        
+                       let viewWithGallery = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
+                         //performSegueWithIdentifier("Modal", sender: self)
+                       self.presentViewController(viewWithGallery, animated: true, completion: nil)
+                        
                         changePageInPageViewController(self.contentViewController, direction: "reverse")
+                        self.feedProfileTabBar.selectedItem = self.profileBarItem
                         return
                     }
                 
                 }
         
             }
-    
-        
         
         
 
@@ -221,7 +236,8 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         }
     
     }
-
+    
+   
 }
     
     

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -138,7 +138,7 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXl-CY-7Ka">
-                                <rect key="frame" x="34" y="61" width="600" height="539"/>
+                                <rect key="frame" x="0.0" y="61" width="600" height="539"/>
                                 <color key="backgroundColor" red="0.25891382600000001" green="1" blue="0.37761858590000003" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
@@ -162,12 +162,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugh-G8-8Vn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="254" y="1836"/>
+            <point key="canvasLocation" x="411" y="1776"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="JAY-9n-3yh">
+            <objects>
+                <viewController storyboardIdentifier="CameraViewController" id="njZ-7r-eCt" customClass="CameraViewController" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kDb-EL-cs4"/>
+                        <viewControllerLayoutGuide type="bottom" id="QG0-t7-ATY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OPd-6d-YV3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2YU-Hu-ZBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-926" y="1782"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="FY7-t7-5rH">
+            <objects>
+                <pageViewController storyboardIdentifier="GalleryCameraPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5os-jP-4RF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="swD-ea-dXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-276" y="1747.5"/>
         </scene>
         <!--Gallery Camera View Controller-->
         <scene sceneID="gtz-bm-SyS">
             <objects>
-                <viewController id="d7j-h9-Dq4" customClass="GalleryCameraViewController" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GalleryCameraViewController" id="d7j-h9-Dq4" customClass="GalleryCameraViewController" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xeE-qP-YZg"/>
                         <viewControllerLayoutGuide type="bottom" id="lV3-ug-doH"/>
@@ -176,30 +202,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7r-Ay-cD0">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4m-Gj-leg">
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <connections>
+                                    <segue destination="5os-jP-4RF" kind="embed" id="oIo-Hn-JCI"/>
+                                </connections>
+                            </containerView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7r-Ay-cD0">
                                 <rect key="frame" x="0.0" y="551" width="600" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="BGm-wt-lK0"/>
-                                    <tabBarItem systemItem="more" id="omf-TH-FeF"/>
+                                    <tabBarItem title="Gallery" id="BGm-wt-lK0"/>
+                                    <tabBarItem tag="1" title="Camera" id="omf-TH-FeF"/>
                                 </items>
                             </tabBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9tt-Wv-8jV">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="9tt-Wv-8jV" secondAttribute="trailing" id="3uV-tW-n8G"/>
-                            <constraint firstItem="9tt-Wv-8jV" firstAttribute="top" secondItem="xeE-qP-YZg" secondAttribute="bottom" id="chj-be-YMY"/>
-                            <constraint firstItem="p7r-Ay-cD0" firstAttribute="top" secondItem="9tt-Wv-8jV" secondAttribute="bottom" id="k2p-YS-HbW"/>
-                            <constraint firstItem="9tt-Wv-8jV" firstAttribute="leading" secondItem="JAt-9o-7AE" secondAttribute="leading" id="wt3-KY-Wpm"/>
+                            <constraint firstItem="p7r-Ay-cD0" firstAttribute="leading" secondItem="JAt-9o-7AE" secondAttribute="leading" id="6iL-J4-q8p"/>
+                            <constraint firstItem="y4m-Gj-leg" firstAttribute="top" secondItem="xeE-qP-YZg" secondAttribute="bottom" id="Ber-jM-8An"/>
+                            <constraint firstItem="y4m-Gj-leg" firstAttribute="leading" secondItem="JAt-9o-7AE" secondAttribute="leading" id="UUh-hj-BNw"/>
+                            <constraint firstItem="p7r-Ay-cD0" firstAttribute="top" secondItem="y4m-Gj-leg" secondAttribute="bottom" id="nEP-qk-3lA"/>
+                            <constraint firstAttribute="trailing" secondItem="y4m-Gj-leg" secondAttribute="trailing" id="o5p-kL-pMm"/>
+                            <constraint firstAttribute="trailing" secondItem="p7r-Ay-cD0" secondAttribute="trailing" id="yUp-03-9Ff"/>
+                            <constraint firstItem="lV3-ug-doH" firstAttribute="top" secondItem="p7r-Ay-cD0" secondAttribute="bottom" id="ziq-vK-B44"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraBarItem" destination="omf-TH-FeF" id="mEY-q9-AT5"/>
+                        <outlet property="galleryBarItem" destination="BGm-wt-lK0" id="16q-Kb-JZh"/>
+                        <outlet property="galleryCameraContainer" destination="y4m-Gj-leg" id="Geq-kx-CKd"/>
+                        <outlet property="galleryCameraTabBar" destination="p7r-Ay-cD0" id="fEb-G8-hqc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydG-J5-n0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-267" y="1005"/>
+            <point key="canvasLocation" x="-276" y="1084"/>
         </scene>
         <!--View Controller With Tab Bar-->
         <scene sceneID="0nR-fT-qD1">
@@ -261,7 +299,7 @@
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="k2n-g9-Hkx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7C-yR-49J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="1010.5"/>
+            <point key="canvasLocation" x="1122" y="1083.5"/>
         </scene>
         <!--Feed-->
         <scene sceneID="pbM-3q-I1Y">
@@ -332,12 +370,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jd2-q0-Srk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="1673"/>
+            <point key="canvasLocation" x="1260" y="1757"/>
         </scene>
-        <!--View Controller-->
+        <!--Gallery View Controller-->
         <scene sceneID="83K-mk-Azg">
             <objects>
-                <viewController id="pPs-pZ-1GA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GalleryViewController" id="pPs-pZ-1GA" customClass="GalleryViewController" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cfN-3T-r6r"/>
+                        <viewControllerLayoutGuide type="bottom" id="NaE-0a-5cV"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bx7-xa-iW5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -346,7 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nss-Uc-BHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-267" y="1689"/>
+            <point key="canvasLocation" x="-926" y="1084"/>
         </scene>
     </scenes>
     <resources>

@@ -8,7 +8,7 @@
 
 import UIKit
 import FontAwesomeKit
-import FontAwesome_swift
+//import FontAwesome_swift
 
 class Profile: BaseViewController {
 

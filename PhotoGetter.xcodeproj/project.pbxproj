@@ -28,6 +28,8 @@
 		CC91BA071CCF662900FA23AF /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91BA061CCF662900FA23AF /* PhotoCell.swift */; };
 		CCB8C79E1CE4C18200A60EC3 /* GalleryCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */; };
 		CCBD03821CE366AF002722EC /* ViewControllerWithTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */; };
+		CCC64D591CE606B80031121B /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC64D581CE606B80031121B /* GalleryViewController.swift */; };
+		CCC64D5B1CE60CFC0031121B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC64D5A1CE60CFC0031121B /* CameraViewController.swift */; };
 		CCDCC0151CCA23BC00CB9A9E /* InstaUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		CC91BA061CCF662900FA23AF /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCameraViewController.swift; sourceTree = "<group>"; };
 		CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWithTabBar.swift; sourceTree = "<group>"; };
+		CCC64D581CE606B80031121B /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		CCC64D5A1CE60CFC0031121B /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUser.swift; sourceTree = "<group>"; };
 		CCF896B01CD2330C00919518 /* PhotoGetter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoGetter-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +140,8 @@
 			children = (
 				CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */,
 				CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */,
+				CCC64D581CE606B80031121B /* GalleryViewController.swift */,
+				CCC64D5A1CE60CFC0031121B /* CameraViewController.swift */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -301,10 +307,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC91BA051CCF638900FA23AF /* PhotoTable.swift in Sources */,
+				CCC64D5B1CE60CFC0031121B /* CameraViewController.swift in Sources */,
 				CC74FA991CDA29B9004C44CD /* Profile.swift in Sources */,
 				CC15CEBB1CD38422001210DF /* CacheManager.swift in Sources */,
 				CC53BB071CE1CB0900C06A24 /* UserPhoto.swift in Sources */,
 				CC74FA961CDA1D85004C44CD /* NewCell.swift in Sources */,
+				CCC64D591CE606B80031121B /* GalleryViewController.swift in Sources */,
 				CC07BA871CC6888000FD276F /* Login.swift in Sources */,
 				CC74FA941CDA16EF004C44CD /* PhotoGetterTableView.swift in Sources */,
 				CC11BD9C1CC7D12700696F07 /* InstagramAPIManager.swift in Sources */,
@@ -431,6 +439,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PhotoGetter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.PhotoGetter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -446,6 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PhotoGetter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.PhotoGetter;
 				PRODUCT_NAME = "$(TARGET_NAME)";

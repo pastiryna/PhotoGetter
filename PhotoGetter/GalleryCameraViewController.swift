@@ -91,30 +91,30 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
     }
     
     
-    func viewControllerAtIndex(index: Int) -> BaseViewController {
-        if index == 0 {
-            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryViewController") as! BaseViewController
-            self.contentViewController.pageIndex = index }
-        else {
-            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CameraViewController") as! BaseViewController
-            self.contentViewController.pageIndex = index
-        }
-        
-        return self.contentViewController
-    }
+//    func viewControllerAtIndex(index: Int) -> BaseViewController {
+//        if index == 0 {
+//            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryViewController") as! BaseViewController
+//            self.contentViewController.pageIndex = index }
+//        else {
+//            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CameraViewController") as! BaseViewController
+//            self.contentViewController.pageIndex = index
+//        }
+//        
+//        return self.contentViewController
+//    }
     
-    func setItemSelected(index: Int) {
-        if index == 0 {
-            self.galleryCameraTabBar.selectedItem = self.galleryBarItem
-        }
-        else if index == 1 {
-            self.galleryCameraTabBar.selectedItem = self.cameraBarItem
-                }
-        else {
-            return
-        }
-        
-    }
+//    func setItemSelected(index: Int) {
+//        if index == 0 {
+//            self.galleryCameraTabBar.selectedItem = self.galleryBarItem
+//        }
+//        else if index == 1 {
+//            self.galleryCameraTabBar.selectedItem = self.cameraBarItem
+//                }
+//        else {
+//            return
+//        }
+//        
+//    }
 
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {

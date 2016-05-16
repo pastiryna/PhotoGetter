@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource, UITabBarDelegate, UINavigationControllerDelegate {
     
     
@@ -27,12 +28,16 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         super.viewDidLoad()
         
         self.feedProfileTabBar.delegate = self
-        
-       
-        
+     
+        self.feedBarItem.setFAIcon(FAType.FAHome)
+        self.galleryCameraBarItem.setFAIcon(FAType.FACamera)
+        self.profileBarItem.setFAIcon(FAType.FAUser)
+
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
+        
+        
         
         self.hidesBottomBarWhenPushed = true
         

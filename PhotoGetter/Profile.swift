@@ -7,27 +7,40 @@
 //
 
 import UIKit
-import FontAwesomeKit
+//import FontAwesomeKit
 //import FontAwesome_swift
 
 class Profile: BaseViewController {
 
-    @IBOutlet weak var logoutBarItem: UIBarButtonItem!
-    @IBOutlet weak var profileBarItem: UITabBarItem!
+   
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var profileTopBar: UINavigationBar!
+    @IBOutlet weak var usernameTopLabel: UILabel!
+    @IBOutlet weak var profileContainer: UIView!
+    
+    
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var postCountButton: UIButton!
+    @IBOutlet weak var followersButton: UIButton!
+    @IBOutlet weak var followingButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+         //make image round
+        self.profilePicture.frame = CGRect(x: 0, y: 0, width: self.profilePicture.frame.width, height: self.profilePicture.frame.width)
+        self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
+        self.profilePicture.clipsToBounds = true
         
-       //let icon = FAKIonIcons.personIconWithSize(20)
-       //var i = 0
-        
+        //make buttons square
+    
         
     }
     
     @IBAction func makeLogout(sender: AnyObject) {
         self.clearCookies()
-        
-        
     }
     
     func clearCookies() {

@@ -7,7 +7,10 @@ target 'PhotoGetter' do
 
 pod 'MBProgressHUD', '~> 0.9.0'
 
-pod 'NSDate+TimeAgo'
+#pod 'NSDate+TimeAgo'
 
+#pod 'FontAwesome'
+
+#pod 'FontAwesomeKit', '~> 2.2.0'
 end
 

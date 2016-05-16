@@ -8,7 +8,7 @@
 
 import UIKit
 import MBProgressHUD
-import FontAwesomeKit
+
 
 
 class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSource {
@@ -61,7 +61,6 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
         super.viewWillAppear(true)
         
         
-        
     }
    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -96,11 +95,11 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         
                        // self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 49)
-                    var imageWidth = self.view.frame.width
+                         let imageWidth = self.view.frame.width
+                         cell.photo.image = image
                        
-                        cell.photo.image = image
-                        //cell.photoTitleLabel.text = NSUserDefaults.standardUserDefaults().stringForKey("username")
-                       cell.photoTitleLabel.text = self.userPhotos[indexPath.row].timePassed()
+                        cell.photoTitleLabel.text = NSUserDefaults.standardUserDefaults().stringForKey("username")
+                        cell.photoTitleLabel.text = self.userPhotos[indexPath.row].timePassed()
                         print("Date \(self.userPhotos[indexPath.row].timePassed())")
                     })
                     

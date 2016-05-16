@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FontAwesomeKit
+
 //import FontAwesome_swift
 
 

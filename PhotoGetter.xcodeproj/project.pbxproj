@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F29195A2DB33CAA3547A1C9 /* Pods_PhotoGetter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047C594C93E5E9AA322A1B8C /* Pods_PhotoGetter.framework */; };
 		CC07BA851CC6888000FD276F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07BA841CC6888000FD276F /* AppDelegate.swift */; };
 		CC07BA871CC6888000FD276F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07BA861CC6888000FD276F /* Login.swift */; };
 		CC07BA8A1CC6888000FD276F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC07BA881CC6888000FD276F /* Main.storyboard */; };
@@ -24,17 +23,21 @@
 		CC74FA941CDA16EF004C44CD /* PhotoGetterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC74FA931CDA16EF004C44CD /* PhotoGetterTableView.swift */; };
 		CC74FA961CDA1D85004C44CD /* NewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC74FA951CDA1D85004C44CD /* NewCell.swift */; };
 		CC74FA991CDA29B9004C44CD /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC74FA981CDA29B9004C44CD /* Profile.swift */; };
+		CC78AF541CE9E40900004CF3 /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC78AF521CE9E40900004CF3 /* FAIcon.swift */; };
+		CC78AF551CE9E40900004CF3 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC78AF531CE9E40900004CF3 /* FontAwesome.ttf */; };
+		CC78AF571CE9EBE900004CF3 /* FAIcon.swift in Resources */ = {isa = PBXBuildFile; fileRef = CC78AF521CE9E40900004CF3 /* FAIcon.swift */; };
+		CC78AF5D1CE9FAF800004CF3 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC78AF5C1CE9FAF800004CF3 /* TimeFormatter.swift */; };
 		CC91BA051CCF638900FA23AF /* PhotoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91BA041CCF638900FA23AF /* PhotoTable.swift */; };
 		CC91BA071CCF662900FA23AF /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91BA061CCF662900FA23AF /* PhotoCell.swift */; };
 		CCB8C79E1CE4C18200A60EC3 /* GalleryCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */; };
 		CCBD03821CE366AF002722EC /* ViewControllerWithTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */; };
 		CCDCC0151CCA23BC00CB9A9E /* InstaUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */; };
+		D718BA058F72D46F0BA790FB /* Pods_PhotoGetter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588817ACDCD5D043A1B47EC6 /* Pods_PhotoGetter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		047C594C93E5E9AA322A1B8C /* Pods_PhotoGetter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoGetter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		32FBCE3FC707ED6F9D756528 /* Pods-PhotoGetter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGetter.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoGetter/Pods-PhotoGetter.release.xcconfig"; sourceTree = "<group>"; };
-		3E9DDF1A37CBC2BF82F2B352 /* Pods-PhotoGetter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGetter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoGetter/Pods-PhotoGetter.debug.xcconfig"; sourceTree = "<group>"; };
+		55BB3960C3A8323B0469A89F /* Pods-PhotoGetter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGetter.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoGetter/Pods-PhotoGetter.release.xcconfig"; sourceTree = "<group>"; };
+		588817ACDCD5D043A1B47EC6 /* Pods_PhotoGetter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoGetter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC07BA811CC6888000FD276F /* PhotoGetter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGetter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC07BA841CC6888000FD276F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC07BA861CC6888000FD276F /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -53,12 +56,16 @@
 		CC74FA931CDA16EF004C44CD /* PhotoGetterTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGetterTableView.swift; sourceTree = "<group>"; };
 		CC74FA951CDA1D85004C44CD /* NewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCell.swift; sourceTree = "<group>"; };
 		CC74FA981CDA29B9004C44CD /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		CC78AF521CE9E40900004CF3 /* FAIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
+		CC78AF531CE9E40900004CF3 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		CC78AF5C1CE9FAF800004CF3 /* TimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		CC91BA041CCF638900FA23AF /* PhotoTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTable.swift; sourceTree = "<group>"; };
 		CC91BA061CCF662900FA23AF /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCameraViewController.swift; sourceTree = "<group>"; };
 		CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWithTabBar.swift; sourceTree = "<group>"; };
 		CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUser.swift; sourceTree = "<group>"; };
 		CCF896B01CD2330C00919518 /* PhotoGetter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoGetter-Bridging-Header.h"; sourceTree = "<group>"; };
+		F5B4D5FF5B6A1E18C1D460B4 /* Pods-PhotoGetter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGetter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoGetter/Pods-PhotoGetter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,18 +73,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F29195A2DB33CAA3547A1C9 /* Pods_PhotoGetter.framework in Frameworks */,
+				D718BA058F72D46F0BA790FB /* Pods_PhotoGetter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A04BACE820CD9107140BE5F /* Pods */ = {
+		2E5E61556AF0BF8AACCD3036 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3E9DDF1A37CBC2BF82F2B352 /* Pods-PhotoGetter.debug.xcconfig */,
-				32FBCE3FC707ED6F9D756528 /* Pods-PhotoGetter.release.xcconfig */,
+				588817ACDCD5D043A1B47EC6 /* Pods_PhotoGetter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C548A3F53F725ECD459E2408 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F5B4D5FF5B6A1E18C1D460B4 /* Pods-PhotoGetter.debug.xcconfig */,
+				55BB3960C3A8323B0469A89F /* Pods-PhotoGetter.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -87,8 +102,8 @@
 			children = (
 				CC07BA831CC6888000FD276F /* PhotoGetter */,
 				CC07BA821CC6888000FD276F /* Products */,
-				7A04BACE820CD9107140BE5F /* Pods */,
-				F548D6853303B243DAE7AE1F /* Frameworks */,
+				C548A3F53F725ECD459E2408 /* Pods */,
+				2E5E61556AF0BF8AACCD3036 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,16 +118,18 @@
 		CC07BA831CC6888000FD276F /* PhotoGetter */ = {
 			isa = PBXGroup;
 			children = (
+				CC78AF5C1CE9FAF800004CF3 /* TimeFormatter.swift */,
+				CC78AF561CE9E41900004CF3 /* FontAwesomeSwift */,
 				CC167DAA1CDCDB6E005AEA9F /* Resource */,
 				CC07BA841CC6888000FD276F /* AppDelegate.swift */,
 				CC74FA921CDA1687004C44CD /* HelpingClass */,
 				CC74FA911CDA165D004C44CD /* PhotoTable */,
-				CC53BB0C1CE23CC400C06A24 /* MainScreen */,
-				CC53BB061CE1CB0900C06A24 /* UserPhoto.swift */,
 				CC74FA8B1CD9FFB3004C44CD /* BaseViewController.swift */,
+				CC53BB0C1CE23CC400C06A24 /* MainScreen */,
 				CC74FA981CDA29B9004C44CD /* Profile.swift */,
 				CC07BA861CC6888000FD276F /* Login.swift */,
 				CC11BD991CC7BA8E00696F07 /* LoginWebView.swift */,
+				CC53BB061CE1CB0900C06A24 /* UserPhoto.swift */,
 				CC07BA881CC6888000FD276F /* Main.storyboard */,
 				CC07BA8E1CC6888000FD276F /* Assets.xcassets */,
 				CC07BA901CC6888000FD276F /* LaunchScreen.storyboard */,
@@ -170,12 +187,14 @@
 			name = NotNeeded;
 			sourceTree = "<group>";
 		};
-		F548D6853303B243DAE7AE1F /* Frameworks */ = {
+		CC78AF561CE9E41900004CF3 /* FontAwesomeSwift */ = {
 			isa = PBXGroup;
 			children = (
-				047C594C93E5E9AA322A1B8C /* Pods_PhotoGetter.framework */,
+				CC78AF521CE9E40900004CF3 /* FAIcon.swift */,
+				CC78AF531CE9E40900004CF3 /* FontAwesome.ttf */,
 			);
-			name = Frameworks;
+			name = FontAwesomeSwift;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,12 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC07BA961CC6888000FD276F /* Build configuration list for PBXNativeTarget "PhotoGetter" */;
 			buildPhases = (
-				EAD2F5461CB721DD0EEE764A /* Check Pods Manifest.lock */,
+				24D76822A12DD2C4079527A4 /* 📦 Check Pods Manifest.lock */,
 				CC07BA7D1CC6888000FD276F /* Sources */,
 				CC07BA7E1CC6888000FD276F /* Frameworks */,
 				CC07BA7F1CC6888000FD276F /* Resources */,
-				0F3E64BB7271B40060A5EDEC /* Embed Pods Frameworks */,
-				46393A4EFAEB3759AD18500D /* Copy Pods Resources */,
+				FD08C9274239DC39F2C2600F /* 📦 Embed Pods Frameworks */,
+				F7AE184FCA5F1EBEF6C83851 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,38 +258,40 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC78AF571CE9EBE900004CF3 /* FAIcon.swift in Resources */,
 				CC07BA921CC6888000FD276F /* LaunchScreen.storyboard in Resources */,
 				CC07BA8F1CC6888000FD276F /* Assets.xcassets in Resources */,
 				CC07BA8A1CC6888000FD276F /* Main.storyboard in Resources */,
+				CC78AF551CE9E40900004CF3 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F3E64BB7271B40060A5EDEC /* Embed Pods Frameworks */ = {
+		24D76822A12DD2C4079527A4 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoGetter/Pods-PhotoGetter-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		46393A4EFAEB3759AD18500D /* Copy Pods Resources */ = {
+		F7AE184FCA5F1EBEF6C83851 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,19 +299,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoGetter/Pods-PhotoGetter-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EAD2F5461CB721DD0EEE764A /* Check Pods Manifest.lock */ = {
+		FD08C9274239DC39F2C2600F /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoGetter/Pods-PhotoGetter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -301,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC91BA051CCF638900FA23AF /* PhotoTable.swift in Sources */,
+				CC78AF541CE9E40900004CF3 /* FAIcon.swift in Sources */,
 				CC74FA991CDA29B9004C44CD /* Profile.swift in Sources */,
 				CC15CEBB1CD38422001210DF /* CacheManager.swift in Sources */,
 				CC53BB071CE1CB0900C06A24 /* UserPhoto.swift in Sources */,
@@ -312,6 +334,7 @@
 				CC74FA901CDA1250004C44CD /* ViewWithTable.swift in Sources */,
 				CC74FA8C1CD9FFB3004C44CD /* BaseViewController.swift in Sources */,
 				CC91BA071CCF662900FA23AF /* PhotoCell.swift in Sources */,
+				CC78AF5D1CE9FAF800004CF3 /* TimeFormatter.swift in Sources */,
 				CCB8C79E1CE4C18200A60EC3 /* GalleryCameraViewController.swift in Sources */,
 				CC74FA8E1CDA0394004C44CD /* Utils.swift in Sources */,
 				CC07BA8D1CC6888000FD276F /* PhotoGetter.xcdatamodeld in Sources */,
@@ -426,7 +449,7 @@
 		};
 		CC07BA971CC6888000FD276F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E9DDF1A37CBC2BF82F2B352 /* Pods-PhotoGetter.debug.xcconfig */;
+			baseConfigurationReference = F5B4D5FF5B6A1E18C1D460B4 /* Pods-PhotoGetter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -442,7 +465,7 @@
 		};
 		CC07BA981CC6888000FD276F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32FBCE3FC707ED6F9D756528 /* Pods-PhotoGetter.release.xcconfig */;
+			baseConfigurationReference = 55BB3960C3A8323B0469A89F /* Pods-PhotoGetter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

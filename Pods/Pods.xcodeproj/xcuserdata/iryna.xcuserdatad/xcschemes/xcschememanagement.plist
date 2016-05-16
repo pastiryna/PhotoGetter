@@ -4,17 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>FontAwesomeKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MBProgressHUD.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>NSDate+TimeAgo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,17 +17,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>524F3AA8BB891D04E2737D464FF8E5B5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>825038952A9E76F20EC2249A093FA491</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8BE9D4B6FF6D92923152CB0534F2BB94</key>
+		<key>43C1F956A08064322307401701416C50</key>
 		<dict>
 			<key>primary</key>
 			<true/>

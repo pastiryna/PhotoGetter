@@ -238,6 +238,50 @@ class InstagramAPIManager {
             
         
     }
+     
+    func getUserPhotosById(userId: String, accessToken: String, completion: (photos: [UserPhoto], success: Bool) -> Void) {
+        var userPhotos:[UserPhoto] = []
+        //var userDict: NSDictionary
+        let requestUrl: NSURL = NSURL(string: "https://api.instagram.com/v1/users/\(userId)/media/recent/?access_token=\(accessToken)")!
+        let request = NSMutableURLRequest(URL: requestUrl)
+        request.HTTPMethod = "GET"
+        
+        let session = NSURLSession.sharedSession()
+        _ = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
+            let httpResponse = response as! NSHTTPURLResponse
+            print("Status Code \(httpResponse.statusCode)")
+            
+            if !(self.checkResponse(httpResponse)) {
+                completion(photos: userPhotos, success: false)
+                return
+            }
+                
+            else{
+                
+                do {
+                    
+                    let userDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    let userData = userDict.valueForKey("data") as! [NSDictionary]
+                    
+                    for current: NSDictionary in userData {
+                        let photo = UserPhoto()
+                        photo.url = current.valueForKey("images")!.valueForKey("low_resolution")!.valueForKey("url") as! String
+                        photo.timeInMiliSec = Double(current.valueForKey("created_time") as! String)!
+                        userPhotos.append(photo)
+                    }
+                    
+                    
+                    //var photoUrls: [String] = [String]()
+                    //photoUrls = self.getPhotoUrls(userData)
+                    completion(photos: userPhotos, success: true)
+                }
+                catch {
+                    print("No response :(")
+                    completion(photos: userPhotos, success: false)
+                }
+            }
+        }).resume()
+    }
     
 
         

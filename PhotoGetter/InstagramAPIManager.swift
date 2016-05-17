@@ -182,22 +182,73 @@ class InstagramAPIManager {
         NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("username") as! String, forKey: "username")
         NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("full_name") as! String, forKey: "fullName")
         NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("profile_picture") as! String, forKey: "profilePicture")
+        NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("bio"), forKey: "bio")
     
     }
     
-    //    func setUserInfo(access_token: String)  {
-    //
-    //        let userData = self.getRequest(access_token)?.valueForKey("data") as! NSDictionary
-    //
-    //        NSUserDefaults.standardUserDefaults().setObject(userData.valueForKey("id") as! String, forKey: "id")
-    //        NSUserDefaults.standardUserDefaults().setObject(userData.valueForKey("usernamme") as! String, forKey: "username")
-    //        NSUserDefaults.standardUserDefaults().setObject(userData.valueForKey("full_name") as! String, forKey: "fullName")
-    //        NSUserDefaults.standardUserDefaults().setObject(userData.valueForKey("profile_picture") as! String, forKey: "profilePicture")
-    //        
-    //    }
+    func getUserInfoById(userId: String, accessToken: String, completion: (user: InstaUser?, success: Bool) -> Void ) {
+        var user = InstaUser()
+        let requestUrl: NSURL = NSURL(string: "https://api.instagram.com/v1/users/\(userId)/?access_token=\(accessToken)")!
+        let request = NSMutableURLRequest(URL: requestUrl)
+        request.HTTPMethod = "GET"
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
+            
+            let httpResponse = response as! NSHTTPURLResponse
+           
+            if !self.checkResponse(httpResponse) {
+                completion(user: nil, success: false)
+                return
+            
+            }
+            
+            else {
+                do {
+                    
+                    let allResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    let userData = allResponse.valueForKey("data") as! NSDictionary
+            
+                    user.id = userData.valueForKey("id") as! String
+                    print("Id \(user.id)")
+                    user.username = userData.valueForKey("username") as! String
+                    print("Username \(user.username)")
+                    user.fullName = userData.valueForKey("full_name") as! String
+                    print("FullName \(user.fullName)")
+                    user.profilePicture = userData.valueForKey("profile_picture") as! String
+                    print("ProfilePicture \(user.profilePicture)")
+                    user.bio = userData.valueForKey("bio") as! String
+                    print("Bio \(user.bio)")
+                    user.website = userData.valueForKey("website") as! String
+                    print("Website \(user.website)")
+                    user.numberOfPosts = userData.valueForKey("counts")!.valueForKey("media") as! Int
+                    print("Number \(user.numberOfPosts)")
+                    user.numberFollowing = userData.valueForKey("counts")!.valueForKey("follows") as! Int
+                    user.numberOfFollowers = userData.valueForKey("counts")!.valueForKey("followed_by") as! Int
+                
+                    completion(user: user, success: true)
+                }
+                    
+                catch {
+                    print("No response :(")
+                    completion(user: nil, success: false)
+                }
+            }
+        }).resume()
+            
+        
+    }
+    
 
-
-
+        
+    
+    
 }
+    
+    
+
+
+
+
 
 

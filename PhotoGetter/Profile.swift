@@ -30,10 +30,7 @@ class Profile: BaseViewController {
         super.viewDidLoad()
     
          //make image round
-        self.profilePicture.frame = CGRect(x: 0, y: 0, width: self.profilePicture.frame.width, height: self.profilePicture.frame.width)
-        self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
-        self.profilePicture.clipsToBounds = true
-        
+        self.makeImageRound(self.profilePicture)
         //make buttons square
     
         
@@ -55,7 +52,15 @@ class Profile: BaseViewController {
         }
     }
     
+    func makeImageRound(image: UIImageView) {
+        let width = self.view.frame.size.width / 7.0
+        
+        image.layer.cornerRadius = image.frame.size.width / 2
+        
+        image.clipsToBounds = true
+
     
+    }
 
     
 }

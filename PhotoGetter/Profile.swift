@@ -11,7 +11,8 @@ import UIKit
 
 class Profile: BaseViewController {
 
-   
+    @IBOutlet weak var switchToCollectionButton: UIButton!
+    @IBOutlet weak var switchToTableButton: UIButton!
     
     @IBOutlet weak var profileTopBar: UINavigationBar!
     @IBOutlet weak var usernameTopLabel: UILabel!
@@ -27,6 +28,10 @@ class Profile: BaseViewController {
     
     
     
+    var viewWithTable: ViewWithTable!
+    var collectionView: ProfileCollectionViewController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -35,6 +40,9 @@ class Profile: BaseViewController {
         //make buttons square
         
         self.settingsBarItem.setFAIcon(FAType.FACog, iconSize: 20)
+        self.switchToCollectionButton.setFAIcon(FAType.FAAlignJustify, forState: .Normal)
+        self.switchToTableButton.setFAIcon(FAType.FATh, forState: .Normal)
+        
         
         InstagramAPIManager.apiManager.getUserInfoById(NSUserDefaults.standardUserDefaults().stringForKey("id")!, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
             if success {
@@ -93,5 +101,30 @@ class Profile: BaseViewController {
         self.clearCookies()
 
     }
+    
+    
+    @IBAction func switchContainerView (sender: UIButton) {
+        
+        if sender == self.switchToTableButton {
+            self.viewWithTable = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! ViewWithTable
+            self.viewWithTable.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.profileContainer.frame.size.height)
+            self.addChildViewController(self.viewWithTable)
+            self.profileContainer.addSubview(viewWithTable.view)
+            self.viewWithTable.didMoveToParentViewController(self)
+        }
+        
+        else if sender == self.switchToCollectionButton {
+
+                self.collectionView = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileCollectionViewController") as! ProfileCollectionViewController
+                self.collectionView!.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.profileContainer.frame.size.height)
+                self.addChildViewController(self.collectionView!)
+                self.profileContainer.addSubview(collectionView!.view)
+                self.collectionView!.didMoveToParentViewController(self)
+                
+        }
+        
+    }
+    
+   
     
 }

@@ -115,7 +115,7 @@
         <!--Profile Collection View Controller-->
         <scene sceneID="e37-xF-gkg">
             <objects>
-                <viewController id="3O6-Ks-nfH" customClass="ProfileCollectionViewController" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileCollectionViewController" id="3O6-Ks-nfH" customClass="ProfileCollectionViewController" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u6Q-zw-Moh"/>
                         <viewControllerLayoutGuide type="bottom" id="Y17-IB-XeN"/>
@@ -246,16 +246,39 @@
                                     <constraint firstAttribute="height" constant="75" id="VOo-fA-lXw"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lc8-Xw-mmw">
+                                <rect key="frame" x="20" y="265" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lc8-Xw-mmw" secondAttribute="height" multiplier="2:1" id="P5u-lf-JCP"/>
+                                </constraints>
+                                <state key="normal" title="Collection">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchContainerView:" destination="b9V-Rt-jNA" eventType="touchUpInside" id="2CP-Yt-g8G"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jme-Yy-f5b">
+                                <rect key="frame" x="148" y="265" width="60" height="30"/>
+                                <state key="normal" title="Table">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchContainerView:" destination="b9V-Rt-jNA" eventType="touchUpInside" id="YvT-eB-22y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z2D-HK-0sj" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="20" id="0sX-Ai-mBu"/>
                             <constraint firstItem="fuT-bF-EQN" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.15" id="157-kC-jXH"/>
+                            <constraint firstItem="jme-Yy-f5b" firstAttribute="width" secondItem="lc8-Xw-mmw" secondAttribute="width" id="2jS-g4-mId"/>
                             <constraint firstItem="BJ6-4O-ZqN" firstAttribute="top" secondItem="uTr-ZJ-lbM" secondAttribute="bottom" constant="11" id="5Oy-hN-rXK"/>
                             <constraint firstItem="Qvc-PH-Pq6" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="5sD-Ae-fX7"/>
                             <constraint firstItem="fuT-bF-EQN" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="7GQ-Oc-jHv"/>
                             <constraint firstItem="03l-FV-sfD" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.15" id="DET-gd-Qmq"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="height" secondItem="Auz-cu-OJK" secondAttribute="height" multiplier="0.5" id="DO2-uC-eQk"/>
+                            <constraint firstItem="ohF-eu-O0N" firstAttribute="top" secondItem="lc8-Xw-mmw" secondAttribute="bottom" constant="5" id="Dob-kn-fZR"/>
                             <constraint firstAttribute="trailing" secondItem="03l-FV-sfD" secondAttribute="trailing" constant="20" id="EOG-gO-g0W"/>
                             <constraint firstItem="tYg-rc-XFb" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="15" id="FAZ-hz-wIa"/>
                             <constraint firstItem="Oz5-Ng-0NR" firstAttribute="top" secondItem="uTr-ZJ-lbM" secondAttribute="bottom" id="JHh-BC-BXt"/>
@@ -263,15 +286,20 @@
                             <constraint firstItem="fuT-bF-EQN" firstAttribute="leading" secondItem="Qvc-PH-Pq6" secondAttribute="trailing" constant="20" id="NlM-Yp-pax"/>
                             <constraint firstAttribute="trailing" secondItem="ohF-eu-O0N" secondAttribute="trailing" id="PQM-UG-SPH"/>
                             <constraint firstItem="Qvc-PH-Pq6" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.15" id="Rkq-wt-vS5"/>
+                            <constraint firstItem="ohF-eu-O0N" firstAttribute="top" secondItem="jme-Yy-f5b" secondAttribute="bottom" constant="5" id="SKR-O8-mva"/>
                             <constraint firstItem="Oz5-Ng-0NR" firstAttribute="leading" secondItem="ohF-eu-O0N" secondAttribute="leading" id="Vj8-Le-Ruc"/>
                             <constraint firstItem="tYg-rc-XFb" firstAttribute="top" secondItem="z2D-HK-0sj" secondAttribute="bottom" constant="15" id="cqT-iT-JEv"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" id="dDv-Y8-gNr"/>
+                            <constraint firstItem="lc8-Xw-mmw" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.1" id="kGB-De-iEH"/>
                             <constraint firstItem="03l-FV-sfD" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="m4p-cs-w79"/>
                             <constraint firstItem="Oz5-Ng-0NR" firstAttribute="trailing" secondItem="ohF-eu-O0N" secondAttribute="trailing" id="qc4-Gk-yHY"/>
                             <constraint firstItem="BJ6-4O-ZqN" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="20" id="qpH-4H-xbR"/>
                             <constraint firstItem="03l-FV-sfD" firstAttribute="leading" secondItem="fuT-bF-EQN" secondAttribute="trailing" constant="20" id="sXR-QI-gH6"/>
+                            <constraint firstItem="jme-Yy-f5b" firstAttribute="height" secondItem="lc8-Xw-mmw" secondAttribute="height" id="t5j-U2-5MX"/>
                             <constraint firstItem="z2D-HK-0sj" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="tnJ-ZP-rsD"/>
+                            <constraint firstItem="lc8-Xw-mmw" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="20" id="wSQ-jD-PDz"/>
                             <constraint firstItem="AgQ-pD-dYg" firstAttribute="top" secondItem="ohF-eu-O0N" secondAttribute="bottom" id="xZg-dR-ohu"/>
+                            <constraint firstItem="jme-Yy-f5b" firstAttribute="leading" secondItem="lc8-Xw-mmw" secondAttribute="trailing" constant="68" id="xeN-pO-TYO"/>
                             <constraint firstItem="BJ6-4O-ZqN" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.5" id="z0r-5w-PtN"/>
                         </constraints>
                     </view>
@@ -284,6 +312,8 @@
                         <outlet property="profilePicture" destination="z2D-HK-0sj" id="4WN-5i-BFH"/>
                         <outlet property="profileTopBar" destination="Oz5-Ng-0NR" id="gub-Ob-0xq"/>
                         <outlet property="settingsBarItem" destination="ng3-T7-4RF" id="5ej-SX-4uf"/>
+                        <outlet property="switchToCollectionButton" destination="lc8-Xw-mmw" id="TcZ-k6-d5L"/>
+                        <outlet property="switchToTableButton" destination="jme-Yy-f5b" id="Ua6-Cx-lZN"/>
                         <outlet property="usernameTopLabel" destination="BJ6-4O-ZqN" id="qvl-VJ-VOE"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="Logout" id="hof-Dp-5Is"/>
                     </connections>
@@ -298,7 +328,7 @@
                 <pageViewController storyboardIdentifier="GalleryCameraPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5os-jP-4RF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swD-ea-dXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-276" y="1741.5"/>
+            <point key="canvasLocation" x="-276" y="1759.5"/>
         </scene>
         <!--Gallery Camera View Controller-->
         <scene sceneID="gtz-bm-SyS">
@@ -322,8 +352,10 @@
                                 <rect key="frame" x="0.0" y="551" width="600" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem title="Gallery" id="BGm-wt-lK0"/>
-                                    <tabBarItem tag="1" title="Camera" id="omf-TH-FeF"/>
+                                    <tabBarItem title="GALLERY" id="BGm-wt-lK0">
+                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                    </tabBarItem>
+                                    <tabBarItem tag="1" title="CAMERA" id="omf-TH-FeF"/>
                                 </items>
                             </tabBar>
                         </subviews>
@@ -426,6 +458,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="400" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ure-Up-IU9" customClass="PhotoGetterTableView" customModule="PhotoGetter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.25891382600000001" green="1" blue="0.37761858590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Photo Cell" rowHeight="500" id="LVN-Rg-5Kc" customClass="NewCell" customModule="PhotoGetter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="30" width="600" height="500"/>

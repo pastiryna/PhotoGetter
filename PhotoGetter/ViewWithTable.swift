@@ -26,7 +26,6 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
     
     
     let mario = "http://www.imagenspng.com.br/wp-content/uploads/2015/02/small-super-mario.png"
-    
     var userPhotos: [UserPhoto] = []
     
     override func viewDidLoad() {
@@ -39,7 +38,7 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
         
         self.showLoader("Loading...")
         
-        InstagramAPIManager.apiManager.getUserPhotos(InstagramAPIManager.apiManager.accessToken) { (photos, success) -> Void in
+        InstagramAPIManager.apiManager.getUserPhotos(NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (photos, success) -> Void in
             self.hideLoader()
             if (success) {
                 self.userPhotos = photos
@@ -50,8 +49,7 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
                 
             else {
                 self.photoUrls = [String]()
-                self.reloadTable()
-                
+                self.reloadTable()                
             }
             
         }
@@ -124,6 +122,8 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
         })
     
     }
+    
+    
     
     
     

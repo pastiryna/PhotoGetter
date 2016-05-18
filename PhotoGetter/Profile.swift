@@ -50,9 +50,20 @@ class Profile: BaseViewController {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.usernameTopLabel.text = user!.username.uppercaseString
                     self.bioLabel.text = user!.fullName
-                    self.followersButton.setTitle(String(user!.numberOfFollowers), forState: UIControlState.Normal)
-                    self.postCountButton.setTitle(String(user!.numberOfPosts), forState: UIControlState.Normal)
-                    self.followingButton.setTitle(String(user!.numberFollowing), forState: UIControlState.Normal)
+                    
+
+//                    str.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(15), range: NSMakeRange(0, 0))
+//                    str.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(10), range: NSMakeRange(11, 11))
+                    
+                    let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")
+                    self.followersButton.setAttributedTitle(followers, forState: UIControlState.Normal)
+
+
+                    let following = NSMutableAttributedString(string: "\(user!.numberFollowing)\nfollowing")
+                    self.followingButton.setAttributedTitle(following, forState: UIControlState.Normal)
+                    
+                    let posts = NSMutableAttributedString(string: "\(user!.numberOfPosts)\nposts")
+                    self.postCountButton.setAttributedTitle(posts, forState: UIControlState.Normal)
                 })
                     
                 if (CacheManager.sharedInstance.objectForKey(user!.profilePicture) != nil) {

@@ -34,12 +34,14 @@ class ViewController: UIViewController {
     
     @IBAction func login(sender: AnyObject) {
         if self.isLoggedtoInstagram() {
-            performSegueWithIdentifier("Show Table", sender: sender)
+            InstagramAPIManager.apiManager.getUserPhotosById(NSUserDefaults.standardUserDefaults().stringForKey("id")!, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (photos, success) in
+                    if success {
+                        self.performSegueWithIdentifier("Show Table", sender: sender)}
+                })
         }
         
         else {
             performSegueWithIdentifier("Show Login", sender: sender)
-        
         }
         
     }

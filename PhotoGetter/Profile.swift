@@ -38,8 +38,9 @@ class Profile: BaseViewController {
          //make image round
         self.makeImageRound(self.profilePicture)
         //make buttons square
-        
+        self.profileTopBar.setBackgroundImage(UIImage(named: "background"), forBarMetrics: UIBarMetrics.Default)
         self.settingsBarItem.setFAIcon(FAType.FACog, iconSize: 20)
+        self.settingsBarItem.tintColor = UIColor.whiteColor()
         self.switchToCollectionButton.setFAIcon(FAType.FAAlignJustify, forState: .Normal)
         self.switchToTableButton.setFAIcon(FAType.FATh, forState: .Normal)
         

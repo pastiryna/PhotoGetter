@@ -29,6 +29,7 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraPageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
         
+       // self.cameraBarItem.tintColor = UIColor.whiteColor()
         
         
         var imagePicker = UIImagePickerController()

@@ -28,6 +28,9 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         super.viewDidLoad()
         
         self.feedProfileTabBar.delegate = self
+//        self.feedProfileTabBar.tintColor = UIColor.whiteColor()
+//        self.feedProfileTabBar.selectedImageTintColor = UIColor.blueColor()
+        
      
         self.feedBarItem.setFAIcon(FAType.FAHome)
         self.galleryCameraBarItem.setFAIcon(FAType.FACamera)

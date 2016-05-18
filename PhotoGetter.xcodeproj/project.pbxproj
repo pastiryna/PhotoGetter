@@ -124,11 +124,10 @@
 			children = (
 				CC78AF5C1CE9FAF800004CF3 /* TimeFormatter.swift */,
 				CC78AF561CE9E41900004CF3 /* FontAwesomeSwift */,
-				CC167DAA1CDCDB6E005AEA9F /* Resource */,
 				CC07BA841CC6888000FD276F /* AppDelegate.swift */,
+				CC74FA8B1CD9FFB3004C44CD /* BaseViewController.swift */,
 				CC74FA921CDA1687004C44CD /* HelpingClass */,
 				CC74FA911CDA165D004C44CD /* PhotoTable */,
-				CC74FA8B1CD9FFB3004C44CD /* BaseViewController.swift */,
 				CC53BB0C1CE23CC400C06A24 /* MainScreen */,
 				CCFE499D1CEB3BD50079C932 /* Profile */,
 				CC07BA861CC6888000FD276F /* Login.swift */,
@@ -141,6 +140,7 @@
 				CC07BA931CC6888000FD276F /* Info.plist */,
 				CC07BA8B1CC6888000FD276F /* PhotoGetter.xcdatamodeld */,
 				CCF896B01CD2330C00919518 /* PhotoGetter-Bridging-Header.h */,
+				CC167DAA1CDCDB6E005AEA9F /* Resource */,
 				CC74FA971CDA2160004C44CD /* NotNeeded */,
 			);
 			path = PhotoGetter;

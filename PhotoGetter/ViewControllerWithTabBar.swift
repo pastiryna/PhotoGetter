@@ -28,22 +28,15 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         super.viewDidLoad()
         
         self.feedProfileTabBar.delegate = self
-//        self.feedProfileTabBar.tintColor = UIColor.whiteColor()
-//        self.feedProfileTabBar.selectedImageTintColor = UIColor.blueColor()
-        
-     
+
         self.feedBarItem.setFAIcon(FAType.FAHome)
         self.galleryCameraBarItem.setFAIcon(FAType.FACamera)
         self.profileBarItem.setFAIcon(FAType.FAUser)
-
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
         
-        
-        
-        self.hidesBottomBarWhenPushed = true
-        
+        self.hidesBottomBarWhenPushed = true        
         
         //add first page by default
         let startingContentViewController = self.viewControllerAtIndex(0)

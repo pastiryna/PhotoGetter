@@ -64,23 +64,25 @@ class Profile: BaseViewController {
                     
                     let posts = NSMutableAttributedString(string: "\(user!.numberOfPosts)\nposts")
                     self.postCountButton.setAttributedTitle(posts, forState: UIControlState.Normal)
+                    
+                    //add profile picture
+                    if (CacheManager.sharedInstance.objectForKey(user!.profilePicture) != nil) {
+                        self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user!.profilePicture) as? UIImage
+                    }
+                    else {
+                        Utils.loadImage(user!.profilePicture, completion: { (image, loaded) in
+                            if loaded {
+                                self.profilePicture.image = image
+                            }
+                            else {
+                                return
+                            }
+                        })
+                        
+                    }
                 })
                     
-                if (CacheManager.sharedInstance.objectForKey(user!.profilePicture) != nil) {
-                    self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user!.profilePicture) as? UIImage
-                }
-                    
-                else {
-                    Utils.loadImage(user!.profilePicture, completion: { (image, loaded) in
-                        if loaded {
-                           self.profilePicture.image = image
-                        }
-                        else {
-                         return
-                        }
-                    })
-                
-                }
+           
             }
                     
             else {

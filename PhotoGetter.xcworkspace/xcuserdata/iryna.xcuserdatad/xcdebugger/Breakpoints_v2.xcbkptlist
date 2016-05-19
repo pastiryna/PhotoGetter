@@ -1283,11 +1283,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhotoGetter/Profile.swift"
-            timestampString = "485271679.722863"
+            timestampString = "485276237.797543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "makeImageRound(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1299,11 +1299,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhotoGetter/Profile.swift"
-            timestampString = "485271679.722863"
+            timestampString = "485276237.797543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "makeImageRound(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1311,7 +1311,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhotoGetter/ViewWithTable.swift"
@@ -1324,29 +1324,29 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "PhotoGetter.ViewWithTable.viewDidLoad () -&gt; ()"
                   moduleName = "PhotoGetter"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iryna/PhotoGetterGit/PhotoGetter/ViewWithTable.swift"
-                  timestampString = "485255011.018608"
+                  timestampString = "485345346.13955"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
                   endingLineNumber = "41"
-                  offsetFromSymbolStart = "615">
+                  offsetFromSymbolStart = "636">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "PhotoGetter.ViewWithTable.(viewDidLoad () -&gt; ()).(closure #1)"
                   moduleName = "PhotoGetter"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iryna/PhotoGetterGit/PhotoGetter/ViewWithTable.swift"
-                  timestampString = "485255011.018715"
+                  timestampString = "485345346.139671"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "42"

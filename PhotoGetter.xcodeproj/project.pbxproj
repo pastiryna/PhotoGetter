@@ -32,6 +32,8 @@
 		CCB8C79E1CE4C18200A60EC3 /* GalleryCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */; };
 		CCBD03821CE366AF002722EC /* ViewControllerWithTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */; };
 		CCDCC0151CCA23BC00CB9A9E /* InstaUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */; };
+		CCF2340F1CEDBBD800D56FE6 /* FollowersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF2340E1CEDBBD800D56FE6 /* FollowersList.swift */; };
+		CCF234121CEDC7BC00D56FE6 /* FollowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF234111CEDC7BC00D56FE6 /* FollowCell.swift */; };
 		CCFE499A1CEB19E20079C932 /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE49991CEB19E20079C932 /* ProfileCollectionViewController.swift */; };
 		CCFE499C1CEB3BC70079C932 /* InstagramCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE499B1CEB3BC70079C932 /* InstagramCollectionViewCell.swift */; };
 		D718BA058F72D46F0BA790FB /* Pods_PhotoGetter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588817ACDCD5D043A1B47EC6 /* Pods_PhotoGetter.framework */; };
@@ -66,6 +68,8 @@
 		CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCameraViewController.swift; sourceTree = "<group>"; };
 		CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWithTabBar.swift; sourceTree = "<group>"; };
 		CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUser.swift; sourceTree = "<group>"; };
+		CCF2340E1CEDBBD800D56FE6 /* FollowersList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersList.swift; sourceTree = "<group>"; };
+		CCF234111CEDC7BC00D56FE6 /* FollowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowCell.swift; sourceTree = "<group>"; };
 		CCF896B01CD2330C00919518 /* PhotoGetter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoGetter-Bridging-Header.h"; sourceTree = "<group>"; };
 		CCFE49991CEB19E20079C932 /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
 		CCFE499B1CEB3BC70079C932 /* InstagramCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 				CC11BD991CC7BA8E00696F07 /* LoginWebView.swift */,
 				CC53BB061CE1CB0900C06A24 /* UserPhoto.swift */,
 				CC07BA881CC6888000FD276F /* Main.storyboard */,
+				CCF234101CEDC79F00D56FE6 /* FollowList */,
 				CC07BA8E1CC6888000FD276F /* Assets.xcassets */,
 				CC07BA901CC6888000FD276F /* LaunchScreen.storyboard */,
 				CC07BA931CC6888000FD276F /* Info.plist */,
@@ -199,6 +204,15 @@
 			);
 			name = FontAwesomeSwift;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		CCF234101CEDC79F00D56FE6 /* FollowList */ = {
+			isa = PBXGroup;
+			children = (
+				CCF2340E1CEDBBD800D56FE6 /* FollowersList.swift */,
+				CCF234111CEDC7BC00D56FE6 /* FollowCell.swift */,
+			);
+			name = FollowList;
 			sourceTree = "<group>";
 		};
 		CCFE499D1CEB3BD50079C932 /* Profile */ = {
@@ -335,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF2340F1CEDBBD800D56FE6 /* FollowersList.swift in Sources */,
 				CC91BA051CCF638900FA23AF /* PhotoTable.swift in Sources */,
 				CC78AF541CE9E40900004CF3 /* FAIcon.swift in Sources */,
 				CC74FA991CDA29B9004C44CD /* Profile.swift in Sources */,
@@ -356,6 +371,7 @@
 				CC07BA851CC6888000FD276F /* AppDelegate.swift in Sources */,
 				CC11BD9A1CC7BA8E00696F07 /* LoginWebView.swift in Sources */,
 				CCFE499A1CEB19E20079C932 /* ProfileCollectionViewController.swift in Sources */,
+				CCF234121CEDC7BC00D56FE6 /* FollowCell.swift in Sources */,
 				CCBD03821CE366AF002722EC /* ViewControllerWithTabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 class Profile: BaseViewController {
 
     @IBOutlet weak var switchToCollectionButton: UIButton!
@@ -35,8 +36,9 @@ class Profile: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        self.navigationController?.navigationBarHidden = true
          //make image round
-        self.makeImageRound(self.profilePicture)
+        Utils.makeImageRound(self.profilePicture)
         //make buttons square
         self.profileTopBar.setBackgroundImage(UIImage(named: "background"), forBarMetrics: UIBarMetrics.Default)
         self.settingsBarItem.setFAIcon(FAType.FACog, iconSize: 20)
@@ -91,6 +93,11 @@ class Profile: BaseViewController {
         })
 }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     
     func clearCookies() {
         let storage : NSHTTPCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
@@ -104,12 +111,6 @@ class Profile: BaseViewController {
         }
     }
     
-    func makeImageRound(image: UIImageView) {
-        //let width = self.view.frame.size.width / 7.0
-        image.layer.cornerRadius = image.frame.size.width / 2
-        image.clipsToBounds = true
-    
-    }
 
     @IBAction func makeLogout(sender: AnyObject) {
         self.clearCookies()

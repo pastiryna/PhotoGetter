@@ -28,6 +28,8 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         super.viewDidLoad()
         
         self.feedProfileTabBar.delegate = self
+        
+        self.navigationController?.navigationBarHidden = true
 
         self.feedBarItem.setFAIcon(FAType.FAHome)
         self.galleryCameraBarItem.setFAIcon(FAType.FACamera)
@@ -51,8 +53,6 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         
         //set first barItem selected by default
         self.feedProfileTabBar.selectedItem = self.feedBarItem
-        
-        
     }
     
     
@@ -113,24 +113,6 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         let currentIndex = self.contentViewController.pageIndex
-        
-//        if currentIndex == item.tag {
-//            return
-//        }
-//        else if currentIndex < item.tag {
-//            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentOfPageViewController") as! ContentOfPageViewController
-//            self.contentViewController.pageIndex = item.tag
-//            print("From \(currentIndex) to \(item.tag)")
-//            changePageInPageViewController(self.contentViewController, direction: "forward")
-//        
-//        }
-//        else {
-//            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentOfPageViewController") as! ContentOfPageViewController
-//            self.contentViewController.pageIndex = item.tag
-//            print("From \(currentIndex) to \(item.tag)")
-//            changePageInPageViewController(self.contentViewController, direction: "reverse")
-//        
-//        }
         
         if currentIndex == item.tag {
             return

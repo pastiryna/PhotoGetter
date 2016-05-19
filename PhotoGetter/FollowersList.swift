@@ -20,6 +20,8 @@ class FollowersList: BaseViewController, UITableViewDelegate, UITableViewDataSou
         
         self.followersTableView.delegate = self
         self.followersTableView.dataSource = self
+        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "background"), forBarMetrics: UIBarMetrics.Default)
         
     }
   
@@ -35,6 +37,7 @@ class FollowersList: BaseViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FollowCell", forIndexPath: indexPath) as! FollowCell
+        Utils.makeImageRound(cell.userPhoto)
         return cell
     }
     

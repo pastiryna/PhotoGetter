@@ -57,10 +57,12 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-   
+    
+    
+    
+        
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return (self.view.frame.width * 1.2)
     }

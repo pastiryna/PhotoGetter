@@ -28,6 +28,13 @@ class Utils {
         }).resume()
     }
     
+    
+    static func makeImageRound(image: UIImageView) {
+        //let width = self.view.frame.size.width / 7.0
+        image.layer.cornerRadius = image.frame.size.width / 2
+        image.clipsToBounds = true
+    }
+
 
     
 }

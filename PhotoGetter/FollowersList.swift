@@ -21,7 +21,7 @@ class FollowersList: BaseViewController, UITableViewDelegate, UITableViewDataSou
         self.followersTableView.delegate = self
         self.followersTableView.dataSource = self
         self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "background"), forBarMetrics: UIBarMetrics.Default)
+        
         
         self.showLoader("Loading...")
         InstagramAPIManager.apiManager.getUserFollowers(NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (users, success) in

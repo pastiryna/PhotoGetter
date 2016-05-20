@@ -156,6 +156,7 @@ class Profile: BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Folowers" {
             self.tabBarController?.hidesBottomBarWhenPushed = false
+            self.navigationController?.hidesBottomBarWhenPushed = false
         
         }
     }

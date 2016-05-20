@@ -19,7 +19,10 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
     
     
     
-    var contentViewController: BaseViewController = BaseViewController()
+   // var contentViewController: BaseViewController = BaseViewController()
+    var contentViewController = UIViewController()
+    var pageIndex: Int = 0
+    
     var pageViewController: UIPageViewController!
     
     
@@ -41,7 +44,8 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         self.hidesBottomBarWhenPushed = true        
         
         //add first page by default
-        let startingContentViewController = self.viewControllerAtIndex(0)
+        //let startingContentViewController = self.viewControllerAtIndex(0)
+        let startingContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
         let viewControllers: [BaseViewController] = [startingContentViewController]
         self.pageViewController.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
        
@@ -89,17 +93,17 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
 
     }
     
-    func viewControllerAtIndex(index: Int) -> BaseViewController {
-        if index == 0 {
-        self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
-            self.contentViewController.pageIndex = index }
-        else {
-            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
-            self.contentViewController.pageIndex = index
-        }
-        
-        return self.contentViewController
-    }
+//    func viewControllerAtIndex(index: Int) -> BaseViewController {
+//        if index == 0 {
+//        self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+//            self.contentViewController.pageIndex = index }
+//        else {
+//            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
+//            self.contentViewController.pageIndex = index
+//        }
+//        
+//        return self.contentViewController
+//    }
     
     
     
@@ -111,82 +115,158 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         return 0
     }
     
+//    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+//        let currentIndex = self.contentViewController.pageIndex
+//        
+//        if currentIndex == item.tag {
+//            return
+//        }
+//        else if (currentIndex == 1) {
+//            if item.tag == 0 {
+//                self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+//                self.contentViewController.pageIndex = 0
+//                print("Feed from Camera")
+//                print("From \(currentIndex) to \(item.tag)")
+//                changePageInPageViewController(self.contentViewController, direction: "reverse")
+//                return
+//            }
+//            else if item.tag == 2 {
+//                self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
+//                self.contentViewController.pageIndex = 2
+//                print("Profile from Camera")
+//                print("From \(currentIndex) to \(item.tag)")
+//                changePageInPageViewController(self.contentViewController, direction: "forward")
+//                return
+//            }
+//        }
+//            else if currentIndex == 0 {
+//                if item.tag == 1 {
+//                    self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+//                    self.contentViewController.pageIndex = 0
+//                    print("Camera from Feed")
+//                    print("From \(currentIndex) to \(item.tag)")
+//                    
+//                    let viewWithGallery = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
+//                    //performSegueWithIdentifier("Modal", sender: self)
+//                    self.presentViewController(viewWithGallery, animated: true, completion: nil)
+//                    changePageInPageViewController(self.contentViewController, direction: "forward")
+//                    self.feedProfileTabBar.selectedItem = self.feedBarItem
+//                    return
+//                }
+//                else if item.tag == 2 {
+//                    self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
+//                    self.contentViewController.pageIndex = 2
+//                    print("Profile from Feed")
+//                    print("From \(currentIndex) to \(item.tag)")
+//                    changePageInPageViewController(self.contentViewController, direction: "forward")
+//                    return
+//                }
+//        }
+//                else if (currentIndex == 2) {
+//                    if item.tag == 0 {
+//                        self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+//                        self.contentViewController.pageIndex = 0
+//                        print("Feed from Profile")
+//                        print("From \(currentIndex) to \(item.tag)")
+//                        changePageInPageViewController(self.contentViewController, direction: "reverse")
+//                        return
+//                    }
+//                    else if item.tag == 1 {
+//                        self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
+//                        self.contentViewController.pageIndex = 2
+//                        print("Camera from Profile")
+//                        print("From \(currentIndex) to \(item.tag)")
+//                        
+//                       let viewWithGallery = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
+//                         //performSegueWithIdentifier("Modal", sender: self)
+//                       self.presentViewController(viewWithGallery, animated: true, completion: nil)
+//                        
+//                        changePageInPageViewController(self.contentViewController, direction: "reverse")
+//                        self.feedProfileTabBar.selectedItem = self.profileBarItem
+//                        return
+//                    }
+//                
+//                }
+//        
+//            }
+    
+    
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        let currentIndex = self.contentViewController.pageIndex
         
-        if currentIndex == item.tag {
+        
+        if pageIndex == item.tag {
             return
         }
-        else if (currentIndex == 1) {
+        else if (pageIndex == 1) {
             if item.tag == 0 {
                 self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
-                self.contentViewController.pageIndex = 0
+                pageIndex = 0
                 print("Feed from Camera")
-                print("From \(currentIndex) to \(item.tag)")
-                changePageInPageViewController(self.contentViewController, direction: "reverse")
+                print("From \(pageIndex) to \(item.tag)")
+                self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
                 return
             }
             else if item.tag == 2 {
-                self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
-                self.contentViewController.pageIndex = 2
+                self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
+                pageIndex = 2
                 print("Profile from Camera")
-                print("From \(currentIndex) to \(item.tag)")
-                changePageInPageViewController(self.contentViewController, direction: "forward")
+                print("From \(pageIndex) to \(item.tag)")
+                self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
                 return
             }
         }
-            else if currentIndex == 0 {
-                if item.tag == 1 {
-                    self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
-                    self.contentViewController.pageIndex = 0
-                    print("Camera from Feed")
-                    print("From \(currentIndex) to \(item.tag)")
-                    
-                    let viewWithGallery = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
-                    //performSegueWithIdentifier("Modal", sender: self)
-                    self.presentViewController(viewWithGallery, animated: true, completion: nil)
-                    changePageInPageViewController(self.contentViewController, direction: "forward")
-                    self.feedProfileTabBar.selectedItem = self.feedBarItem
-                    return
-                }
-                else if item.tag == 2 {
-                    self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
-                    self.contentViewController.pageIndex = 2
-                    print("Profile from Feed")
-                    print("From \(currentIndex) to \(item.tag)")
-                    changePageInPageViewController(self.contentViewController, direction: "forward")
-                    return
-                }
-        }
-                else if (currentIndex == 2) {
-                    if item.tag == 0 {
-                        self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
-                        self.contentViewController.pageIndex = 0
-                        print("Feed from Profile")
-                        print("From \(currentIndex) to \(item.tag)")
-                        changePageInPageViewController(self.contentViewController, direction: "reverse")
-                        return
-                    }
-                    else if item.tag == 1 {
-                        self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
-                        self.contentViewController.pageIndex = 2
-                        print("Camera from Profile")
-                        print("From \(currentIndex) to \(item.tag)")
-                        
-                       let viewWithGallery = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
-                         //performSegueWithIdentifier("Modal", sender: self)
-                       self.presentViewController(viewWithGallery, animated: true, completion: nil)
-                        
-                        changePageInPageViewController(self.contentViewController, direction: "reverse")
-                        self.feedProfileTabBar.selectedItem = self.profileBarItem
-                        return
-                    }
+        else if pageIndex == 0 {
+            if item.tag == 1 {
+                self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+                pageIndex = 0
+                print("Camera from Feed")
+                print("From \(pageIndex) to \(item.tag)")
                 
-                }
-        
+                let viewWithGallery = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
+                //performSegueWithIdentifier("Modal", sender: self)
+                self.presentViewController(viewWithGallery, animated: true, completion: nil)
+                self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+                self.feedProfileTabBar.selectedItem = self.feedBarItem
+                return
             }
+            else if item.tag == 2 {
+                self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
+                pageIndex = 2
+                print("Profile from Feed")
+                print("From \(pageIndex) to \(item.tag)")
+                self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+                return
+            }
+        }
+        else if (pageIndex == 2) {
+            if item.tag == 0 {
+                self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+                pageIndex = 0
+                print("Feed from Profile")
+                print("From \(pageIndex) to \(item.tag)")
+                self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+                return
+            }
+            else if item.tag == 1 {
+                self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! BaseViewController
+                pageIndex = 2
+                print("Camera from Profile")
+                print("From \(pageIndex) to \(item.tag)")
+                
+                let viewWithGallery = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
+                //performSegueWithIdentifier("Modal", sender: self)
+                self.presentViewController(viewWithGallery, animated: true, completion: nil)
+                
+                self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+                self.feedProfileTabBar.selectedItem = self.profileBarItem
+                return
+            }
+            
+        }
         
-        
+    }
+
+    
 
 
     func changePageInPageViewController(page: BaseViewController, direction: String) {

@@ -38,7 +38,7 @@ class Profile: BaseViewController {
         super.viewDidLoad()
     
         self.navigationController?.navigationBarHidden = true
-         self.hidesBottomBarWhenPushed = false
+         
          //make image round
         Utils.makeImageRound(self.profilePicture)
         //make buttons square
@@ -155,8 +155,8 @@ class Profile: BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Folowers" {
-            self.tabBarController?.hidesBottomBarWhenPushed = false
-            self.navigationController?.hidesBottomBarWhenPushed = false
+            self.tabBarController?.hidesBottomBarWhenPushed = true
+            self.navigationController?.hidesBottomBarWhenPushed = true
         
         }
     }

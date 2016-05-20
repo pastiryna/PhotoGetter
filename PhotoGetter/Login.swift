@@ -11,7 +11,7 @@ import UIKit
 //import FontAwesome_swift
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate, UITabBarDelegate {
     
     @IBOutlet weak var loginWithInstagram: UIButton!
     
@@ -21,9 +21,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBarHidden = true
+      
     
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         
         
     }

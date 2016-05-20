@@ -21,6 +21,7 @@ class FollowersList: BaseViewController, UITableViewDelegate, UITableViewDataSou
         self.followersTableView.delegate = self
         self.followersTableView.dataSource = self
         self.navigationController?.navigationBarHidden = false
+        self.tabBarController?.hidesBottomBarWhenPushed = true
         
         
         self.showLoader("Loading...")

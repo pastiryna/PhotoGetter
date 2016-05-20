@@ -58,10 +58,7 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    
-    
+    }    
         
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return (self.view.frame.width * 1.2)
@@ -96,6 +93,7 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
                         
                        // self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 49)
                          let imageWidth = self.view.frame.width
+                        
                          cell.photo.image = image
                        
                         cell.photoTitleLabel.text = NSUserDefaults.standardUserDefaults().stringForKey("username")

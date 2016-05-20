@@ -43,8 +43,9 @@ class Profile: BaseViewController {
         self.profileTopBar.setBackgroundImage(UIImage(named: "background"), forBarMetrics: UIBarMetrics.Default)
         self.settingsBarItem.setFAIcon(FAType.FACog, iconSize: 20)
         self.settingsBarItem.tintColor = UIColor.whiteColor()
-        self.switchToCollectionButton.setFAIcon(FAType.FAAlignJustify, forState: .Normal)
-        self.switchToTableButton.setFAIcon(FAType.FATh, forState: .Normal)
+        
+        self.switchToTableButton.setFAIcon(FAType.FAAlignJustify, forState: .Normal)
+        self.switchToCollectionButton.setFAIcon(FAType.FATh, forState: .Normal)
         
         
         InstagramAPIManager.apiManager.getUserInfoById(NSUserDefaults.standardUserDefaults().stringForKey("id")!, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
@@ -74,7 +75,8 @@ class Profile: BaseViewController {
                     else {
                         Utils.loadImage(user!.profilePicture, completion: { (image, loaded) in
                             if loaded {
-                                self.profilePicture.image = image
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.profilePicture.image = image })
                             }
                             else {
                                 return

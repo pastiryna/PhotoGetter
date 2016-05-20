@@ -32,7 +32,7 @@ class LoginWebView: BaseViewController, UIWebViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
        super.viewDidAppear(true)
-       
+       self.navigationController?.navigationBarHidden = true
         
               /*if (typeOfAuth .isEqualToString("UNSIGNED")) {
             authUrl = "https://api.instagram.com/oauth/authorize/?client_id=\(CLIENT_ID)&redirect_uri=\(REDIRECT_URI)&response_type=token"
@@ -62,7 +62,7 @@ class LoginWebView: BaseViewController, UIWebViewDelegate {
 }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-    
+        self.navigationController?.navigationBarHidden = true
 
     }
 

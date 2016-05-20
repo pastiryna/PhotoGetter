@@ -283,6 +283,55 @@ class InstagramAPIManager {
         }).resume()
     }
     
+    
+    func getUserFollowers(accessToken: String, completion: (users: [InstaUser], success: Bool) -> Void) {
+        var users: [InstaUser] = []
+        let url = "https://api.instagram.com/v1/users/self/followed-by?access_token=\(accessToken)"
+        let requestUrl = NSURL(string: url)
+        let request = NSMutableURLRequest(URL: requestUrl!)
+        request.HTTPMethod = "GET"
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
+           
+            if !(self.checkResponse(response as! NSHTTPURLResponse)) {
+                completion(users: users, success: false)
+                print("Error \(error)")
+                print("Data \(String(data))")
+                return
+            }
+            
+            else {
+                do {
+                    
+                    let usersDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    let usersDataArray = usersDict.valueForKey("data") as! [NSDictionary]
+                    
+                    for current in usersDataArray {
+                        var user = InstaUser()
+                        user.username = current.valueForKey("username") as! String
+                        user.profilePicture = current.valueForKey("profile_picture") as! String
+                        user.fullName = current.valueForKey("full_name") as! String
+                        user.id = current.valueForKey("id") as! String
+                        users.append(user)
+                    }
+                    
+                    completion(users: users, success: true)
+                }
+                catch {
+                    print("No response :(")
+                    completion(users: users, success: false)
+                }
+            
+            }
+            
+        
+        
+        }).resume()
+        
+    
+    
+    }
 
         
     

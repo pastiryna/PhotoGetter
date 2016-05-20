@@ -35,6 +35,5 @@ class Utils {
         image.clipsToBounds = true
     }
 
-
-    
+        
 }

@@ -250,7 +250,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="4sx-HR-WK6" kind="show" id="bM1-CS-8Wx"/>
+                                    <segue destination="4sx-HR-WK6" kind="show" identifier="Folowers" id="bM1-CS-8Wx"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z2D-HK-0sj">
@@ -638,11 +638,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wKN-hM-GJL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="bw1-TE-dEO">
                         <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="ZRl-qN-iFV" kind="relationship" relationship="rootViewController" id="ed3-XD-ICh"/>

@@ -23,6 +23,9 @@ class ProfileCollectionViewController: BaseViewController, UICollectionViewDeleg
         self.photoCollectionView.dataSource = self
         self.showLoader("Loading...")
         
+        
+       
+        
         InstagramAPIManager.apiManager.getUserPhotosById(NSUserDefaults.standardUserDefaults().stringForKey("id")!, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (photos, success) in
             if success {
                 self.hideLoader()

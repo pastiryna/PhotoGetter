@@ -31,33 +31,33 @@ class Profile: BaseViewController {
     
     var viewWithTable: ViewWithTable!
     var collectionView: ProfileCollectionViewController?
-    var collectionSelected: Bool = true
+   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         self.navigationController?.navigationBarHidden = true
+        self.hidesBottomBarWhenPushed = false
          
          //make image round
         Utils.makeImageRound(self.profilePicture)
         //make buttons square
-//        self.profileTopBar.setBackgroundImage(UIImage(named: "background"), forBarMetrics: UIBarMetrics.Default)
+
         self.settingsBarItem.setFAIcon(FAType.FACog, iconSize: 20)
         self.settingsBarItem.tintColor = UIColor.whiteColor()
         
         self.switchToTableButton.setFAIcon(FAType.FAAlignJustify, forState: .Normal)
         self.switchToCollectionButton.setFAIcon(FAType.FATh, forState: .Normal)
         self.switchToCollectionButton.setFATitleColor(UIColor.blueColor())
+       
+        
         
         InstagramAPIManager.apiManager.getUserInfoById(NSUserDefaults.standardUserDefaults().stringForKey("id")!, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
             if success {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.usernameTopLabel.text = user!.username.uppercaseString
                     self.bioLabel.text = user!.fullName
-
-//                    str.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(15), range: NSMakeRange(0, 0))
-//                    str.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(10), range: NSMakeRange(11, 11))
                     
                     let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")
                     self.followersButton.setAttributedTitle(followers, forState: UIControlState.Normal)
@@ -155,8 +155,8 @@ class Profile: BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Folowers" {
-            self.tabBarController?.hidesBottomBarWhenPushed = true
-            self.navigationController?.hidesBottomBarWhenPushed = true
+            self.tabBarController?.hidesBottomBarWhenPushed = false
+            self.navigationController?.hidesBottomBarWhenPushed = false
         
         }
     }

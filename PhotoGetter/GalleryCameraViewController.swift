@@ -46,7 +46,6 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
         
     }
     
-
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
 //        var index = (viewController as! BaseViewController).pageIndex

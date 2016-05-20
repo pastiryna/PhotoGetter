@@ -21,8 +21,8 @@ class FollowersList: BaseViewController, UITableViewDelegate, UITableViewDataSou
         self.followersTableView.delegate = self
         self.followersTableView.dataSource = self
         self.navigationController?.navigationBarHidden = false
-        self.tabBarController?.hidesBottomBarWhenPushed = true
         
+       
         
         self.showLoader("Loading...")
         InstagramAPIManager.apiManager.getUserFollowers(NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (users, success) in
@@ -40,6 +40,11 @@ class FollowersList: BaseViewController, UITableViewDelegate, UITableViewDataSou
         
     }
   
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBarHidden = false 
+        self.tabBarController?.hidesBottomBarWhenPushed = false
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count

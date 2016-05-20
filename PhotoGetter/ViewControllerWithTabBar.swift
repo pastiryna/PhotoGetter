@@ -225,7 +225,7 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
                 let viewWithGallery = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
                 //performSegueWithIdentifier("Modal", sender: self)
                 self.presentViewController(viewWithGallery, animated: true, completion: nil)
-                self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+                //self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
                 self.feedProfileTabBar.selectedItem = self.feedBarItem
                 return
             }
@@ -257,7 +257,7 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
                 //performSegueWithIdentifier("Modal", sender: self)
                 self.presentViewController(viewWithGallery, animated: true, completion: nil)
                 
-                self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+                //self.pageViewController.setViewControllers([self.contentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
                 self.feedProfileTabBar.selectedItem = self.profileBarItem
                 return
             }

@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
     var pageIndex: Int!
     
     
+    
     let urlForCode = "https://api.instagram.com/oauth/authorize/?client_id=6080917e427b4c6599b0056fc5ce54da&redirect_uri=http://mysupertestapp.com/&response_type=code"
     
     
@@ -41,7 +42,9 @@ class BaseViewController: UIViewController {
         })
     }
     
+   
         
+  
    
 
 }

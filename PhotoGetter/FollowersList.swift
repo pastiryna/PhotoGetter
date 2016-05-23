@@ -8,12 +8,13 @@
 
 import UIKit
 
-class FollowersList: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var followersTableView: UITableView!
   
     
     var users: [InstaUser] = []
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,8 @@ class FollowersList: BaseViewController, UITableViewDelegate, UITableViewDataSou
         self.followersTableView.dataSource = self
         self.navigationController?.navigationBarHidden = false
         
+        self.refreshControl.addTarget(self, action: "refreshHandler", forControlEvents: UIControlEvents.ValueChanged)
+        self.followersTableView.addSubview(self.refreshControl)
        
         
         self.showLoader("Loading...")
@@ -90,5 +93,12 @@ class FollowersList: BaseViewController, UITableViewDelegate, UITableViewDataSou
         })
     }
     
+    
+    func refreshHandler() {
+        self.reloadTable()
+        self.refreshControl.endRefreshing()
+        
+    }
+
 
 }

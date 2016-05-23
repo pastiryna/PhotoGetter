@@ -11,7 +11,7 @@ import MBProgressHUD
 
 
 
-class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     @IBOutlet weak var photoTable: PhotoGetterTableView!
@@ -23,6 +23,7 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
     let acc_tok = "3152442007.6080917.b6d6d78fd7d943b8bd86ca07258a5336"
     var loaded = false
     let date: Double = 1462529472
+    var refreshControl: UIRefreshControl = UIRefreshControl()
     
     
     let mario = "http://www.imagenspng.com.br/wp-content/uploads/2015/02/small-super-mario.png"
@@ -37,6 +38,11 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
         self.reloadTable()
         
         self.showLoader("Loading...")
+        
+       
+        
+        self.refreshControl.addTarget(self, action: "refreshHandler", forControlEvents: UIControlEvents.ValueChanged)
+        self.photoTable.addSubview(self.refreshControl)
         
         InstagramAPIManager.apiManager.getUserPhotos(NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (photos, success) -> Void in
             self.hideLoader()
@@ -123,9 +129,17 @@ class ViewWithTable: BaseViewController, UITableViewDelegate, UITableViewDataSou
     
     }
     
+    func refreshHandler() {
+        self.reloadTable()
+        self.refreshControl.endRefreshing()
     
+    }
     
-    
+//    func addRefreshControll(refreshHandler: ()) {
+//        self.refreshControll.addTarget(self, action: "refreshHandler:", forControlEvents: UIControlEvents.ValueChanged)
+//        self.view.addSubview(self.refreshControll)
+//        
+//    }
     
 
 }

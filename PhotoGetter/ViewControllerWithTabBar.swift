@@ -22,7 +22,9 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
    // var contentViewController: BaseViewController = BaseViewController()
     var contentViewControllers: [UIViewController] = []
     var pageIndex: Int = 0
-    
+    var firstPage: BaseViewController!
+    var secondPage: BaseViewController!
+    var thirdPage: UINavigationController!
     var pageViewController: UIPageViewController!
     
     
@@ -44,9 +46,11 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         self.hidesBottomBarWhenPushed = true        
         
         
-       let firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
-       let secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
-       let thirdPage = self.storyboard?.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
+       self.firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+       self.secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
+       self.thirdPage = self.storyboard?.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
+       var profile = thirdPage.viewControllers[0] as! Profile
+        profile.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
         self.contentViewControllers = [firstPage, secondPage, thirdPage]
         //add first page by default
         
@@ -62,6 +66,13 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         
         //set first barItem selected by default
         self.feedProfileTabBar.selectedItem = self.feedBarItem
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+        self.secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
+        self.thirdPage = self.storyboard?.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
     }
     
     
@@ -214,6 +225,21 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
     
     }
     
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "PageViewController" {
+//            
+//            var profile = self.thirdPage.topViewController as! Profile
+//            profile.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
+//            profile.user.fullName = NSUserDefaults.standardUserDefaults().stringForKey("fullName")!
+//        
+//        }
+//    }
+
+    func createInstaUserFromDefaults() -> InstaUser! {
+        var user = InstaUser()
+        user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
+        return user
+    }
    
 }
     

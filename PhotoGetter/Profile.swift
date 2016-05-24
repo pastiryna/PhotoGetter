@@ -33,7 +33,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource {
     //var collectionView: ProfileCollectionViewController?
     var pageViewController: UIPageViewController!
     var contentPageViewControllers: [UIViewController]!
-   
+    var user: InstaUser = InstaUser()
     
     
     override func viewDidLoad() {
@@ -71,8 +71,11 @@ class Profile: BaseViewController, UIPageViewControllerDataSource {
         self.profileContainer.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
         
-        InstagramAPIManager.apiManager.getUserInfoById(NSUserDefaults.standardUserDefaults().stringForKey("id")!, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
+        print("User Id before request \(user.id)")
+        InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
+            print("Success \(success)")
             if success {
+                print("User \(String(user?.fullName))")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.usernameTopLabel.text = user!.username.uppercaseString
                     self.bioLabel.text = user!.fullName

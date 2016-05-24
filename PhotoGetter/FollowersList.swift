@@ -22,6 +22,7 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
         self.followersTableView.delegate = self
         self.followersTableView.dataSource = self
         self.navigationController?.navigationBarHidden = false
+        self.tabBarController?.hidesBottomBarWhenPushed = false
         
         self.refreshControl.addTarget(self, action: "refreshHandler", forControlEvents: UIControlEvents.ValueChanged)
         self.followersTableView.addSubview(self.refreshControl)
@@ -98,6 +99,27 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
         self.reloadTable()
         self.refreshControl.endRefreshing()
         
+    }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//
+//        if let cell = sender as? FollowCell {
+//            var profile = segue.destinationViewController as! Profile
+//            print(String(self.followersTableView.indexPathForSelectedRow?.row))
+//            let index = self.followersTableView.indexPathForSelectedRow?.row
+//            var selectedUser = self.users[index!]
+//            profile.user.id = selectedUser.id       
+//        
+//        }
+//    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let index = indexPath.row
+         let profile = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as! Profile
+         profile.user.id = self.users[index].id
+        
+         print("Id \(profile.user.id)")
+         self.navigationController?.pushViewController(profile, animated: true)
     }
 
 

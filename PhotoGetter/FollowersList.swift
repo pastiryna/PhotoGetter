@@ -15,6 +15,8 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
     
     var users: [InstaUser] = []
     var refreshControl = UIRefreshControl()
+    var url: String = ""
+    var screenTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +29,11 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
         self.refreshControl.addTarget(self, action: "refreshHandler", forControlEvents: UIControlEvents.ValueChanged)
         self.followersTableView.addSubview(self.refreshControl)
        
+        //self.title = self.screenTitle
         
         self.showLoader("Loading...")
-        InstagramAPIManager.apiManager.getUserFollowers(NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (users, success) in
+        print("Url \(self.url)")
+        InstagramAPIManager.apiManager.getUserFollowersFollowing(self.url, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (users, success) in
             if success {
                 self.users = users
                 print("User \(users.count)")
@@ -38,6 +42,7 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
             }
             else {
                 self.users = [InstaUser]()
+                self.hideLoader()
                 self.reloadTable()
             }
         }
@@ -101,17 +106,6 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
         
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//
-//        if let cell = sender as? FollowCell {
-//            var profile = segue.destinationViewController as! Profile
-//            print(String(self.followersTableView.indexPathForSelectedRow?.row))
-//            let index = self.followersTableView.indexPathForSelectedRow?.row
-//            var selectedUser = self.users[index!]
-//            profile.user.id = selectedUser.id       
-//        
-//        }
-//    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let index = indexPath.row

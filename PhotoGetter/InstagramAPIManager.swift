@@ -284,9 +284,8 @@ class InstagramAPIManager {
     }
     
     
-    func getUserFollowers(accessToken: String, completion: (users: [InstaUser], success: Bool) -> Void) {
+    func getUserFollowersFollowing(url: String, accessToken: String, completion: (users: [InstaUser], success: Bool) -> Void) {
         var users: [InstaUser] = []
-        let url = "https://api.instagram.com/v1/users/self/followed-by?access_token=\(accessToken)"
         let requestUrl = NSURL(string: url)
         let request = NSMutableURLRequest(URL: requestUrl!)
         request.HTTPMethod = "GET"

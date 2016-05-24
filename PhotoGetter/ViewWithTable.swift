@@ -25,6 +25,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     let date: Double = 1462529472
     var refreshControl: UIRefreshControl = UIRefreshControl()
     
+    var user = InstaUser()
     
     let mario = "http://www.imagenspng.com.br/wp-content/uploads/2015/02/small-super-mario.png"
     var userPhotos: [UserPhoto] = []
@@ -44,13 +45,13 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         self.refreshControl.addTarget(self, action: "refreshHandler", forControlEvents: UIControlEvents.ValueChanged)
         self.photoTable.addSubview(self.refreshControl)
         
-        InstagramAPIManager.apiManager.getUserPhotos(NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (photos, success) -> Void in
+        InstagramAPIManager.apiManager.getUserPhotosById(self.user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: {(photos, success) -> Void in
             self.hideLoader()
             if (success) {
                 self.userPhotos = photos
                 for i in photos {
                     self.photoUrls.append(i.getUrl()) }
-                self.reloadTable()
+                    self.reloadTable()
             }
                 
             else {
@@ -58,7 +59,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
                 self.reloadTable()                
             }
             
-        }
+        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -134,12 +135,5 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         self.refreshControl.endRefreshing()
     
     }
-    
-//    func addRefreshControll(refreshHandler: ()) {
-//        self.refreshControll.addTarget(self, action: "refreshHandler:", forControlEvents: UIControlEvents.ValueChanged)
-//        self.view.addSubview(self.refreshControll)
-//        
-//    }
-    
 
 }

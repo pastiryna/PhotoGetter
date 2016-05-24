@@ -32,7 +32,7 @@
                                 <rect key="frame" x="121" y="484" width="297" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="ZRl-qN-iFV" kind="show" id="ggO-nO-mX3"/>
+                                    <segue destination="ZRl-qN-iFV" kind="show" identifier="ButtonSegue" id="ggO-nO-mX3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -251,7 +251,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="4sx-HR-WK6" kind="show" identifier="Folowers" id="bM1-CS-8Wx"/>
+                                    <segue destination="4sx-HR-WK6" kind="show" identifier="Followers" id="Djb-b6-cMX"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2D-HK-0sj">
@@ -294,6 +294,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <segue destination="4sx-HR-WK6" kind="show" identifier="Following" id="QuZ-2X-qWp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -415,7 +418,7 @@
         <!--View Controller With Tab Bar-->
         <scene sceneID="0nR-fT-qD1">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ZRl-qN-iFV" customClass="ViewControllerWithTabBar" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewControllerWithTabBar" automaticallyAdjustsScrollViewInsets="NO" id="ZRl-qN-iFV" customClass="ViewControllerWithTabBar" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PwF-JY-OqR"/>
                         <viewControllerLayoutGuide type="bottom" id="RMw-I1-q0z"/>
@@ -557,7 +560,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCU-ED-rGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="1692"/>
+            <point key="canvasLocation" x="1814" y="1664"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="cCc-Oc-8Pq">
@@ -663,6 +666,7 @@
         <image name="defaultImage" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jg1-WS-yb6"/>
+        <segue reference="ggO-nO-mX3"/>
+        <segue reference="QuZ-2X-qWp"/>
     </inferredMetricsTieBreakers>
 </document>

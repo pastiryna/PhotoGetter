@@ -20,14 +20,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITabBar
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
-    
-    }
+      }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
         
     }
 
@@ -39,10 +35,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITabBar
     
     @IBAction func login(sender: AnyObject) {
         if self.isLoggedtoInstagram() {
-            InstagramAPIManager.apiManager.getUserPhotosById(NSUserDefaults.standardUserDefaults().stringForKey("id")!, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (photos, success) in
-                    if success {
-                        self.performSegueWithIdentifier("Show Table", sender: sender)}
-                })
+            self.performSegueWithIdentifier("Show Table", sender: sender)
         }
         
         else {
@@ -50,7 +43,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITabBar
         }
         
     }
-    
     
     func isLoggedtoInstagram() -> Bool {
         let storage : NSHTTPCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()

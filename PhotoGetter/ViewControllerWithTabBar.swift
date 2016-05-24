@@ -22,7 +22,7 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
    // var contentViewController: BaseViewController = BaseViewController()
     var contentViewControllers: [UIViewController] = []
     var pageIndex: Int = 0
-    var firstPage: BaseViewController!
+    var firstPage: ViewWithTable!
     var secondPage: BaseViewController!
     var thirdPage: UINavigationController!
     var pageViewController: UIPageViewController!
@@ -46,7 +46,8 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         self.hidesBottomBarWhenPushed = true        
         
         
-       self.firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+       self.firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! ViewWithTable
+       self.firstPage.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
        self.secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
        self.thirdPage = self.storyboard?.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
        var profile = thirdPage.viewControllers[0] as! Profile
@@ -54,7 +55,8 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         self.contentViewControllers = [firstPage, secondPage, thirdPage]
         //add first page by default
         
-        let startingContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+        let startingContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! ViewWithTable
+        startingContentViewController.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
         let viewControllers: [BaseViewController] = [startingContentViewController]
         self.pageViewController.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
        
@@ -70,7 +72,7 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        self.firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! BaseViewController
+        self.firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! ViewWithTable
         self.secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
         self.thirdPage = self.storyboard?.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
     }

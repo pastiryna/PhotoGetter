@@ -34,10 +34,16 @@ class Profile: BaseViewController, UIPageViewControllerDataSource {
     var pageViewController: UIPageViewController!
     var contentPageViewControllers: [UIViewController]!
     var user: InstaUser = InstaUser()
+    var followersUrl: String!
+    var followingUrl: String!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let accessTok = NSUserDefaults.standardUserDefaults().stringForKey("accessToken")! as! String
+        self.followingUrl = "https://api.instagram.com/v1/users/\(self.user.id)/follows?access_token=\(accessTok)"
+        self.followersUrl = "https://api.instagram.com/v1/users/\(self.user.id)/followed-by?access_token=\(accessTok)"
     
         self.navigationController?.navigationBarHidden = true
         self.hidesBottomBarWhenPushed = false
@@ -59,11 +65,11 @@ class Profile: BaseViewController, UIPageViewControllerDataSource {
         
         self.pageViewController.dataSource = self
         
-        let firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! ViewWithTable
-        //firstPage.view.frame = CGRectMake(0, 0, self.pageViewController.view.frame.size.width, self.pageViewController.view.frame.size.height)
+        let firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileCollectionViewController") as! ProfileCollectionViewController
+        firstPage.user.id = self.user.id
         
-        let secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileCollectionViewController") as! ProfileCollectionViewController
-        //secondPage.view.frame = CGRectMake(0, 0, self.pageViewController.view.frame.size.width, self.pageViewController.view.frame.size.height)
+        let secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! ViewWithTable
+        secondPage.user.id = self.user.id
         self.contentPageViewControllers = [firstPage, secondPage]
         
         self.pageViewController.setViewControllers([self.contentPageViewControllers[0]], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
@@ -71,11 +77,11 @@ class Profile: BaseViewController, UIPageViewControllerDataSource {
         self.profileContainer.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
         
-        print("User Id before request \(user.id)")
+        
         InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
-            print("Success \(success)")
+            
             if success {
-                print("User \(String(user?.fullName))")
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.usernameTopLabel.text = user!.username.uppercaseString
                     self.bioLabel.text = user!.fullName
@@ -121,9 +127,11 @@ class Profile: BaseViewController, UIPageViewControllerDataSource {
         })
 }
     
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
@@ -159,36 +167,30 @@ class Profile: BaseViewController, UIPageViewControllerDataSource {
         if sender == self.switchToTableButton {
             self.switchToCollectionButton.setFATitleColor(UIColor.grayColor())
             self.switchToTableButton.setFATitleColor(UIColor.blueColor())
-            self.pageViewController.setViewControllers([self.contentPageViewControllers[0]], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
-            
-//            self.viewWithTable = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! ViewWithTable
-//            self.viewWithTable.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.profileContainer.frame.size.height)
-//            self.addChildViewController(self.viewWithTable)
-//            self.profileContainer.addSubview(viewWithTable.view)
-//            self.viewWithTable.didMoveToParentViewController(self)
+            self.pageViewController.setViewControllers([self.contentPageViewControllers[1]], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         }
         
         else if sender == self.switchToCollectionButton {
                self.switchToTableButton.setFATitleColor(UIColor.grayColor())
                self.switchToCollectionButton.setFATitleColor(UIColor.blueColor())
-               self.pageViewController.setViewControllers([self.contentPageViewControllers[1]], direction: UIPageViewControllerNavigationDirection.Reverse, animated: false, completion: nil)
-            
-//                self.collectionView = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileCollectionViewController") as! ProfileCollectionViewController
-//                self.collectionView!.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.profileContainer.frame.size.height)
-//                self.addChildViewController(self.collectionView!)
-//                self.profileContainer.addSubview(collectionView!.view)
-//                self.collectionView!.didMoveToParentViewController(self)
-            
+               self.pageViewController.setViewControllers([self.contentPageViewControllers[0]], direction: UIPageViewControllerNavigationDirection.Reverse, animated: false, completion: nil)
         }
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "Folowers" {
-            self.tabBarController?.hidesBottomBarWhenPushed = false
-            self.navigationController?.hidesBottomBarWhenPushed = false
-        
+        if segue.identifier == "Followers" {
+            var followersViewController = segue.destinationViewController as! FollowersList
+            followersViewController.url = self.followersUrl
+            followersViewController.title = "FOLLOWERS"
         }
+        else if segue.identifier == "Following" {
+            var followingViewController = segue.destinationViewController as! FollowersList
+            followingViewController.url = self.followingUrl
+            followingViewController.title = "FOLLOWING"
+        }
+        
+        
     }
     
    

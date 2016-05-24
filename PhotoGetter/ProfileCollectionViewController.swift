@@ -13,6 +13,7 @@ class ProfileCollectionViewController: BaseViewController, UICollectionViewDeleg
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var userPhotos: [UserPhoto] = []
     var userPhotoUrls: [String] = []
+    var user = InstaUser()
     
     
     
@@ -26,7 +27,7 @@ class ProfileCollectionViewController: BaseViewController, UICollectionViewDeleg
         
        
         
-        InstagramAPIManager.apiManager.getUserPhotosById(NSUserDefaults.standardUserDefaults().stringForKey("id")!, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (photos, success) in
+        InstagramAPIManager.apiManager.getUserPhotosById(self.user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!) { (photos, success) in
             if success {
                 self.hideLoader()
                 self.userPhotos = photos

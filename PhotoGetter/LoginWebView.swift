@@ -83,6 +83,7 @@ class LoginWebView: BaseViewController, UIWebViewDelegate {
                             self.performSegueWithIdentifier("Show Table After Login", sender: self)
                             InstagramAPIManager.apiManager.accessToken = accessToken
                             NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "accessToken")
+                            //InstagramAPIManager.apiManager.setUserDefaults(<#T##userDict: NSDictionary##NSDictionary#>)
                         }
                         })
                     

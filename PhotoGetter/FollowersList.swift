@@ -18,6 +18,7 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
     var url: String = ""
     var screenTitle: String = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,6 +116,6 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
          print("Id \(profile.user.id)")
          self.navigationController?.pushViewController(profile, animated: true)
     }
-
+  
 
 }

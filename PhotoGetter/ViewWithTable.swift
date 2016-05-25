@@ -24,7 +24,9 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     var loaded = false
     let date: Double = 1462529472
     var refreshControl: UIRefreshControl = UIRefreshControl()
-    
+    var footerRefresh = UIRefreshControl()
+    var numberOfRows = 5
+    var isLoading = false
     var user = InstaUser()
     
     let mario = "http://www.imagenspng.com.br/wp-content/uploads/2015/02/small-super-mario.png"
@@ -44,6 +46,9 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         
         self.refreshControl.addTarget(self, action: "refreshHandler", forControlEvents: UIControlEvents.ValueChanged)
         self.photoTable.addSubview(self.refreshControl)
+        
+//        self.photoTable.tableFooterView?.addSubview(self.footerRefresh)
+         self.photoTable.tableFooterView?.hidden = false
         
         InstagramAPIManager.apiManager.getUserPhotosById(self.user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: {(photos, success) -> Void in
             self.hideLoader()
@@ -71,13 +76,26 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         return (self.view.frame.width * 1.2)
     }
     
+//    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        return self.footerRefresh
+//    }
+//    
+//    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 50
+//    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return photoUrls.count
+        if self.photoUrls.count < self.numberOfRows {
+            return self.photoUrls.count
+        }
+        else {
+            return self.numberOfRows
+        }
     }
     
     
@@ -135,5 +153,57 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         self.refreshControl.endRefreshing()
     
     }
+    
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        let deltaOffset = currentOffset - maxOffset
+        
+        if deltaOffset <= 0 {
+            //self.numberOfRows += 1
+            self.loadMore()
+            
+        }
+    }
+    
+    func loadMore() {
+        if ( !isLoading ) {
+            self.isLoading = true
+            //self.photoTable.tableFooterView?.hidden = false
+            //self.footerRefresh.beginRefreshing()
+            //self.refreshControl.startAnimating()
+            
+            
+            loadMoreBegin({ (success) in
+                if success {
+                    self.photoTable.reloadData()
+                    self.isLoading = false
+                     //self.photoTable.tableFooterView?.hidden = false
+                    //self.refreshControl.endRefreshing()
+                    //self.activityIndicator.stopAnimating()
+                    //self.photoTable.tableFooterView?.hidden = true
+                }
+            })
+        }
+    }
+    
+        func loadMoreBegin(loadMoreEnd: (success: Bool) -> Void) {
+            //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.numberOfRows += 5
+                //sleep(2)
+                loadMoreEnd(success: true) })
+            
+//                sleep(2)
+//            }
+//            dispatch_async(dispatch_get_main_queue()) {
+//                loadMoreEnd(success: true)
+            
+        }
+//    
+//    func changeNumberOfRows() {
+//        if self.numberOfRows - self.
+//    }
 
 }

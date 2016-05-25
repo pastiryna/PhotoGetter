@@ -182,7 +182,7 @@ class InstagramAPIManager {
         NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("username") as! String, forKey: "username")
         NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("full_name") as! String, forKey: "fullName")
         NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("profile_picture") as! String, forKey: "profilePicture")
-        NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("bio"), forKey: "bio")
+        NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("bio"), forKey: "bio")
     
     }
     

@@ -47,6 +47,7 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         
         
        self.firstPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! ViewWithTable
+       print("User ID in defaults \(NSUserDefaults.standardUserDefaults().stringForKey("id"))")
        self.firstPage.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
        self.secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
        self.thirdPage = self.storyboard?.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController

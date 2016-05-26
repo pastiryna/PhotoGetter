@@ -25,7 +25,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     let date: Double = 1462529472
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var footerRefresh = UIRefreshControl()
-    var numberOfRows = 5
+    var numberOfRows = 2
     var isLoading = false
     var user = InstaUser()
     
@@ -50,21 +50,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
 //        self.photoTable.tableFooterView?.addSubview(self.footerRefresh)
          self.photoTable.tableFooterView?.hidden = false
         
-        InstagramAPIManager.apiManager.getUserPhotosById(self.user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: {(photos, success) -> Void in
-            self.hideLoader()
-            if (success) {
-                self.userPhotos = photos
-                for i in photos {
-                    self.photoUrls.append(i.getUrl()) }
-                    self.reloadTable()
-            }
-                
-            else {
-                self.photoUrls = [String]()
-                self.reloadTable()                
-            }
-            
-        })
+        self.refreshData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -94,6 +80,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
             return self.photoUrls.count
         }
         else {
+            print("Number of rows \(self.numberOfRows)")
             return self.numberOfRows
         }
     }
@@ -117,7 +104,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         
                        // self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 49)
-                         let imageWidth = self.view.frame.width
+                         //let imageWidth = self.view.frame.width
                         
                          cell.photo.image = image
                        
@@ -148,7 +135,28 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     
     }
     
+    func refreshData() {
+        InstagramAPIManager.apiManager.getUserPhotosById(self.user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: {(photos, success) -> Void in
+            self.hideLoader()
+            if (success) {
+                self.photoUrls = []
+                self.userPhotos = photos
+                for i in photos {
+                    self.photoUrls.append(i.getUrl()) }
+                self.numberOfRows = 2
+                self.reloadTable()
+            }
+                
+            else {
+                self.photoUrls = [String]()
+                self.reloadTable()
+            }
+            
+        })
+}
+    
     func refreshHandler() {
+        self.refreshData()
         self.reloadTable()
         self.refreshControl.endRefreshing()
     
@@ -191,8 +199,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         func loadMoreBegin(loadMoreEnd: (success: Bool) -> Void) {
             //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.numberOfRows += 5
-                //sleep(2)
+                self.numberOfRows += 1
                 loadMoreEnd(success: true) })
             
 //                sleep(2)

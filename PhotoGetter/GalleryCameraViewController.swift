@@ -128,7 +128,7 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
 //            self.pageViewController.setViewControllers([self.contentViewController], direction: .Forward, animated: true, completion: nil)
             var imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
             self.pageViewController.setViewControllers([imagePicker], direction: UIPageViewControllerNavigationDirection.Reverse, animated: true, completion: nil)
             self.pageIndex = item.tag
         }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -229,12 +230,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYg-rc-XFb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FullName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYg-rc-XFb">
                                 <rect key="frame" x="15" y="174" width="300" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tYg-rc-XFb" secondAttribute="height" multiplier="20:1.5" id="Prc-KD-Gpd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -262,10 +263,11 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lc8-Xw-mmw">
-                                <rect key="frame" x="20" y="295" width="60" height="30"/>
+                                <rect key="frame" x="20" y="290" width="60" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lc8-Xw-mmw" secondAttribute="height" multiplier="2:1" id="P5u-lf-JCP"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Collection">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -274,7 +276,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jme-Yy-f5b">
-                                <rect key="frame" x="148" y="295" width="60" height="30"/>
+                                <rect key="frame" x="148" y="290" width="60" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Table">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -309,7 +312,7 @@
                             <constraint firstItem="fuT-bF-EQN" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="7GQ-Oc-jHv"/>
                             <constraint firstItem="03l-FV-sfD" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.15" id="DET-gd-Qmq"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="height" secondItem="Auz-cu-OJK" secondAttribute="height" multiplier="0.45" id="DO2-uC-eQk"/>
-                            <constraint firstItem="ohF-eu-O0N" firstAttribute="top" secondItem="lc8-Xw-mmw" secondAttribute="bottom" constant="5" id="Dob-kn-fZR"/>
+                            <constraint firstItem="ohF-eu-O0N" firstAttribute="top" secondItem="lc8-Xw-mmw" secondAttribute="bottom" constant="10" id="Dob-kn-fZR"/>
                             <constraint firstAttribute="trailing" secondItem="03l-FV-sfD" secondAttribute="trailing" constant="20" id="EOG-gO-g0W"/>
                             <constraint firstItem="tYg-rc-XFb" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="15" id="FAZ-hz-wIa"/>
                             <constraint firstItem="Oz5-Ng-0NR" firstAttribute="top" secondItem="uTr-ZJ-lbM" secondAttribute="bottom" id="JHh-BC-BXt"/>
@@ -317,7 +320,7 @@
                             <constraint firstItem="fuT-bF-EQN" firstAttribute="leading" secondItem="Qvc-PH-Pq6" secondAttribute="trailing" constant="20" id="NlM-Yp-pax"/>
                             <constraint firstAttribute="trailing" secondItem="ohF-eu-O0N" secondAttribute="trailing" id="PQM-UG-SPH"/>
                             <constraint firstItem="Qvc-PH-Pq6" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.15" id="Rkq-wt-vS5"/>
-                            <constraint firstItem="ohF-eu-O0N" firstAttribute="top" secondItem="jme-Yy-f5b" secondAttribute="bottom" constant="5" id="SKR-O8-mva"/>
+                            <constraint firstItem="ohF-eu-O0N" firstAttribute="top" secondItem="jme-Yy-f5b" secondAttribute="bottom" constant="10" id="SKR-O8-mva"/>
                             <constraint firstItem="Oz5-Ng-0NR" firstAttribute="leading" secondItem="ohF-eu-O0N" secondAttribute="leading" id="Vj8-Le-Ruc"/>
                             <constraint firstItem="tYg-rc-XFb" firstAttribute="top" secondItem="z2D-HK-0sj" secondAttribute="bottom" constant="15" id="cqT-iT-JEv"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" id="dDv-Y8-gNr"/>
@@ -435,7 +438,6 @@
                             </containerView>
                             <tabBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1nW-xq-oBx">
                                 <rect key="frame" x="0.0" y="502" width="600" height="49"/>
-                                <color key="backgroundColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="O6L-Fm-qs8"/>
                                 </constraints>
@@ -444,7 +446,6 @@
                                     <tabBarItem tag="1" title="Add" id="e83-tW-TFG"/>
                                     <tabBarItem tag="2" title="Profile" id="a4k-16-H24"/>
                                 </items>
-                                <color key="barTintColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tabBar>
                         </subviews>

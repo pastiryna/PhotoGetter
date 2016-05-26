@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate {
     
     @IBOutlet weak var followersTableView: UITableView!
   
@@ -27,7 +27,10 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
         self.navigationController?.navigationBarHidden = false
         self.tabBarController?.hidesBottomBarWhenPushed = false
         
-        self.refreshControl.addTarget(self, action: "refreshHandler", forControlEvents: UIControlEvents.ValueChanged)
+        self.navigationController?.navigationBar.barTintColor = Constants.BRAND_COLOR
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.refreshControl.addTarget(self, action: #selector(FollowersList.refreshHandler), forControlEvents: UIControlEvents.ValueChanged)
         self.followersTableView.addSubview(self.refreshControl)
        
         //self.title = self.screenTitle
@@ -71,7 +74,7 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
             let profilePictureUrl = users[indexPath.row].profilePicture
             if CacheManager.sharedInstance.isCashed(profilePictureUrl) {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                     var photo = CacheManager.sharedInstance.objectForKey(profilePictureUrl) as! UIImage
+                     let photo = CacheManager.sharedInstance.objectForKey(profilePictureUrl) as! UIImage
                      Utils.makeImageRound(cell.userPhoto)
                      cell.userPhoto.image = photo })
             }

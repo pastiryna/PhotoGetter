@@ -33,6 +33,11 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         super.viewDidLoad()
         
         self.feedProfileTabBar.delegate = self
+        //bar background color
+        self.feedProfileTabBar.barTintColor = Constants.BRAND_COLOR
+        self.feedProfileTabBar.tintColor = Constants.SELECTED_ICON_COLOR
+        
+        
         
         self.navigationController?.navigationBarHidden = true
 
@@ -51,7 +56,7 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
        self.firstPage.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
        self.secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! BaseViewController
        self.thirdPage = self.storyboard?.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
-       var profile = thirdPage.viewControllers[0] as! Profile
+       let profile = thirdPage.viewControllers[0] as! Profile
         profile.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
         self.contentViewControllers = [firstPage, secondPage, thirdPage]
         //add first page by default

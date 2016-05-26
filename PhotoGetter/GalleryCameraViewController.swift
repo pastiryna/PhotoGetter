@@ -26,10 +26,14 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
         
         self.galleryCameraTabBar.delegate = self
         
+        self.galleryCameraTabBar.barTintColor = Constants.BRAND_COLOR
+        self.galleryCameraTabBar.tintColor = Constants.SELECTED_ICON_COLOR
+
+        
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraPageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
         
-        var imagePicker = UIImagePickerController()
+        let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         self.presentViewController(imagePicker, animated: false, completion: nil)
@@ -123,20 +127,14 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
             return
         }
         else if currentIndex < item.tag {
-//            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CameraViewController") as! BaseViewController
-//            self.contentViewController.pageIndex = 1
-//            self.pageViewController.setViewControllers([self.contentViewController], direction: .Forward, animated: true, completion: nil)
-            var imagePicker = UIImagePickerController()
+            let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
             self.pageViewController.setViewControllers([imagePicker], direction: UIPageViewControllerNavigationDirection.Reverse, animated: true, completion: nil)
             self.pageIndex = item.tag
         }
         else {
-//            self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryViewController") as! BaseViewController
-//            self.contentViewController.pageIndex = 0
-//            self.pageViewController.setViewControllers([self.contentViewController], direction: .Reverse, animated: true, completion: nil)
-            var imagePicker = UIImagePickerController()
+            let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             self.pageViewController.setViewControllers([imagePicker], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)

@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class Profile: BaseViewController, UIPageViewControllerDataSource {
+class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationBarDelegate {
 
     @IBOutlet weak var switchToCollectionButton: UIButton!
     @IBOutlet weak var switchToTableButton: UIButton!
@@ -47,6 +47,9 @@ class Profile: BaseViewController, UIPageViewControllerDataSource {
     
         self.navigationController?.navigationBarHidden = true
         self.hidesBottomBarWhenPushed = false
+        self.profileTopBar.delegate = self
+        
+        self.profileTopBar.barTintColor = Constants.BRAND_COLOR
         
          
          //make image round

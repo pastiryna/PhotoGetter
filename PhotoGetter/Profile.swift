@@ -25,8 +25,8 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var postCountButton: UIButton!
     @IBOutlet weak var followersButton: UIButton!
-    @IBOutlet weak var followingButton: UIButton!
-    
+    @IBOutlet weak var followingButton: UIButton!    
+    @IBOutlet weak var editProfileButton: UIButton!
     
     
     var viewWithTable: ViewWithTable!
@@ -41,7 +41,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let accessTok = NSUserDefaults.standardUserDefaults().stringForKey("accessToken")! as! String
+        let accessTok = NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!
         self.followingUrl = "https://api.instagram.com/v1/users/\(self.user.id)/follows?access_token=\(accessTok)"
         self.followersUrl = "https://api.instagram.com/v1/users/\(self.user.id)/followed-by?access_token=\(accessTok)"
     
@@ -93,7 +93,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
                     self.followersButton.setAttributedTitle(followers, forState: UIControlState.Normal)
                     
 
-                    var numberFollowingAtt = NSMutableAttributedString(string: String(user!.numberFollowing))
+                    //var numberFollowingAtt = NSMutableAttributedString(string: String(user!.numberFollowing))
                     //var attr = NSFontAttributeName(UIFont.boldSystemFontOfSize(12))
                     
                     
@@ -161,6 +161,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
 
     @IBAction func makeLogout(sender: AnyObject) {
         self.clearCookies()
+        self.clearCache()
 
     }
     
@@ -183,17 +184,27 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Followers" {
-            var followersViewController = segue.destinationViewController as! FollowersList
+            let followersViewController = segue.destinationViewController as! FollowersList
             followersViewController.url = self.followersUrl
             followersViewController.title = "FOLLOWERS"
         }
         else if segue.identifier == "Following" {
-            var followingViewController = segue.destinationViewController as! FollowersList
+            let followingViewController = segue.destinationViewController as! FollowersList
             followingViewController.url = self.followingUrl
             followingViewController.title = "FOLLOWING"
         }
+        else if segue.identifier == "EditProfile" {
+            let editProfile = segue.destinationViewController as! EditProfile
+            //editProfile.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
+            editProfile.user.id = self.user.id
+            
         
+        }
         
+    }
+    
+    func clearCache() {
+        CacheManager.sharedInstance.removeAllObjects()
     }
     
    

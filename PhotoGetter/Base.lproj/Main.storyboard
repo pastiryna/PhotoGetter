@@ -301,6 +301,13 @@
                                     <segue destination="4sx-HR-WK6" kind="show" identifier="Following" id="QuZ-2X-qWp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZz-qS-aBp">
+                                <rect key="frame" x="242" y="167" width="146" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="PTI-Fa-YT9" kind="presentation" identifier="EditProfile" id="RbI-8y-VyU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -343,6 +350,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="ogc-92-wlC"/>
                     <connections>
                         <outlet property="bioLabel" destination="tYg-rc-XFb" id="WPi-99-hsL"/>
+                        <outlet property="editProfileButton" destination="PZz-qS-aBp" id="uUK-oE-IUm"/>
                         <outlet property="followersButton" destination="fuT-bF-EQN" id="kjH-l1-5DL"/>
                         <outlet property="followingButton" destination="03l-FV-sfD" id="ajm-Vh-VJl"/>
                         <outlet property="postCountButton" destination="Qvc-PH-Pq6" id="DBz-LZ-9mx"/>
@@ -562,6 +570,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCU-ED-rGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1814" y="1664"/>
+        </scene>
+        <!--Edit Profile-->
+        <scene sceneID="xQ7-3N-NJa">
+            <objects>
+                <viewController storyboardIdentifier="EditProfile" id="PTI-Fa-YT9" customClass="EditProfile" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FTv-3L-nsl"/>
+                        <viewControllerLayoutGuide type="bottom" id="HUM-FG-XY3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qju-Sm-RTf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="40" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5QU-EU-BWZ">
+                                <rect key="frame" x="0.0" y="70" width="600" height="530"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditProfileCell" rowHeight="70" id="BrL-5f-L93" customClass="EditProfileCell" customModule="PhotoGetter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="600" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BrL-5f-L93" id="rfm-Vv-OQK">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pEE-bX-Tj5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pEE-bX-Tj5" firstAttribute="top" secondItem="rfm-Vv-OQK" secondAttribute="top" id="MOa-RI-vMv"/>
+                                                <constraint firstAttribute="trailing" secondItem="pEE-bX-Tj5" secondAttribute="trailing" id="ji2-CG-Yni"/>
+                                                <constraint firstItem="pEE-bX-Tj5" firstAttribute="leading" secondItem="rfm-Vv-OQK" secondAttribute="leading" id="lAD-Cw-Tse"/>
+                                                <constraint firstAttribute="bottom" secondItem="pEE-bX-Tj5" secondAttribute="bottom" id="pyP-GP-cVM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textField" destination="pEE-bX-Tj5" id="SIX-pa-jSk"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="70" translatesAutoresizingMaskIntoConstraints="NO" id="AJt-Io-Hmi">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="2rb-qH-j84">
+                                        <connections>
+                                            <action selector="cancelEditing:" destination="PTI-Fa-YT9" id="jjT-D3-Nkn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ssx-ss-lYc"/>
+                                    <barButtonItem style="plain" systemItem="save" id="z1S-7Z-8hU">
+                                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="saveEditedUser:" destination="PTI-Fa-YT9" id="voD-kZ-aOL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HUM-FG-XY3" firstAttribute="top" secondItem="5QU-EU-BWZ" secondAttribute="bottom" id="BVO-d8-h8O"/>
+                            <constraint firstItem="5QU-EU-BWZ" firstAttribute="top" secondItem="AJt-Io-Hmi" secondAttribute="bottom" id="IQW-3T-dcU"/>
+                            <constraint firstAttribute="trailing" secondItem="AJt-Io-Hmi" secondAttribute="trailing" id="JCS-sI-zCD"/>
+                            <constraint firstItem="AJt-Io-Hmi" firstAttribute="top" secondItem="qju-Sm-RTf" secondAttribute="top" id="Rza-JM-leJ"/>
+                            <constraint firstItem="5QU-EU-BWZ" firstAttribute="leading" secondItem="qju-Sm-RTf" secondAttribute="leading" id="gVJ-Cu-XeC"/>
+                            <constraint firstItem="AJt-Io-Hmi" firstAttribute="leading" secondItem="qju-Sm-RTf" secondAttribute="leading" id="vvL-i0-8tS"/>
+                            <constraint firstAttribute="trailing" secondItem="5QU-EU-BWZ" secondAttribute="trailing" id="ytp-n4-fq4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="2rb-qH-j84" id="oYQ-qi-eIJ"/>
+                        <outlet property="editProfileTable" destination="5QU-EU-BWZ" id="jnK-Zu-P4o"/>
+                        <outlet property="saveButton" destination="z1S-7Z-8hU" id="ATW-Ta-tLR"/>
+                        <outlet property="topBar" destination="AJt-Io-Hmi" id="CIb-Yd-Idq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XVM-9F-mGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1814" y="2351"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="cCc-Oc-8Pq">

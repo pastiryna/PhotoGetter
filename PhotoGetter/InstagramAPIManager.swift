@@ -183,6 +183,8 @@ class InstagramAPIManager {
         NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("full_name") as! String, forKey: "fullName")
         NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("profile_picture") as! String, forKey: "profilePicture")
         NSUserDefaults.standardUserDefaults().setObject(userDict.valueForKey("user")!.valueForKey("bio"), forKey: "bio")
+        NSUserDefaults.standardUserDefaults().setObject(false, forKey: "isEdited")
+        print(NSUserDefaults.standardUserDefaults().boolForKey("isEdited"))
     
     }
     

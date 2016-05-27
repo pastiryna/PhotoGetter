@@ -33,6 +33,9 @@
 		CCBD03821CE366AF002722EC /* ViewControllerWithTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */; };
 		CCDCC0151CCA23BC00CB9A9E /* InstaUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */; };
 		CCE7EA9D1CF6F6B500FB3D91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE7EA9C1CF6F6B500FB3D91 /* Constants.swift */; };
+		CCE7EAA21CF72C1500FB3D91 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE7EAA11CF72C1500FB3D91 /* CoreDataManager.swift */; };
+		CCE7EAA41CF7426000FB3D91 /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE7EAA31CF7426000FB3D91 /* EditProfile.swift */; };
+		CCE7EAA71CF743CF00FB3D91 /* EditProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE7EAA61CF743CF00FB3D91 /* EditProfileCell.swift */; };
 		CCF2340F1CEDBBD800D56FE6 /* FollowersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF2340E1CEDBBD800D56FE6 /* FollowersList.swift */; };
 		CCF234121CEDC7BC00D56FE6 /* FollowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF234111CEDC7BC00D56FE6 /* FollowCell.swift */; };
 		CCFE499A1CEB19E20079C932 /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE49991CEB19E20079C932 /* ProfileCollectionViewController.swift */; };
@@ -70,6 +73,9 @@
 		CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWithTabBar.swift; sourceTree = "<group>"; };
 		CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUser.swift; sourceTree = "<group>"; };
 		CCE7EA9C1CF6F6B500FB3D91 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CCE7EAA11CF72C1500FB3D91 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CCE7EAA31CF7426000FB3D91 /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		CCE7EAA61CF743CF00FB3D91 /* EditProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileCell.swift; sourceTree = "<group>"; };
 		CCF2340E1CEDBBD800D56FE6 /* FollowersList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersList.swift; sourceTree = "<group>"; };
 		CCF234111CEDC7BC00D56FE6 /* FollowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowCell.swift; sourceTree = "<group>"; };
 		CCF896B01CD2330C00919518 /* PhotoGetter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoGetter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -136,8 +142,9 @@
 				CC74FA911CDA165D004C44CD /* PhotoTable */,
 				CC53BB0C1CE23CC400C06A24 /* MainScreen */,
 				CCFE499D1CEB3BD50079C932 /* Profile */,
-				CC07BA861CC6888000FD276F /* Login.swift */,
+				CCE7EAA51CF7426700FB3D91 /* EditProfile */,
 				CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */,
+				CC07BA861CC6888000FD276F /* Login.swift */,
 				CC11BD991CC7BA8E00696F07 /* LoginWebView.swift */,
 				CC53BB061CE1CB0900C06A24 /* UserPhoto.swift */,
 				CC07BA881CC6888000FD276F /* Main.storyboard */,
@@ -186,6 +193,7 @@
 				CC11BD9B1CC7D12700696F07 /* InstagramAPIManager.swift */,
 				CC15CEBA1CD38422001210DF /* CacheManager.swift */,
 				CCE7EA9C1CF6F6B500FB3D91 /* Constants.swift */,
+				CCE7EAA11CF72C1500FB3D91 /* CoreDataManager.swift */,
 			);
 			name = HelpingClass;
 			sourceTree = "<group>";
@@ -207,6 +215,15 @@
 			);
 			name = FontAwesomeSwift;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		CCE7EAA51CF7426700FB3D91 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CCE7EAA31CF7426000FB3D91 /* EditProfile.swift */,
+				CCE7EAA61CF743CF00FB3D91 /* EditProfileCell.swift */,
+			);
+			name = EditProfile;
 			sourceTree = "<group>";
 		};
 		CCF234101CEDC79F00D56FE6 /* FollowList */ = {
@@ -361,6 +378,7 @@
 				CC15CEBB1CD38422001210DF /* CacheManager.swift in Sources */,
 				CC53BB071CE1CB0900C06A24 /* UserPhoto.swift in Sources */,
 				CC74FA961CDA1D85004C44CD /* NewCell.swift in Sources */,
+				CCE7EAA41CF7426000FB3D91 /* EditProfile.swift in Sources */,
 				CC07BA871CC6888000FD276F /* Login.swift in Sources */,
 				CC74FA941CDA16EF004C44CD /* PhotoGetterTableView.swift in Sources */,
 				CC11BD9C1CC7D12700696F07 /* InstagramAPIManager.swift in Sources */,
@@ -373,7 +391,9 @@
 				CCB8C79E1CE4C18200A60EC3 /* GalleryCameraViewController.swift in Sources */,
 				CC74FA8E1CDA0394004C44CD /* Utils.swift in Sources */,
 				CC07BA8D1CC6888000FD276F /* PhotoGetter.xcdatamodeld in Sources */,
+				CCE7EAA21CF72C1500FB3D91 /* CoreDataManager.swift in Sources */,
 				CC07BA851CC6888000FD276F /* AppDelegate.swift in Sources */,
+				CCE7EAA71CF743CF00FB3D91 /* EditProfileCell.swift in Sources */,
 				CC11BD9A1CC7BA8E00696F07 /* LoginWebView.swift in Sources */,
 				CCFE499A1CEB19E20079C932 /* ProfileCollectionViewController.swift in Sources */,
 				CCF234121CEDC7BC00D56FE6 /* FollowCell.swift in Sources */,

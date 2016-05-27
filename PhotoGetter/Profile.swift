@@ -81,59 +81,24 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.pageViewController.didMoveToParentViewController(self)
         
         
-        InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
-            
-            if success {
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.usernameTopLabel.text = user!.username.uppercaseString
-                    self.bioLabel.text = user!.fullName
-                    
-                    let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")
-                    self.followersButton.setAttributedTitle(followers, forState: UIControlState.Normal)
-                    
-
-                    //var numberFollowingAtt = NSMutableAttributedString(string: String(user!.numberFollowing))
-                    //var attr = NSFontAttributeName(UIFont.boldSystemFontOfSize(12))
-                    
-                    
-                    let following = NSMutableAttributedString(string: "\(user!.numberFollowing)\nfollowing")
-                    self.followingButton.setAttributedTitle(following, forState: UIControlState.Normal)
-                    
-                    let posts = NSMutableAttributedString(string: "\(user!.numberOfPosts)\nposts")
-                    self.postCountButton.setAttributedTitle(posts, forState: UIControlState.Normal)
-                    
-                    //add profile picture
-                    if (CacheManager.sharedInstance.objectForKey(user!.profilePicture) != nil) {
-                        self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user!.profilePicture) as? UIImage
-                    }
-                    else {
-                        Utils.loadImage(user!.profilePicture, completion: { (image, loaded) in
-                            if loaded {
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    self.profilePicture.image = image })
-                            }
-                            else {
-                                return
-                            }
-                        })
-                        
-                    }
-                })
-                    
-           
-            }
-                    
-            else {
-                return
-            }
-        })
+        if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
+            self.showUserFromDB()
+        }
+        
+        else {
+            self.showUserFromServer()
+        }
+        
 }
     
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
+            self.showUserFromDB()        
+        }
         
     }
     
@@ -205,6 +170,110 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     
     func clearCache() {
         CacheManager.sharedInstance.removeAllObjects()
+    }
+    
+    func showUserFromDB() {
+        self.user = CoreDataManager.sharedInstance.getUserById(self.user.id)
+         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.usernameTopLabel.text = self.user.username.uppercaseString
+            self.bioLabel.text = self.user.fullName })
+        //profile picture
+        
+        InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
+            
+            if success {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")
+                    self.followersButton.setAttributedTitle(followers, forState: UIControlState.Normal)                    
+                    
+                    let following = NSMutableAttributedString(string: "\(user!.numberFollowing)\nfollowing")
+                    self.followingButton.setAttributedTitle(following, forState: UIControlState.Normal)
+                    
+                    let posts = NSMutableAttributedString(string: "\(user!.numberOfPosts)\nposts")
+                    self.postCountButton.setAttributedTitle(posts, forState: UIControlState.Normal)
+                    
+                    //add profile picture
+                    if (CacheManager.sharedInstance.objectForKey(user!.profilePicture) != nil) {
+                        self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user!.profilePicture) as? UIImage
+                    }
+                    else {
+                        Utils.loadImage(user!.profilePicture, completion: { (image, loaded) in
+                            if loaded {
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.profilePicture.image = image })
+                            }
+                            else {
+                                return
+                            }
+                        })
+                        
+                    }
+                })
+                
+                
+            }
+                
+            else {
+                return
+            }
+        })
+
+        
+    
+    }
+    
+    
+    
+    func showUserFromServer() {
+        InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
+            
+            if success {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.usernameTopLabel.text = user!.username.uppercaseString
+                    self.bioLabel.text = user!.fullName
+                    
+                    let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")
+                    self.followersButton.setAttributedTitle(followers, forState: UIControlState.Normal)
+                    
+                    
+                    //var numberFollowingAtt = NSMutableAttributedString(string: String(user!.numberFollowing))
+                    //var attr = NSFontAttributeName(UIFont.boldSystemFontOfSize(12))
+                    
+                    
+                    let following = NSMutableAttributedString(string: "\(user!.numberFollowing)\nfollowing")
+                    self.followingButton.setAttributedTitle(following, forState: UIControlState.Normal)
+                    
+                    let posts = NSMutableAttributedString(string: "\(user!.numberOfPosts)\nposts")
+                    self.postCountButton.setAttributedTitle(posts, forState: UIControlState.Normal)
+                    
+                    //add profile picture
+                    if (CacheManager.sharedInstance.objectForKey(user!.profilePicture) != nil) {
+                        self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user!.profilePicture) as? UIImage
+                    }
+                    else {
+                        Utils.loadImage(user!.profilePicture, completion: { (image, loaded) in
+                            if loaded {
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.profilePicture.image = image })
+                            }
+                            else {
+                                return
+                            }
+                        })
+                        
+                    }
+                })
+                
+                
+            }
+                
+            else {
+                return
+            }
+        })
     }
     
    

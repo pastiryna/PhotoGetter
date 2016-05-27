@@ -19,12 +19,6 @@ class CoreDataManager {
     
     func saveNewUser(user: InstaUser) {
        let managedContext = appDelegate.managedObjectContext
-       
-    
-        //working
-        
-//        let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: managedContext)
-//        let newUser = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         let newUser = NSEntityDescription.insertNewObjectForEntityForName("InstaUser", inManagedObjectContext: managedContext)
         

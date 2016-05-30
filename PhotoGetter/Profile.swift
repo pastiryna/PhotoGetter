@@ -51,10 +51,11 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         
         self.profileTopBar.barTintColor = Constants.BRAND_COLOR
         
+        self.prepareUI()
+        
          
          //make image round
-        Utils.makeImageRound(self.profilePicture)
-        //make buttons square
+               //make buttons square
 
         self.settingsBarItem.setFAIcon(FAType.FACog, iconSize: 20)
         self.settingsBarItem.tintColor = UIColor.whiteColor()
@@ -95,6 +96,8 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        self.prepareUI()
         
         if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
             self.showUserFromDB()        
@@ -174,57 +177,25 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     
     func showUserFromDB() {
         self.user = CoreDataManager.sharedInstance.getUserById(self.user.id)
-         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.usernameTopLabel.text = self.user.username.uppercaseString
-            self.bioLabel.text = self.user.fullName })
-        //profile picture
         
-        InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
-            
-            if success {
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    
-                    let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")
-                    self.followersButton.setAttributedTitle(followers, forState: UIControlState.Normal)                    
-                    
-                    let following = NSMutableAttributedString(string: "\(user!.numberFollowing)\nfollowing")
-                    self.followingButton.setAttributedTitle(following, forState: UIControlState.Normal)
-                    
-                    let posts = NSMutableAttributedString(string: "\(user!.numberOfPosts)\nposts")
-                    self.postCountButton.setAttributedTitle(posts, forState: UIControlState.Normal)
-                    
-                    //add profile picture
-                    if (CacheManager.sharedInstance.objectForKey(user!.profilePicture) != nil) {
-                        self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user!.profilePicture) as? UIImage
+        //profile picture
+            if (CacheManager.sharedInstance.objectForKey(user.profilePicture) != nil) {
+                self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user.profilePicture) as? UIImage
+            }
+            else {
+                Utils.loadImage(user.profilePicture, completion: { (image, loaded) in
+                    if loaded {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.profilePicture.image = image })
                     }
                     else {
-                        Utils.loadImage(user!.profilePicture, completion: { (image, loaded) in
-                            if loaded {
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    self.profilePicture.image = image })
-                            }
-                            else {
-                                return
-                            }
-                        })
-                        
+                        return
                     }
                 })
-                
-                
-            }
-                
-            else {
-                return
-            }
-        })
-
-        
     
+                        
+        }
     }
-    
-    
     
     func showUserFromServer() {
         InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
@@ -276,6 +247,28 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         })
     }
     
-   
-    
+    func prepareUI() {
+        Utils.makeImageRound(self.profilePicture)
+        
+        if self.user.id != NSUserDefaults.standardUserDefaults().stringForKey("id") {
+            self.editProfileButton.hidden = true
+        }
+        else {
+            self.editProfileButton.hidden = false
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+
+            let x = self.postCountButton.frame.origin.x
+            let y = self.postCountButton.frame.origin.y
+            let width = self.view.frame.size.width * 0.45 + 40.0
+//            self.editProfileButton.frame.size.width = width
+//            self.editProfileButton.frame.size.height = 24.0
+//            self.editProfileButton.frame = CGRectMake(x, y + 50.0, width, 24.0)
+           // self.editProfileButton.frame.size = CGSizeMake(width, 24.0)
+            print("Button \(self.editProfileButton.frame.size.width)") })
+    }
+
+
 }
+

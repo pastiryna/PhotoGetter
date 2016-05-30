@@ -197,8 +197,8 @@
                                     <segue destination="2cJ-TX-bEi" kind="embed" id="hX9-Hi-GbR"/>
                                 </connections>
                             </containerView>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oz5-Ng-0NR">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oz5-Ng-0NR">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
@@ -211,8 +211,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qvc-PH-Pq6">
-                                <rect key="frame" x="270" y="84" width="90" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qvc-PH-Pq6">
+                                <rect key="frame" x="270" y="128" width="90" height="24"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="posts">
@@ -224,23 +224,23 @@
                                     </attributedString>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ6-4O-ZqN">
-                                <rect key="frame" x="20" y="31" width="300" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ6-4O-ZqN">
+                                <rect key="frame" x="20" y="75" width="300" height="15"/>
                                 <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FullName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYg-rc-XFb">
-                                <rect key="frame" x="15" y="174" width="300" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FullName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYg-rc-XFb">
+                                <rect key="frame" x="15" y="218" width="300" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tYg-rc-XFb" secondAttribute="height" multiplier="20:1.5" id="Prc-KD-Gpd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuT-bF-EQN">
-                                <rect key="frame" x="380" y="84" width="90" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuT-bF-EQN">
+                                <rect key="frame" x="380" y="128" width="90" height="24"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="followers">
@@ -255,8 +255,8 @@
                                     <segue destination="4sx-HR-WK6" kind="show" identifier="Followers" id="Djb-b6-cMX"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2D-HK-0sj">
-                                <rect key="frame" x="20" y="84" width="75" height="75"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z2D-HK-0sj">
+                                <rect key="frame" x="20" y="128" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="z2D-HK-0sj" secondAttribute="height" multiplier="1:1" id="UD8-6e-xcJ"/>
                                     <constraint firstAttribute="height" constant="75" id="VOo-fA-lXw"/>
@@ -285,8 +285,8 @@
                                     <action selector="switchContainerView:" destination="b9V-Rt-jNA" eventType="touchUpInside" id="YvT-eB-22y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03l-FV-sfD">
-                                <rect key="frame" x="490" y="84" width="90" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03l-FV-sfD">
+                                <rect key="frame" x="490" y="128" width="90" height="24"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="following">
@@ -301,8 +301,9 @@
                                     <segue destination="4sx-HR-WK6" kind="show" identifier="Following" id="QuZ-2X-qWp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZz-qS-aBp">
-                                <rect key="frame" x="242" y="167" width="146" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZz-qS-aBp">
+                                <rect key="frame" x="534" y="173" width="46" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="PTI-Fa-YT9" kind="presentation" identifier="EditProfile" id="RbI-8y-VyU"/>
@@ -319,9 +320,11 @@
                             <constraint firstItem="fuT-bF-EQN" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="7GQ-Oc-jHv"/>
                             <constraint firstItem="03l-FV-sfD" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.15" id="DET-gd-Qmq"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="height" secondItem="Auz-cu-OJK" secondAttribute="height" multiplier="0.5" id="DO2-uC-eQk"/>
+                            <constraint firstAttribute="trailing" secondItem="PZz-qS-aBp" secondAttribute="trailing" constant="20" id="DdW-PL-Sr7"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="top" secondItem="lc8-Xw-mmw" secondAttribute="bottom" constant="10" id="Dob-kn-fZR"/>
                             <constraint firstAttribute="trailing" secondItem="03l-FV-sfD" secondAttribute="trailing" constant="20" id="EOG-gO-g0W"/>
                             <constraint firstItem="tYg-rc-XFb" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="15" id="FAZ-hz-wIa"/>
+                            <constraint firstItem="PZz-qS-aBp" firstAttribute="top" secondItem="Qvc-PH-Pq6" secondAttribute="bottom" constant="21" id="GGl-Jg-Osx"/>
                             <constraint firstItem="Oz5-Ng-0NR" firstAttribute="top" secondItem="uTr-ZJ-lbM" secondAttribute="bottom" id="JHh-BC-BXt"/>
                             <constraint firstItem="tYg-rc-XFb" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.5" id="LFm-XX-OkO"/>
                             <constraint firstItem="fuT-bF-EQN" firstAttribute="leading" secondItem="Qvc-PH-Pq6" secondAttribute="trailing" constant="20" id="NlM-Yp-pax"/>
@@ -525,7 +528,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Full Name">
                                                             <attributes>
-                                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -583,12 +586,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="40" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5QU-EU-BWZ">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="70" translatesAutoresizingMaskIntoConstraints="NO" id="AJt-Io-Hmi">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="58"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="2rb-qH-j84">
+                                        <connections>
+                                            <action selector="cancelEditing:" destination="PTI-Fa-YT9" id="jjT-D3-Nkn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ssx-ss-lYc"/>
+                                    <barButtonItem style="plain" systemItem="save" id="z1S-7Z-8hU">
+                                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="saveEditedUser:" destination="PTI-Fa-YT9" id="voD-kZ-aOL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5QU-EU-BWZ">
                                 <rect key="frame" x="0.0" y="70" width="600" height="530"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditProfileCell" rowHeight="70" id="BrL-5f-L93" customClass="EditProfileCell" customModule="PhotoGetter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="40" width="600" height="70"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BrL-5f-L93" id="rfm-Vv-OQK">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
@@ -612,32 +632,27 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="70" translatesAutoresizingMaskIntoConstraints="NO" id="AJt-Io-Hmi">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
-                                <items>
-                                    <barButtonItem systemItem="cancel" id="2rb-qH-j84">
-                                        <connections>
-                                            <action selector="cancelEditing:" destination="PTI-Fa-YT9" id="jjT-D3-Nkn"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ssx-ss-lYc"/>
-                                    <barButtonItem style="plain" systemItem="save" id="z1S-7Z-8hU">
-                                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="saveEditedUser:" destination="PTI-Fa-YT9" id="voD-kZ-aOL"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-bv-UMd">
+                                <rect key="frame" x="514" y="120" width="66" height="66"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WJx-bv-UMd" secondAttribute="height" multiplier="1:1" id="PNV-yE-h9D"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="AJt-Io-Hmi" firstAttribute="height" secondItem="qju-Sm-RTf" secondAttribute="height" multiplier="0.097" id="0ee-Ul-qyb"/>
+                            <constraint firstItem="WJx-bv-UMd" firstAttribute="height" secondItem="qju-Sm-RTf" secondAttribute="height" multiplier="0.11" id="6Aa-Du-XTG"/>
+                            <constraint firstItem="WJx-bv-UMd" firstAttribute="top" secondItem="AJt-Io-Hmi" secondAttribute="bottom" constant="50" id="8zu-2d-4hA"/>
                             <constraint firstItem="HUM-FG-XY3" firstAttribute="top" secondItem="5QU-EU-BWZ" secondAttribute="bottom" id="BVO-d8-h8O"/>
                             <constraint firstItem="5QU-EU-BWZ" firstAttribute="top" secondItem="AJt-Io-Hmi" secondAttribute="bottom" id="IQW-3T-dcU"/>
                             <constraint firstAttribute="trailing" secondItem="AJt-Io-Hmi" secondAttribute="trailing" id="JCS-sI-zCD"/>
                             <constraint firstItem="AJt-Io-Hmi" firstAttribute="top" secondItem="qju-Sm-RTf" secondAttribute="top" id="Rza-JM-leJ"/>
                             <constraint firstItem="5QU-EU-BWZ" firstAttribute="leading" secondItem="qju-Sm-RTf" secondAttribute="leading" id="gVJ-Cu-XeC"/>
+                            <constraint firstAttribute="trailing" secondItem="WJx-bv-UMd" secondAttribute="trailing" constant="20" id="kKH-ah-FKl"/>
                             <constraint firstItem="AJt-Io-Hmi" firstAttribute="leading" secondItem="qju-Sm-RTf" secondAttribute="leading" id="vvL-i0-8tS"/>
                             <constraint firstAttribute="trailing" secondItem="5QU-EU-BWZ" secondAttribute="trailing" id="ytp-n4-fq4"/>
                         </constraints>
@@ -645,6 +660,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="2rb-qH-j84" id="oYQ-qi-eIJ"/>
                         <outlet property="editProfileTable" destination="5QU-EU-BWZ" id="jnK-Zu-P4o"/>
+                        <outlet property="profilePicture" destination="WJx-bv-UMd" id="1JV-ec-Z1J"/>
                         <outlet property="saveButton" destination="z1S-7Z-8hU" id="ATW-Ta-tLR"/>
                         <outlet property="topBar" destination="AJt-Io-Hmi" id="CIb-Yd-Idq"/>
                     </connections>

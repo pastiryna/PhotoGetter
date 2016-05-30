@@ -14,6 +14,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var topBar: UIToolbar!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var profilePicture: UIImageView!
     
     
     var user: InstaUser = InstaUser()
@@ -22,28 +23,19 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         
         self.editProfileTable.delegate = self
         self.editProfileTable.dataSource = self
-        //self.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
         
-        if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
-            self.user = CoreDataManager.sharedInstance.getUserById(self.user.id)
-            print(self.user.username)
-            print(self.user.fullName)
-           print("here")
+        self.prepareUI()
+
+        
+        
+        
+       if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
+            self.showUserFromDB()
+        }
+        else {
+            self.showUserFromServer()
         }
         
-        else {            
-            InstagramAPIManager.apiManager.getUserInfoById(self.user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
-                if success {
-                    self.user = user!
-                    self.reloadTable()
-                }
-                else {
-                    self.reloadTable()
-                }
-                
-           })
-        }
-    
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,16 +51,37 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         
         switch indexPath.row {
         case 0:
-            cell.textField.text = self.user.username
+            if self.user.username == "" {
+                cell.textField.placeholder = "username"
+            }
+            else {
+                cell.textField.text = self.user.username
+            }
             break
         case 1:
-            cell.textField.text = self.user.fullName
+            if self.user.fullName == "" {
+                cell.textField.placeholder = "full name"
+            }
+            else {
+                cell.textField.text = self.user.fullName
+            }
             break
         case 2:
-             cell.textField.text = self.user.bio
+            if self.user.bio == "" {
+                cell.textField.placeholder = "bio"
+            }
+            else {
+                cell.textField.text = self.user.bio
+            }
+            break
         case 3:
-             cell.textField.text = self.user.website
-        default:           
+            if self.user.website == "" {
+                cell.textField.placeholder = "website"
+            }
+            else {
+                cell.textField.text = self.user.website
+            }
+        default:
             break
         }
         return cell
@@ -139,4 +152,74 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     func isEdited() -> Bool {
         return self.editedUser().username != self.user.username || self.editedUser().fullName != self.user.fullName || self.editedUser().bio != self.user.bio || self.editedUser().website != self.user.website
     }
+    
+    func prepareUI() {
+        Utils.makeImageRound(self.profilePicture)
+    }
+    
+    
+    
+    
+    func showUserFromDB() {
+        self.user = CoreDataManager.sharedInstance.getUserById(self.user.id)
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            //add profile picture
+            if (CacheManager.sharedInstance.objectForKey(self.user.profilePicture) != nil) {
+                self.profilePicture.image = CacheManager.sharedInstance.objectForKey(self.user.profilePicture) as? UIImage
+                self.reloadTable()
+            }
+            else {
+                Utils.loadImage(self.user.profilePicture, completion: { (image, loaded) in
+                    if loaded {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.profilePicture.image = image })
+                        self.reloadTable()
+                    }
+                    else {
+                        return
+                    }
+                })
+                
+            }
+        })
+        
+    }
+    
+    
+    func showUserFromServer() {
+        InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
+            
+            if success {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.user = user!
+                    
+                    //add profile picture
+                    if (CacheManager.sharedInstance.objectForKey(user!.profilePicture) != nil) {
+                        self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user!.profilePicture) as? UIImage
+                        self.reloadTable()
+                    }
+                    else {
+                        Utils.loadImage(user!.profilePicture, completion: { (image, loaded) in
+                            if loaded {
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.profilePicture.image = image })
+                            }
+                            else {
+                                return
+                            }
+                        })
+                        self.reloadTable()
+                    }
+                })
+                
+                
+            }
+                
+            else {
+                return
+            }
+        })
+    }
+    
 }

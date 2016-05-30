@@ -35,6 +35,8 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
         
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         self.presentViewController(imagePicker, animated: false, completion: nil)
         self.pageViewController.setViewControllers([imagePicker], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)

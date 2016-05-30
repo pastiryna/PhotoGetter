@@ -37,6 +37,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     var followersUrl: String!
     var followingUrl: String!
     
+    @IBOutlet weak var editButtonWidthConstraint: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
@@ -257,17 +258,14 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
             self.editProfileButton.hidden = false
         }
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-
-            let x = self.postCountButton.frame.origin.x
-            let y = self.postCountButton.frame.origin.y
-            let width = self.view.frame.size.width * 0.45 + 40.0
-//            self.editProfileButton.frame.size.width = width
-//            self.editProfileButton.frame.size.height = 24.0
-//            self.editProfileButton.frame = CGRectMake(x, y + 50.0, width, 24.0)
-           // self.editProfileButton.frame.size = CGSizeMake(width, 24.0)
-            print("Button \(self.editProfileButton.frame.size.width)") })
+        let screenWidth: CGFloat = UIScreen.mainScreen().bounds.size.width
+        let width: CGFloat = 20*2 + 0.45*screenWidth
+        
+        editButtonWidthConstraint.constant = width
+        self.view.layoutSubviews()
     }
+    
+    
 
 
 }

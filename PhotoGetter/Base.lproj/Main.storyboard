@@ -304,6 +304,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZz-qS-aBp">
                                 <rect key="frame" x="534" y="173" width="46" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="eIX-6v-btA"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="PTI-Fa-YT9" kind="presentation" identifier="EditProfile" id="RbI-8y-VyU"/>
@@ -353,6 +356,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="ogc-92-wlC"/>
                     <connections>
                         <outlet property="bioLabel" destination="tYg-rc-XFb" id="WPi-99-hsL"/>
+                        <outlet property="editButtonWidthConstraint" destination="eIX-6v-btA" id="6ps-zl-BtC"/>
                         <outlet property="editProfileButton" destination="PZz-qS-aBp" id="uUK-oE-IUm"/>
                         <outlet property="followersButton" destination="fuT-bF-EQN" id="kjH-l1-5DL"/>
                         <outlet property="followingButton" destination="03l-FV-sfD" id="ajm-Vh-VJl"/>
@@ -369,7 +373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugh-G8-8Vn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="1664"/>
+            <point key="canvasLocation" x="1099" y="1664"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="FY7-t7-5rH">
@@ -423,6 +427,7 @@
                         <outlet property="galleryBarItem" destination="BGm-wt-lK0" id="16q-Kb-JZh"/>
                         <outlet property="galleryCameraContainer" destination="y4m-Gj-leg" id="Geq-kx-CKd"/>
                         <outlet property="galleryCameraTabBar" destination="p7r-Ay-cD0" id="fEb-G8-hqc"/>
+                        <segue destination="PTI-Fa-YT9" kind="show" identifier="Dismiss" id="Vlf-6U-kRj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydG-J5-n0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -572,7 +577,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCU-ED-rGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="1664"/>
+            <point key="canvasLocation" x="1806" y="1664"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="xQ7-3N-NJa">
@@ -603,8 +608,8 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5QU-EU-BWZ">
-                                <rect key="frame" x="0.0" y="70" width="600" height="530"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5QU-EU-BWZ">
+                                <rect key="frame" x="0.0" y="58" width="600" height="542"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditProfileCell" rowHeight="70" id="BrL-5f-L93" customClass="EditProfileCell" customModule="PhotoGetter" customModuleProvider="target">
@@ -634,23 +639,36 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-bv-UMd">
-                                <rect key="frame" x="514" y="120" width="66" height="66"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ku6-yL-Wsz">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="changePhoto:" destination="PTI-Fa-YT9" eventType="touchUpInside" id="35s-ul-l7a"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-bv-UMd">
+                                <rect key="frame" x="514" y="108" width="66" height="66"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WJx-bv-UMd" secondAttribute="height" multiplier="1:1" id="PNV-yE-h9D"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="96p-0j-z4U" appends="YES" id="zfX-8A-xP9"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AJt-Io-Hmi" firstAttribute="height" secondItem="qju-Sm-RTf" secondAttribute="height" multiplier="0.097" id="0ee-Ul-qyb"/>
+                            <constraint firstItem="ku6-yL-Wsz" firstAttribute="centerY" secondItem="qju-Sm-RTf" secondAttribute="centerY" id="2ER-0F-jT7"/>
                             <constraint firstItem="WJx-bv-UMd" firstAttribute="height" secondItem="qju-Sm-RTf" secondAttribute="height" multiplier="0.11" id="6Aa-Du-XTG"/>
                             <constraint firstItem="WJx-bv-UMd" firstAttribute="top" secondItem="AJt-Io-Hmi" secondAttribute="bottom" constant="50" id="8zu-2d-4hA"/>
                             <constraint firstItem="HUM-FG-XY3" firstAttribute="top" secondItem="5QU-EU-BWZ" secondAttribute="bottom" id="BVO-d8-h8O"/>
                             <constraint firstItem="5QU-EU-BWZ" firstAttribute="top" secondItem="AJt-Io-Hmi" secondAttribute="bottom" id="IQW-3T-dcU"/>
                             <constraint firstAttribute="trailing" secondItem="AJt-Io-Hmi" secondAttribute="trailing" id="JCS-sI-zCD"/>
                             <constraint firstItem="AJt-Io-Hmi" firstAttribute="top" secondItem="qju-Sm-RTf" secondAttribute="top" id="Rza-JM-leJ"/>
+                            <constraint firstItem="ku6-yL-Wsz" firstAttribute="centerX" secondItem="qju-Sm-RTf" secondAttribute="centerX" id="eNq-iy-ac7"/>
                             <constraint firstItem="5QU-EU-BWZ" firstAttribute="leading" secondItem="qju-Sm-RTf" secondAttribute="leading" id="gVJ-Cu-XeC"/>
                             <constraint firstAttribute="trailing" secondItem="WJx-bv-UMd" secondAttribute="trailing" constant="20" id="kKH-ah-FKl"/>
                             <constraint firstItem="AJt-Io-Hmi" firstAttribute="leading" secondItem="qju-Sm-RTf" secondAttribute="leading" id="vvL-i0-8tS"/>
@@ -659,6 +677,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="2rb-qH-j84" id="oYQ-qi-eIJ"/>
+                        <outlet property="chamgePhoto" destination="ku6-yL-Wsz" id="j17-Hq-NZp"/>
                         <outlet property="editProfileTable" destination="5QU-EU-BWZ" id="jnK-Zu-P4o"/>
                         <outlet property="profilePicture" destination="WJx-bv-UMd" id="1JV-ec-Z1J"/>
                         <outlet property="saveButton" destination="z1S-7Z-8hU" id="ATW-Ta-tLR"/>
@@ -666,6 +685,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XVM-9F-mGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="96p-0j-z4U"/>
             </objects>
             <point key="canvasLocation" x="1814" y="2351"/>
         </scene>
@@ -774,6 +794,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QuZ-2X-qWp"/>
+        <segue reference="RbI-8y-VyU"/>
         <segue reference="ggO-nO-mX3"/>
     </inferredMetricsTieBreakers>
 </document>

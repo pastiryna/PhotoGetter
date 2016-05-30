@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, GalleryDelegate {
     
     @IBOutlet weak var editProfileTable: UITableView!
     @IBOutlet weak var topBar: UIToolbar!
@@ -17,7 +17,10 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var profilePicture: UIImageView!
     
     
+    @IBOutlet weak var chamgePhoto: UIButton!
+    
     var user: InstaUser = InstaUser()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,17 +28,18 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         self.editProfileTable.dataSource = self
         
         self.prepareUI()
-
         
-        
-        
-       if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
+        if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
             self.showUserFromDB()
         }
         else {
             self.showUserFromServer()
         }
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -222,4 +226,18 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         })
     }
     
+   
+    @IBAction func changePhoto(sender: AnyObject) {
+        let galleryPhotoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! GalleryCameraViewController
+        galleryPhotoViewController.delegate = self
+        self.presentViewController(galleryPhotoViewController, animated: true, completion: nil)
+    }
+    
+    func imageAssetChoosen(image: UIImage!) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.profilePicture.image = image
+        });
+    }
+
+
 }

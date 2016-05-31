@@ -640,11 +640,15 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Qi-wA-whD">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Qi-wA-whD">
                                                     <rect key="frame" x="490" y="26" width="90" height="90"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="0Qi-wA-whD" secondAttribute="height" multiplier="1:1" id="Z2F-ds-hXe"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="uqF-S4-5Au" appends="YES" id="hdI-yv-86e"/>
+                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -656,6 +660,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="0Qi-wA-whD" secondAttribute="trailing" constant="20" id="iG8-Pc-YN3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="oyB-X1-uD9" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.75" constant="1" id="DXB-C0-pvW"/>
                                             <constraint firstItem="pEE-bX-Tj5" firstAttribute="height" secondItem="BrL-5f-L93" secondAttribute="height" multiplier="0.5" id="O3f-xc-oJz"/>
@@ -718,8 +723,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XVM-9F-mGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uqF-S4-5Au"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="2351"/>
+            <point key="canvasLocation" x="1806" y="2351"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="cCc-Oc-8Pq">

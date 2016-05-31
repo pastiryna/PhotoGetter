@@ -102,4 +102,27 @@ class CoreDataManager {
         }
         
     }
+    
+    func isSaved(user: InstaUser) -> Bool {
+        let managedContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "InstaUser")
+        
+        do {
+            let result = try managedContext.executeFetchRequest(request) as! [NSManagedObject]
+            
+            for current in result {
+                if current.valueForKey("id") as! String == user.id {
+                    return true
+                }
+            }
+        }
+            
+        catch {
+            print("Cannot get users!")
+            
+        }
+        return false        
+    }
+
+
 }

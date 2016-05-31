@@ -83,7 +83,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.pageViewController.didMoveToParentViewController(self)
         
         
-        if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
+        if CoreDataManager.sharedInstance.isSaved(self.user) { 
             self.showUserFromDB()
         }
         
@@ -164,7 +164,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         }
         else if segue.identifier == "EditProfile" {
             let editProfile = segue.destinationViewController as! EditProfile
-            //editProfile.user.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
+            
             editProfile.user.id = self.user.id
             
         

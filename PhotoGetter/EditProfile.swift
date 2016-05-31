@@ -15,6 +15,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    
     var picked: UIImage?
     
     
@@ -31,7 +32,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         
         self.prepareUI()
         
-        if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
+        if CoreDataManager.sharedInstance.isSaved(self.user) {
             self.showUserFromDB()
         }
         else {
@@ -70,6 +71,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
             
             if self.picked != nil {
                 editCell.profilePicture.image = self.picked
+                self.picked = nil
             }
             else {
                 
@@ -138,9 +140,9 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         else {
             print("Edited \(self.isEdited())")
                 if self.isEdited() {
-                    NSUserDefaults.standardUserDefaults().setObject(true, forKey: "isEdited")
+                   
                     
-                    if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
+                    if CoreDataManager.sharedInstance.isSaved(self.user) {
                         CoreDataManager.sharedInstance.updateUser(self.editedUser())
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
@@ -172,9 +174,9 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         var cells = self.editProfileTable.visibleCells 
         editedUser.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
         editedUser.username = (cells[0] as! EditProfileCell).usernameTextField.text!
-        editedUser.fullName = (cells[1] as! EditProfileCell).fullNameTextField.text!
-        editedUser.bio = (cells[2] as! EditProfileCell2).textField.text!
-        editedUser.website = (cells[3] as! EditProfileCell2).textField.text!
+        editedUser.fullName = (cells[0] as! EditProfileCell).fullNameTextField.text!
+        editedUser.bio = (cells[1] as! EditProfileCell2).textField.text!
+        editedUser.website = (cells[2] as! EditProfileCell2).textField.text!
         return editedUser
     
     }
@@ -279,4 +281,5 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     }
 
 
+    
 }

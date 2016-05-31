@@ -614,14 +614,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5QU-EU-BWZ">
                                 <rect key="frame" x="0.0" y="58" width="600" height="542"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ku6-yL-Wsz">
-                                    <rect key="frame" x="0.0" y="281" width="600" height="45"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <connections>
-                                        <action selector="changePhoto:" destination="PTI-Fa-YT9" eventType="touchUpInside" id="35s-ul-l7a"/>
-                                    </connections>
-                                </button>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditProfileCell" rowHeight="143" id="BrL-5f-L93" customClass="EditProfileCell" customModule="PhotoGetter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="600" height="143"/>
@@ -716,14 +708,17 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="2rb-qH-j84" id="oYQ-qi-eIJ"/>
-                        <outlet property="chamgePhoto" destination="ku6-yL-Wsz" id="j17-Hq-NZp"/>
                         <outlet property="editProfileTable" destination="5QU-EU-BWZ" id="jnK-Zu-P4o"/>
                         <outlet property="saveButton" destination="z1S-7Z-8hU" id="ATW-Ta-tLR"/>
                         <outlet property="topBar" destination="AJt-Io-Hmi" id="CIb-Yd-Idq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XVM-9F-mGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="uqF-S4-5Au"/>
+                <tapGestureRecognizer id="uqF-S4-5Au">
+                    <connections>
+                        <action selector="changePhoto:" destination="PTI-Fa-YT9" id="luf-ZY-cfQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1806" y="2351"/>
         </scene>

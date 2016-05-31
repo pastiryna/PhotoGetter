@@ -20,7 +20,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     
-    @IBOutlet weak var chamgePhoto: UIButton!
+   
     
     var user: InstaUser = InstaUser()
     
@@ -267,11 +267,6 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
    
-    @IBAction func changePhoto(sender: AnyObject) {
-        let galleryPhotoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! GalleryCameraViewController
-        galleryPhotoViewController.delegate = self
-        self.presentViewController(galleryPhotoViewController, animated: true, completion: nil)
-    }
     
     func imageAssetChoosen(image: UIImage!) {
         dispatch_async(dispatch_get_main_queue(), {
@@ -280,6 +275,12 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         });
     }
 
+    @IBAction func changePhoto(sender: AnyObject) {
+        let galleryPhotoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GalleryCameraViewController") as! GalleryCameraViewController
+        galleryPhotoViewController.delegate = self
+        self.presentViewController(galleryPhotoViewController, animated: true, completion: nil)
+
+    }
 
     
 }

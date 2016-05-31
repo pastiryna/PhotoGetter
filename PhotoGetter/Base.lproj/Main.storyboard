@@ -307,7 +307,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="eIX-6v-btA"/>
                                 </constraints>
-                                <state key="normal" title="Edit Profile"/>
+                                <state key="normal" title="Edit Profile">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="PTI-Fa-YT9" kind="presentation" identifier="EditProfile" id="RbI-8y-VyU"/>
                                 </connections>
@@ -607,6 +609,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5QU-EU-BWZ">
                                 <rect key="frame" x="0.0" y="58" width="600" height="542"/>
@@ -627,43 +630,42 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pEE-bX-Tj5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="420" height="72"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pEE-bX-Tj5">
+                                                    <rect key="frame" x="1" y="0.0" width="450" height="72"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyB-X1-uD9">
-                                                    <rect key="frame" x="0.0" y="72" width="420" height="72"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyB-X1-uD9">
+                                                    <rect key="frame" x="0.0" y="72" width="451" height="72"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6M8-bN-aO8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Qi-wA-whD">
                                                     <rect key="frame" x="490" y="26" width="90" height="90"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="6M8-bN-aO8" secondAttribute="height" multiplier="1:1" id="dPj-8v-uIf"/>
+                                                        <constraint firstAttribute="width" secondItem="0Qi-wA-whD" secondAttribute="height" multiplier="1:1" id="Z2F-ds-hXe"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="oyB-X1-uD9" firstAttribute="top" secondItem="pEE-bX-Tj5" secondAttribute="bottom" id="3h5-OJ-uFo"/>
-                                                <constraint firstItem="pEE-bX-Tj5" firstAttribute="leading" secondItem="rfm-Vv-OQK" secondAttribute="leading" id="6Qy-h5-ydd"/>
-                                                <constraint firstAttribute="trailing" secondItem="6M8-bN-aO8" secondAttribute="trailing" id="Fgg-FS-UMI"/>
+                                                <constraint firstItem="pEE-bX-Tj5" firstAttribute="leading" secondItem="rfm-Vv-OQK" secondAttribute="leading" constant="1" id="6Qy-h5-ydd"/>
                                                 <constraint firstItem="oyB-X1-uD9" firstAttribute="leading" secondItem="rfm-Vv-OQK" secondAttribute="leading" id="Lqy-yN-YZB"/>
-                                                <constraint firstAttribute="trailing" secondItem="6M8-bN-aO8" secondAttribute="trailing" constant="20" id="Rvt-J0-Fe1"/>
-                                                <constraint firstItem="6M8-bN-aO8" firstAttribute="centerY" secondItem="rfm-Vv-OQK" secondAttribute="centerY" id="fdD-A3-tuG"/>
+                                                <constraint firstItem="0Qi-wA-whD" firstAttribute="centerY" secondItem="rfm-Vv-OQK" secondAttribute="centerY" id="OFP-lR-Q25"/>
                                                 <constraint firstItem="pEE-bX-Tj5" firstAttribute="top" secondItem="rfm-Vv-OQK" secondAttribute="top" id="gdo-5x-kLU"/>
+                                                <constraint firstAttribute="trailing" secondItem="0Qi-wA-whD" secondAttribute="trailing" constant="20" id="iG8-Pc-YN3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="oyB-X1-uD9" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.7" id="DXB-C0-pvW"/>
+                                            <constraint firstItem="oyB-X1-uD9" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.75" constant="1" id="DXB-C0-pvW"/>
                                             <constraint firstItem="pEE-bX-Tj5" firstAttribute="height" secondItem="BrL-5f-L93" secondAttribute="height" multiplier="0.5" id="O3f-xc-oJz"/>
                                             <constraint firstItem="oyB-X1-uD9" firstAttribute="height" secondItem="BrL-5f-L93" secondAttribute="height" multiplier="0.5" id="U77-FE-4K1"/>
-                                            <constraint firstItem="6M8-bN-aO8" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.15" id="XFu-Zl-9uf"/>
-                                            <constraint firstItem="pEE-bX-Tj5" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.7" id="uRE-GR-JGP"/>
+                                            <constraint firstItem="0Qi-wA-whD" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.15" id="eMO-kc-r8h"/>
+                                            <constraint firstItem="pEE-bX-Tj5" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.75" id="uRE-GR-JGP"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="fullNameTextField" destination="oyB-X1-uD9" id="Shz-EH-iSq"/>
-                                            <outlet property="profilePicture" destination="6M8-bN-aO8" id="0eH-KR-Wqi"/>
+                                            <outlet property="profilePicture" destination="0Qi-wA-whD" id="uO9-8o-SKq"/>
                                             <outlet property="usernameTextField" destination="pEE-bX-Tj5" id="3Je-Rn-W6Z"/>
                                         </connections>
                                     </tableViewCell>

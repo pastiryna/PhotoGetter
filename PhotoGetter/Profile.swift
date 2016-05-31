@@ -250,6 +250,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     
     func prepareUI() {
         Utils.makeImageRound(self.profilePicture)
+        self.editProfileButton.backgroundColor = Constants.BRAND_COLOR
         
         if self.user.id != NSUserDefaults.standardUserDefaults().stringForKey("id") {
             self.editProfileButton.hidden = true

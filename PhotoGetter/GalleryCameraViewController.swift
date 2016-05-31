@@ -134,17 +134,6 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "Dismiss" && self.pickedImage != nil {
-//            let profile = segue.destinationViewController as! Profile
-//            profile.profilePicture.image = self.pickedImage
-//        }
-//    }
-
-
    
     
 }

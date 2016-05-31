@@ -307,7 +307,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="eIX-6v-btA"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Edit Profile"/>
                                 <connections>
                                     <segue destination="PTI-Fa-YT9" kind="presentation" identifier="EditProfile" id="RbI-8y-VyU"/>
                                 </connections>
@@ -611,66 +611,98 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5QU-EU-BWZ">
                                 <rect key="frame" x="0.0" y="58" width="600" height="542"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ku6-yL-Wsz">
+                                    <rect key="frame" x="0.0" y="281" width="600" height="45"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="changePhoto:" destination="PTI-Fa-YT9" eventType="touchUpInside" id="35s-ul-l7a"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditProfileCell" rowHeight="70" id="BrL-5f-L93" customClass="EditProfileCell" customModule="PhotoGetter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditProfileCell" rowHeight="143" id="BrL-5f-L93" customClass="EditProfileCell" customModule="PhotoGetter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="600" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BrL-5f-L93" id="rfm-Vv-OQK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pEE-bX-Tj5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="420" height="72"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyB-X1-uD9">
+                                                    <rect key="frame" x="0.0" y="72" width="420" height="72"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6M8-bN-aO8">
+                                                    <rect key="frame" x="490" y="26" width="90" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="6M8-bN-aO8" secondAttribute="height" multiplier="1:1" id="dPj-8v-uIf"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oyB-X1-uD9" firstAttribute="top" secondItem="pEE-bX-Tj5" secondAttribute="bottom" id="3h5-OJ-uFo"/>
+                                                <constraint firstItem="pEE-bX-Tj5" firstAttribute="leading" secondItem="rfm-Vv-OQK" secondAttribute="leading" id="6Qy-h5-ydd"/>
+                                                <constraint firstAttribute="trailing" secondItem="6M8-bN-aO8" secondAttribute="trailing" id="Fgg-FS-UMI"/>
+                                                <constraint firstItem="oyB-X1-uD9" firstAttribute="leading" secondItem="rfm-Vv-OQK" secondAttribute="leading" id="Lqy-yN-YZB"/>
+                                                <constraint firstAttribute="trailing" secondItem="6M8-bN-aO8" secondAttribute="trailing" constant="20" id="Rvt-J0-Fe1"/>
+                                                <constraint firstItem="6M8-bN-aO8" firstAttribute="centerY" secondItem="rfm-Vv-OQK" secondAttribute="centerY" id="fdD-A3-tuG"/>
+                                                <constraint firstItem="pEE-bX-Tj5" firstAttribute="top" secondItem="rfm-Vv-OQK" secondAttribute="top" id="gdo-5x-kLU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="oyB-X1-uD9" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.7" id="DXB-C0-pvW"/>
+                                            <constraint firstItem="pEE-bX-Tj5" firstAttribute="height" secondItem="BrL-5f-L93" secondAttribute="height" multiplier="0.5" id="O3f-xc-oJz"/>
+                                            <constraint firstItem="oyB-X1-uD9" firstAttribute="height" secondItem="BrL-5f-L93" secondAttribute="height" multiplier="0.5" id="U77-FE-4K1"/>
+                                            <constraint firstItem="6M8-bN-aO8" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.15" id="XFu-Zl-9uf"/>
+                                            <constraint firstItem="pEE-bX-Tj5" firstAttribute="width" secondItem="BrL-5f-L93" secondAttribute="width" multiplier="0.7" id="uRE-GR-JGP"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="fullNameTextField" destination="oyB-X1-uD9" id="Shz-EH-iSq"/>
+                                            <outlet property="profilePicture" destination="6M8-bN-aO8" id="0eH-KR-Wqi"/>
+                                            <outlet property="usernameTextField" destination="pEE-bX-Tj5" id="3Je-Rn-W6Z"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditProfileCell2" rowHeight="70" id="Kew-tt-CCx" customClass="EditProfileCell2" customModule="PhotoGetter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="193" width="600" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kew-tt-CCx" id="1f2-Gr-SPu">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xv3-Pb-eNe">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pEE-bX-Tj5" firstAttribute="top" secondItem="rfm-Vv-OQK" secondAttribute="top" id="MOa-RI-vMv"/>
-                                                <constraint firstAttribute="trailing" secondItem="pEE-bX-Tj5" secondAttribute="trailing" id="ji2-CG-Yni"/>
-                                                <constraint firstItem="pEE-bX-Tj5" firstAttribute="leading" secondItem="rfm-Vv-OQK" secondAttribute="leading" id="lAD-Cw-Tse"/>
-                                                <constraint firstAttribute="bottom" secondItem="pEE-bX-Tj5" secondAttribute="bottom" id="pyP-GP-cVM"/>
+                                                <constraint firstAttribute="trailing" secondItem="Xv3-Pb-eNe" secondAttribute="trailing" id="B9K-Qd-p0a"/>
+                                                <constraint firstItem="Xv3-Pb-eNe" firstAttribute="top" secondItem="1f2-Gr-SPu" secondAttribute="top" id="aqi-Et-D1y"/>
+                                                <constraint firstAttribute="bottom" secondItem="Xv3-Pb-eNe" secondAttribute="bottom" id="iO4-dy-G2P"/>
+                                                <constraint firstItem="Xv3-Pb-eNe" firstAttribute="leading" secondItem="1f2-Gr-SPu" secondAttribute="leading" id="j3E-wj-y58"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="textField" destination="pEE-bX-Tj5" id="SIX-pa-jSk"/>
+                                            <outlet property="textField" destination="Xv3-Pb-eNe" id="UGP-4D-LsX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ku6-yL-Wsz">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="changePhoto:" destination="PTI-Fa-YT9" eventType="touchUpInside" id="35s-ul-l7a"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-bv-UMd">
-                                <rect key="frame" x="514" y="108" width="66" height="66"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="WJx-bv-UMd" secondAttribute="height" multiplier="1:1" id="PNV-yE-h9D"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="96p-0j-z4U" appends="YES" id="zfX-8A-xP9"/>
-                                </connections>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AJt-Io-Hmi" firstAttribute="height" secondItem="qju-Sm-RTf" secondAttribute="height" multiplier="0.097" id="0ee-Ul-qyb"/>
-                            <constraint firstItem="ku6-yL-Wsz" firstAttribute="centerY" secondItem="qju-Sm-RTf" secondAttribute="centerY" id="2ER-0F-jT7"/>
-                            <constraint firstItem="WJx-bv-UMd" firstAttribute="height" secondItem="qju-Sm-RTf" secondAttribute="height" multiplier="0.11" id="6Aa-Du-XTG"/>
-                            <constraint firstItem="WJx-bv-UMd" firstAttribute="top" secondItem="AJt-Io-Hmi" secondAttribute="bottom" constant="50" id="8zu-2d-4hA"/>
                             <constraint firstItem="HUM-FG-XY3" firstAttribute="top" secondItem="5QU-EU-BWZ" secondAttribute="bottom" id="BVO-d8-h8O"/>
                             <constraint firstItem="5QU-EU-BWZ" firstAttribute="top" secondItem="AJt-Io-Hmi" secondAttribute="bottom" id="IQW-3T-dcU"/>
                             <constraint firstAttribute="trailing" secondItem="AJt-Io-Hmi" secondAttribute="trailing" id="JCS-sI-zCD"/>
                             <constraint firstItem="AJt-Io-Hmi" firstAttribute="top" secondItem="qju-Sm-RTf" secondAttribute="top" id="Rza-JM-leJ"/>
-                            <constraint firstItem="ku6-yL-Wsz" firstAttribute="centerX" secondItem="qju-Sm-RTf" secondAttribute="centerX" id="eNq-iy-ac7"/>
                             <constraint firstItem="5QU-EU-BWZ" firstAttribute="leading" secondItem="qju-Sm-RTf" secondAttribute="leading" id="gVJ-Cu-XeC"/>
-                            <constraint firstAttribute="trailing" secondItem="WJx-bv-UMd" secondAttribute="trailing" constant="20" id="kKH-ah-FKl"/>
                             <constraint firstItem="AJt-Io-Hmi" firstAttribute="leading" secondItem="qju-Sm-RTf" secondAttribute="leading" id="vvL-i0-8tS"/>
                             <constraint firstAttribute="trailing" secondItem="5QU-EU-BWZ" secondAttribute="trailing" id="ytp-n4-fq4"/>
                         </constraints>
@@ -679,13 +711,11 @@
                         <outlet property="cancelButton" destination="2rb-qH-j84" id="oYQ-qi-eIJ"/>
                         <outlet property="chamgePhoto" destination="ku6-yL-Wsz" id="j17-Hq-NZp"/>
                         <outlet property="editProfileTable" destination="5QU-EU-BWZ" id="jnK-Zu-P4o"/>
-                        <outlet property="profilePicture" destination="WJx-bv-UMd" id="1JV-ec-Z1J"/>
                         <outlet property="saveButton" destination="z1S-7Z-8hU" id="ATW-Ta-tLR"/>
                         <outlet property="topBar" destination="AJt-Io-Hmi" id="CIb-Yd-Idq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XVM-9F-mGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="96p-0j-z4U"/>
             </objects>
             <point key="canvasLocation" x="1814" y="2351"/>
         </scene>

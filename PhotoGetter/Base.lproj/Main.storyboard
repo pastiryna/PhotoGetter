@@ -829,8 +829,8 @@
         <image name="defaultImage" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QuZ-2X-qWp"/>
         <segue reference="ggO-nO-mX3"/>
-        <segue reference="Vlf-6U-kRj"/>
+        <segue reference="QuZ-2X-qWp"/>
+        <segue reference="RbI-8y-VyU"/>
     </inferredMetricsTieBreakers>
 </document>

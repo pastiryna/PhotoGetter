@@ -46,7 +46,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.followingUrl = "https://api.instagram.com/v1/users/\(self.user.id)/follows?access_token=\(accessTok)"
         self.followersUrl = "https://api.instagram.com/v1/users/\(self.user.id)/followed-by?access_token=\(accessTok)"
     
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.navigationBarHidden = false
         self.hidesBottomBarWhenPushed = false
         self.profileTopBar.delegate = self
         
@@ -84,7 +84,8 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         
         
         if CoreDataManager.sharedInstance.isSaved(self.user) { 
-            self.showUserFromDB()
+           self.showUserFromDB()
+            
         }
         
         else {
@@ -99,10 +100,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         self.prepareUI()
-        
-        if CoreDataManager.sharedInstance.isSaved(self.user) {
-            self.showUserFromDB()
-        }
+    
         
     }
     
@@ -182,35 +180,14 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
             self.usernameTopLabel.text = self.user.username.uppercaseString
             self.bioLabel.text = self.user.fullName })
         
-        self.showFollowers(self.user)
+        self.showFollowers(self.user.id)
         
-        if self.profilePicture != "" {
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.profilePicture.image = Utils.imageFromFile(self.user.profilePicture)
-            
-            })
-        
-        }
-        else {
+       
         
         //profile picture
-            if (CacheManager.sharedInstance.objectForKey(user.profilePicture) != nil) {
-                self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user.profilePicture) as? UIImage
-            }
-            else {
-                Utils.loadImage(user.profilePicture, completion: { (image, loaded) in
-                    if loaded {
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.profilePicture.image = image })
-                    }
-                    else {
-                        return
-                    }
-                })
+        
     
-                        
-            }
-        }
+    
     }
     
     func showUserFromServer() {
@@ -224,11 +201,6 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
                     
                     let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")
                     self.followersButton.setAttributedTitle(followers, forState: UIControlState.Normal)
-                    
-                    
-                    //var numberFollowingAtt = NSMutableAttributedString(string: String(user!.numberFollowing))
-                    //var attr = NSFontAttributeName(UIFont.boldSystemFontOfSize(12))
-                    
                     
                     let following = NSMutableAttributedString(string: "\(user!.numberFollowing)\nfollowing")
                     self.followingButton.setAttributedTitle(following, forState: UIControlState.Normal)
@@ -281,8 +253,8 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.view.layoutSubviews()
     }
     
-    func showFollowers(user: InstaUser) {
-        InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
+    func showFollowers(userId: String) {
+        InstagramAPIManager.apiManager.getUserInfoById(userId, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
             
             if success {
                 

@@ -75,12 +75,12 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
                     editCell.profilePicture.image = self.picked })
             }
             else {
-                if CoreDataManager.sharedInstance.hasLocalProfilePhoto {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        Utils.makeImageRound(editCell.profilePicture)
-                        editCell.profilePicture.image =  Utils.imageFromFile(self.user.profilePicture)!})
-                }
-                else {
+//                if CoreDataManager.sharedInstance.hasLocalProfilePhoto {
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                        Utils.makeImageRound(editCell.profilePicture)
+//                        editCell.profilePicture.image =  Utils.imageFromFile(self.user.profilePicture)!})
+//                }
+//                else {
                     if CacheManager.sharedInstance.objectForKey(self.user.profilePicture) != nil {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                              Utils.makeImageRound(editCell.profilePicture)
@@ -98,7 +98,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
                     }
                 }
                 
-            }
+            
             //set text
                 
             if self.user.username == "" {

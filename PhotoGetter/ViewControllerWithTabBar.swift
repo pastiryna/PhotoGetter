@@ -39,8 +39,7 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         
         
         
-        self.navigationController?.navigationBarHidden = true
-
+        self.navigationController?.navigationBarHidden = false
         self.feedBarItem.setFAIcon(FAType.FAHome)
         self.galleryCameraBarItem.setFAIcon(FAType.FACamera)
         self.profileBarItem.setFAIcon(FAType.FAUser)

@@ -190,51 +190,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="ohF-eu-O0N">
-                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
-                                <color key="backgroundColor" red="0.25891382600000001" green="1" blue="0.37761858590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <segue destination="2cJ-TX-bEi" kind="embed" id="hX9-Hi-GbR"/>
-                                </connections>
-                            </containerView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oz5-Ng-0NR">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <color key="backgroundColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="barTintColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <items>
-                                    <navigationItem id="Bib-Df-4tf">
-                                        <barButtonItem key="rightBarButtonItem" title="settings" width="10" id="ng3-T7-4RF">
-                                            <connections>
-                                                <action selector="makeLogout:" destination="b9V-Rt-jNA" id="cvb-v6-ZzH"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qvc-PH-Pq6">
-                                <rect key="frame" x="270" y="128" width="90" height="24"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="posts">
-                                            <attributes>
-                                                <font key="NSFont" size="10" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <action selector="changePhoto:" destination="b9V-Rt-jNA" eventType="touchUpInside" id="wsq-7X-jk9"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ6-4O-ZqN">
-                                <rect key="frame" x="20" y="75" width="300" height="15"/>
-                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FullName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYg-rc-XFb">
-                                <rect key="frame" x="15" y="218" width="300" height="23"/>
+                                <rect key="frame" x="15" y="188" width="300" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tYg-rc-XFb" secondAttribute="height" multiplier="20:1.5" id="Prc-KD-Gpd"/>
                                 </constraints>
@@ -243,7 +200,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuT-bF-EQN">
-                                <rect key="frame" x="380" y="128" width="90" height="24"/>
+                                <rect key="frame" x="380" y="100" width="90" height="24"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="followers">
@@ -258,8 +215,37 @@
                                     <segue destination="4sx-HR-WK6" kind="show" identifier="Followers" id="Djb-b6-cMX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qvc-PH-Pq6">
+                                <rect key="frame" x="270" y="100" width="90" height="24"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="posts">
+                                            <attributes>
+                                                <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03l-FV-sfD">
+                                <rect key="frame" x="490" y="100" width="90" height="24"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="following">
+                                            <attributes>
+                                                <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="4sx-HR-WK6" kind="show" identifier="Following" id="QuZ-2X-qWp"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z2D-HK-0sj">
-                                <rect key="frame" x="20" y="128" width="75" height="75"/>
+                                <rect key="frame" x="20" y="98" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="z2D-HK-0sj" secondAttribute="height" multiplier="1:1" id="UD8-6e-xcJ"/>
                                     <constraint firstAttribute="height" constant="75" id="VOo-fA-lXw"/>
@@ -288,24 +274,8 @@
                                     <action selector="switchContainerView:" destination="b9V-Rt-jNA" eventType="touchUpInside" id="YvT-eB-22y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03l-FV-sfD">
-                                <rect key="frame" x="490" y="128" width="90" height="24"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="following">
-                                            <attributes>
-                                                <font key="NSFont" size="10" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <segue destination="4sx-HR-WK6" kind="show" identifier="Following" id="QuZ-2X-qWp"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZz-qS-aBp">
-                                <rect key="frame" x="534" y="173" width="46" height="30"/>
+                                <rect key="frame" x="534" y="145" width="46" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="eIX-6v-btA"/>
@@ -317,15 +287,19 @@
                                     <segue destination="PTI-Fa-YT9" kind="presentation" identifier="EditProfile" id="RbI-8y-VyU"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="ohF-eu-O0N">
+                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
+                                <color key="backgroundColor" red="0.25891382600000001" green="1" blue="0.37761858590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="2cJ-TX-bEi" kind="embed" id="hX9-Hi-GbR"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z2D-HK-0sj" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="20" id="0sX-Ai-mBu"/>
                             <constraint firstItem="fuT-bF-EQN" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.15" id="157-kC-jXH"/>
                             <constraint firstItem="jme-Yy-f5b" firstAttribute="width" secondItem="lc8-Xw-mmw" secondAttribute="width" id="2jS-g4-mId"/>
-                            <constraint firstItem="BJ6-4O-ZqN" firstAttribute="top" secondItem="uTr-ZJ-lbM" secondAttribute="bottom" constant="11" id="5Oy-hN-rXK"/>
-                            <constraint firstItem="Qvc-PH-Pq6" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="5sD-Ae-fX7"/>
-                            <constraint firstItem="fuT-bF-EQN" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="7GQ-Oc-jHv"/>
                             <constraint firstItem="03l-FV-sfD" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.15" id="DET-gd-Qmq"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="height" secondItem="Auz-cu-OJK" secondAttribute="height" multiplier="0.5" id="DO2-uC-eQk"/>
                             <constraint firstAttribute="trailing" secondItem="PZz-qS-aBp" secondAttribute="trailing" constant="20" id="DdW-PL-Sr7"/>
@@ -333,32 +307,36 @@
                             <constraint firstAttribute="trailing" secondItem="03l-FV-sfD" secondAttribute="trailing" constant="20" id="EOG-gO-g0W"/>
                             <constraint firstItem="tYg-rc-XFb" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="15" id="FAZ-hz-wIa"/>
                             <constraint firstItem="PZz-qS-aBp" firstAttribute="top" secondItem="Qvc-PH-Pq6" secondAttribute="bottom" constant="21" id="GGl-Jg-Osx"/>
-                            <constraint firstItem="Oz5-Ng-0NR" firstAttribute="top" secondItem="uTr-ZJ-lbM" secondAttribute="bottom" id="JHh-BC-BXt"/>
                             <constraint firstItem="tYg-rc-XFb" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.5" id="LFm-XX-OkO"/>
+                            <constraint firstItem="Qvc-PH-Pq6" firstAttribute="top" secondItem="Auz-cu-OJK" secondAttribute="top" constant="100" id="MjS-uO-Wpl"/>
                             <constraint firstItem="fuT-bF-EQN" firstAttribute="leading" secondItem="Qvc-PH-Pq6" secondAttribute="trailing" constant="20" id="NlM-Yp-pax"/>
                             <constraint firstAttribute="trailing" secondItem="ohF-eu-O0N" secondAttribute="trailing" id="PQM-UG-SPH"/>
                             <constraint firstItem="Qvc-PH-Pq6" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.15" id="Rkq-wt-vS5"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="top" secondItem="jme-Yy-f5b" secondAttribute="bottom" constant="10" id="SKR-O8-mva"/>
-                            <constraint firstItem="Oz5-Ng-0NR" firstAttribute="leading" secondItem="ohF-eu-O0N" secondAttribute="leading" id="Vj8-Le-Ruc"/>
                             <constraint firstItem="tYg-rc-XFb" firstAttribute="top" secondItem="z2D-HK-0sj" secondAttribute="bottom" constant="15" id="cqT-iT-JEv"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" id="dDv-Y8-gNr"/>
+                            <constraint firstItem="z2D-HK-0sj" firstAttribute="top" secondItem="uTr-ZJ-lbM" secondAttribute="bottom" constant="34" id="jlP-KW-Blg"/>
                             <constraint firstItem="lc8-Xw-mmw" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.1" id="kGB-De-iEH"/>
-                            <constraint firstItem="03l-FV-sfD" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="m4p-cs-w79"/>
                             <constraint firstItem="AgQ-pD-dYg" firstAttribute="top" secondItem="ohF-eu-O0N" secondAttribute="bottom" id="mBX-j5-K0r"/>
                             <constraint firstAttribute="trailing" secondItem="ohF-eu-O0N" secondAttribute="trailing" id="pTS-J9-Ilt"/>
-                            <constraint firstItem="Oz5-Ng-0NR" firstAttribute="trailing" secondItem="ohF-eu-O0N" secondAttribute="trailing" id="qc4-Gk-yHY"/>
-                            <constraint firstItem="BJ6-4O-ZqN" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="20" id="qpH-4H-xbR"/>
                             <constraint firstItem="03l-FV-sfD" firstAttribute="leading" secondItem="fuT-bF-EQN" secondAttribute="trailing" constant="20" id="sXR-QI-gH6"/>
                             <constraint firstItem="jme-Yy-f5b" firstAttribute="height" secondItem="lc8-Xw-mmw" secondAttribute="height" id="t5j-U2-5MX"/>
-                            <constraint firstItem="z2D-HK-0sj" firstAttribute="top" secondItem="Oz5-Ng-0NR" secondAttribute="bottom" constant="20" id="tnJ-ZP-rsD"/>
+                            <constraint firstItem="03l-FV-sfD" firstAttribute="top" secondItem="Auz-cu-OJK" secondAttribute="top" constant="100" id="tcx-no-5yk"/>
                             <constraint firstItem="ohF-eu-O0N" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" id="u1Y-gy-Qwb"/>
+                            <constraint firstItem="fuT-bF-EQN" firstAttribute="top" secondItem="Auz-cu-OJK" secondAttribute="top" constant="100" id="v1V-Kl-7wK"/>
                             <constraint firstItem="lc8-Xw-mmw" firstAttribute="leading" secondItem="Auz-cu-OJK" secondAttribute="leading" constant="20" id="wSQ-jD-PDz"/>
                             <constraint firstItem="AgQ-pD-dYg" firstAttribute="top" secondItem="ohF-eu-O0N" secondAttribute="bottom" id="xZg-dR-ohu"/>
                             <constraint firstItem="jme-Yy-f5b" firstAttribute="leading" secondItem="lc8-Xw-mmw" secondAttribute="trailing" constant="68" id="xeN-pO-TYO"/>
-                            <constraint firstItem="BJ6-4O-ZqN" firstAttribute="width" secondItem="Auz-cu-OJK" secondAttribute="width" multiplier="0.5" id="z0r-5w-PtN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="ogc-92-wlC"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="HX6-Ua-BKW">
+                        <barButtonItem key="rightBarButtonItem" title="settings" width="10" id="02c-iu-UPN">
+                            <connections>
+                                <action selector="makeLogout:" destination="b9V-Rt-jNA" id="nu3-yb-OIj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bioLabel" destination="tYg-rc-XFb" id="WPi-99-hsL"/>
                         <outlet property="editButtonWidthConstraint" destination="eIX-6v-btA" id="6ps-zl-BtC"/>
@@ -368,17 +346,15 @@
                         <outlet property="postCountButton" destination="Qvc-PH-Pq6" id="DBz-LZ-9mx"/>
                         <outlet property="profileContainer" destination="ohF-eu-O0N" id="57N-3x-Dod"/>
                         <outlet property="profilePicture" destination="z2D-HK-0sj" id="4WN-5i-BFH"/>
-                        <outlet property="profileTopBar" destination="Oz5-Ng-0NR" id="gub-Ob-0xq"/>
-                        <outlet property="settingsBarItem" destination="ng3-T7-4RF" id="5ej-SX-4uf"/>
+                        <outlet property="settingsButton" destination="02c-iu-UPN" id="cWd-Fl-5fx"/>
                         <outlet property="switchToCollectionButton" destination="lc8-Xw-mmw" id="TcZ-k6-d5L"/>
                         <outlet property="switchToTableButton" destination="jme-Yy-f5b" id="Ua6-Cx-lZN"/>
-                        <outlet property="usernameTopLabel" destination="BJ6-4O-ZqN" id="qvl-VJ-VOE"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="Logout" modalPresentationStyle="fullScreen" id="hof-Dp-5Is"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugh-G8-8Vn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1099" y="1664"/>
+            <point key="canvasLocation" x="1086" y="1651"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="FY7-t7-5rH">
@@ -386,7 +362,7 @@
                 <pageViewController storyboardIdentifier="GalleryCameraPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5os-jP-4RF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swD-ea-dXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-268" y="1629.5"/>
+            <point key="canvasLocation" x="-268" y="1616.5"/>
         </scene>
         <!--Gallery Camera View Controller-->
         <scene sceneID="gtz-bm-SyS">
@@ -582,7 +558,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCU-ED-rGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="1664"/>
+            <point key="canvasLocation" x="1806" y="1651"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="xQ7-3N-NJa">
@@ -723,7 +699,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1806" y="2351"/>
+            <point key="canvasLocation" x="1813" y="2428"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="cCc-Oc-8Pq">
@@ -731,7 +707,7 @@
                 <pageViewController storyboardIdentifier="ProfilePageViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="2cJ-TX-bEi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8Y-H6-kc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="2201"/>
+            <point key="canvasLocation" x="1086" y="2201"/>
         </scene>
         <!--Feed-->
         <scene sceneID="pbM-3q-I1Y">
@@ -821,7 +797,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isn-ZC-7V8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="399" y="1664"/>
+            <point key="canvasLocation" x="399" y="1651"/>
         </scene>
     </scenes>
     <resources>
@@ -830,7 +806,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ggO-nO-mX3"/>
-        <segue reference="QuZ-2X-qWp"/>
         <segue reference="RbI-8y-VyU"/>
+        <segue reference="QuZ-2X-qWp"/>
     </inferredMetricsTieBreakers>
 </document>

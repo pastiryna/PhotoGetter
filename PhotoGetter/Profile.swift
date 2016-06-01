@@ -15,10 +15,8 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     @IBOutlet weak var switchToCollectionButton: UIButton!
     @IBOutlet weak var switchToTableButton: UIButton!
     
-    @IBOutlet weak var profileTopBar: UINavigationBar!
-    @IBOutlet weak var usernameTopLabel: UILabel!
     @IBOutlet weak var profileContainer: UIView!
-    @IBOutlet weak var settingsBarItem: UIBarButtonItem!
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
     
     
     @IBOutlet weak var profilePicture: UIImageView!
@@ -27,6 +25,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     @IBOutlet weak var followersButton: UIButton!
     @IBOutlet weak var followingButton: UIButton!    
     @IBOutlet weak var editProfileButton: UIButton!
+    @IBOutlet weak var editButtonWidthConstraint: NSLayoutConstraint!
     
     
     var viewWithTable: ViewWithTable!
@@ -37,7 +36,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     var followersUrl: String!
     var followingUrl: String!
     
-    @IBOutlet weak var editButtonWidthConstraint: NSLayoutConstraint!
+    
     
     
     override func viewDidLoad() {
@@ -46,25 +45,16 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.followingUrl = "https://api.instagram.com/v1/users/\(self.user.id)/follows?access_token=\(accessTok)"
         self.followersUrl = "https://api.instagram.com/v1/users/\(self.user.id)/followed-by?access_token=\(accessTok)"
     
+       
         self.navigationController?.navigationBarHidden = false
         self.hidesBottomBarWhenPushed = false
-        self.profileTopBar.delegate = self
-        
-        self.profileTopBar.barTintColor = Constants.BRAND_COLOR
+        self.navigationController?.navigationBar.barTintColor = Constants.BRAND_COLOR
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         self.prepareUI()
-        
-         
-         //make image round
-               //make buttons square
 
-        self.settingsBarItem.setFAIcon(FAType.FACog, iconSize: 20)
-        self.settingsBarItem.tintColor = UIColor.whiteColor()
         
-        self.switchToTableButton.setFAIcon(FAType.FAAlignJustify, forState: .Normal)
-        self.switchToCollectionButton.setFAIcon(FAType.FATh, forState: .Normal)
-        self.switchToCollectionButton.setFATitleColor(UIColor.blueColor())
-       
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProfilePageViewController") as! UIPageViewController
         self.pageViewController.view.frame = CGRectMake(0, 0, self.profileContainer.frame.width, self.profileContainer.frame.height)
         
@@ -82,25 +72,22 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.profileContainer.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
         
-        
-        if CoreDataManager.sharedInstance.isSaved(self.user) { 
-           self.showUserFromDB()
-            
-        }
-        
-        else {
+//        
+//        if CoreDataManager.sharedInstance.isSaved(self.user) { 
+//           self.showUserFromDB()
+//            
+//        }
+//        
+//        else {
             self.showUserFromServer()
-        }
+      //  }
         
 }
     
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        self.prepareUI()
-    
+        self.navigationController?.navigationBarHidden = false
         
     }
     
@@ -136,15 +123,20 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     @IBAction func switchContainerView (sender: UIButton) {
         
         if sender == self.switchToTableButton {
+            self.navigationController?.navigationBarHidden = false
             self.switchToCollectionButton.setFATitleColor(UIColor.grayColor())
             self.switchToTableButton.setFATitleColor(UIColor.blueColor())
+            self.navigationController?.navigationBarHidden = false
             self.pageViewController.setViewControllers([self.contentPageViewControllers[1]], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+           
         }
         
         else if sender == self.switchToCollectionButton {
+               self.navigationController?.navigationBarHidden = false
                self.switchToTableButton.setFATitleColor(UIColor.grayColor())
                self.switchToCollectionButton.setFATitleColor(UIColor.blueColor())
                self.pageViewController.setViewControllers([self.contentPageViewControllers[0]], direction: UIPageViewControllerNavigationDirection.Reverse, animated: false, completion: nil)
+               
         }
         
     }
@@ -162,7 +154,6 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         }
         else if segue.identifier == "EditProfile" {
             let editProfile = segue.destinationViewController as! EditProfile
-            
             editProfile.user.id = self.user.id
             
         
@@ -177,7 +168,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     func showUserFromDB() {
         self.user = CoreDataManager.sharedInstance.getUserById(self.user.id)
          dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.usernameTopLabel.text = self.user.username.uppercaseString
+            self.navigationController?.title = self.user.username.uppercaseString
             self.bioLabel.text = self.user.fullName })
         
         self.showFollowers(self.user.id)
@@ -196,7 +187,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
             if success {
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.usernameTopLabel.text = user!.username.uppercaseString
+                     self.navigationController?.navigationBar.topItem?.title = user!.username.uppercaseString
                     self.bioLabel.text = user!.fullName
                     
                     let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")
@@ -239,6 +230,14 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         Utils.makeImageRound(self.profilePicture)
         self.editProfileButton.backgroundColor = Constants.BRAND_COLOR
         
+        self.settingsButton.setFAIcon(FAType.FACog, iconSize: 20)
+        self.settingsButton.tintColor = UIColor.whiteColor()
+        
+        self.switchToTableButton.setFAIcon(FAType.FAAlignJustify, forState: .Normal)
+        self.switchToCollectionButton.setFAIcon(FAType.FATh, forState: .Normal)
+        self.switchToCollectionButton.setFATitleColor(UIColor.blueColor())
+
+        
         if self.user.id != NSUserDefaults.standardUserDefaults().stringForKey("id") {
             self.editProfileButton.hidden = true
         }
@@ -274,13 +273,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         })
     }
     
-    @IBAction func changePhoto(sender: AnyObject) {
-        let url = CoreDataManager.sharedInstance.getUserById(self.user.id).profilePicture
-         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.profilePicture.image = Utils.imageFromFile(url) })
-    }
-    
-
+   
 
 }
 

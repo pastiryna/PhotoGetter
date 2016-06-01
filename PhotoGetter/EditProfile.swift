@@ -17,12 +17,9 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     var picked: UIImage?
-    
-    
-    
-   
-    
+    var pickedPath: String = ""
     var user: InstaUser = InstaUser()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +30,18 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         self.prepareUI()
         
         if CoreDataManager.sharedInstance.isSaved(self.user) {
-            self.showUserFromDB()
+            self.getUserFromDB()
         }
         else {
-            self.showUserFromServer()
+            self.getUserFromServer()
         }
+        print("Picture URL \(self.user.profilePicture)")
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        self.reloadTable()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,26 +68,39 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
             let editCell = tableView.dequeueReusableCellWithIdentifier("EditProfileCell", forIndexPath: indexPath) as! EditProfileCell
             Utils.makeImageRound(editCell.profilePicture)
             
+            //show profile photo
             if self.picked != nil {
-                editCell.profilePicture.image = self.picked
-                self.picked = nil
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    Utils.makeImageRound(editCell.profilePicture)
+                    editCell.profilePicture.image = self.picked })
             }
             else {
-                
-                if (CacheManager.sharedInstance.objectForKey(self.user.profilePicture) != nil) {
-                    editCell.profilePicture.image = CacheManager.sharedInstance.objectForKey(self.user.profilePicture) as? UIImage
-                    
+                if CoreDataManager.sharedInstance.hasLocalProfilePhoto {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        Utils.makeImageRound(editCell.profilePicture)
+                        editCell.profilePicture.image =  Utils.imageFromFile(self.user.profilePicture)!})
                 }
                 else {
-                    Utils.loadImage(self.user.profilePicture, completion: { (image, loaded) in
-                        if loaded {
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                editCell.profilePicture.image = image })
-
-                        }
-                    })
+                    if CacheManager.sharedInstance.objectForKey(self.user.profilePicture) != nil {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                             Utils.makeImageRound(editCell.profilePicture)
+                             editCell.profilePicture.image = CacheManager.sharedInstance.objectForKey(self.user.profilePicture) as? UIImage })
+                    }
+                    else {
+                        Utils.loadImage(self.user.profilePicture, completion: { (image, loaded) in
+                            if loaded {
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    Utils.makeImageRound(editCell.profilePicture)
+                                    editCell.profilePicture.image = image })
+                            }
+                        })
+                
+                    }
                 }
+                
             }
+            //set text
+                
             if self.user.username == "" {
                 editCell.usernameTextField.placeholder = "username"
             }
@@ -103,6 +115,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
             }
             cell = editCell
             break
+            
         case 1:
             let editCell = tableView.dequeueReusableCellWithIdentifier("EditProfileCell2", forIndexPath: indexPath) as! EditProfileCell2
             if self.user.bio == "" {
@@ -113,6 +126,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
             }
             cell = editCell
             break
+            
         case 2:
             let editCell = tableView.dequeueReusableCellWithIdentifier("EditProfileCell2", forIndexPath: indexPath) as! EditProfileCell2
             if self.user.website == "" {
@@ -122,6 +136,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
                 editCell.textField.text = self.user.website
             }
             cell = editCell
+            break
         default:
             break
         }
@@ -140,18 +155,23 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         else {
             print("Edited \(self.isEdited())")
                 if self.isEdited() {
-                   
                     
                     if CoreDataManager.sharedInstance.isSaved(self.user) {
                         CoreDataManager.sharedInstance.updateUser(self.editedUser())
+                        self.pickedPath = ""
+                        self.picked =  nil
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else {
-                    CoreDataManager.sharedInstance.saveNewUser(self.editedUser())
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                        CoreDataManager.sharedInstance.saveNewUser(self.editedUser())
+                        self.pickedPath = ""
+                        self.picked =  nil
+                        self.dismissViewControllerAnimated(true, completion: nil)
                     }
                 }
                 else {
+                    self.pickedPath = ""
+                    self.picked =  nil
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
         
@@ -177,6 +197,11 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         editedUser.fullName = (cells[0] as! EditProfileCell).fullNameTextField.text!
         editedUser.bio = (cells[1] as! EditProfileCell2).textField.text!
         editedUser.website = (cells[2] as! EditProfileCell2).textField.text!
+        if self.picked != nil {
+            editedUser.profilePicture = self.pickedPath
+            CoreDataManager.sharedInstance.hasLocalProfilePhoto = true
+        }
+        
         return editedUser
     
     }
@@ -191,7 +216,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func isEdited() -> Bool {
-        return self.editedUser().username != self.user.username || self.editedUser().fullName != self.user.fullName || self.editedUser().bio != self.user.bio || self.editedUser().website != self.user.website
+        return self.editedUser().username != self.user.username || self.editedUser().fullName != self.user.fullName || self.editedUser().bio != self.user.bio || self.editedUser().website != self.user.website || self.picked != nil
     }
     
     func prepareUI() {
@@ -199,22 +224,20 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         self.topBar.barTintColor = Constants.BRAND_COLOR
     }
     
-    
-    
-    
     func showUserFromDB() {
         self.user = CoreDataManager.sharedInstance.getUserById(self.user.id)
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             //add profile picture
+            
             if (CacheManager.sharedInstance.objectForKey(self.user.profilePicture) != nil) {
-               // self.profilePicture.image = CacheManager.sharedInstance.objectForKey(self.user.profilePicture) as? UIImage
+                // self.profilePicture.image = CacheManager.sharedInstance.objectForKey(self.user.profilePicture) as? UIImage
                 self.reloadTable()
             }
             else {
                 Utils.loadImage(self.user.profilePicture, completion: { (image, loaded) in
                     if loaded {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                          //  self.profilePicture.image = image
+                            //  self.profilePicture.image = image
                         })
                         self.reloadTable()
                     }
@@ -228,49 +251,11 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         
     }
     
-    
-    func showUserFromServer() {
-        InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
-            
-            if success {
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.user = user!
-                    
-                    //add profile picture
-                    if (CacheManager.sharedInstance.objectForKey(user!.profilePicture) != nil) {
-                        //self.profilePicture.image = CacheManager.sharedInstance.objectForKey(user!.profilePicture) as? UIImage
-                        self.reloadTable()
-                    }
-                    else {
-                        Utils.loadImage(user!.profilePicture, completion: { (image, loaded) in
-                            if loaded {
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                   // self.profilePicture.image = image
-                                })
-                            }
-                            else {
-                                return
-                            }
-                        })
-                        self.reloadTable()
-                    }
-                })
-                
-                
-            }
-                
-            else {
-                return
-            }
-        })
-    }
-    
-   
-    
-    func imageAssetChoosen(image: UIImage!) {
+    func imageAssetChoosen(image: UIImage!, imagePath: String) {
         dispatch_async(dispatch_get_main_queue(), {
+            print(imagePath)
             self.picked = image
+            self.pickedPath = imagePath
             self.reloadTable()
         });
     }
@@ -280,6 +265,33 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         galleryPhotoViewController.delegate = self
         self.presentViewController(galleryPhotoViewController, animated: true, completion: nil)
 
+    }
+    
+    func getUserFromDB() {
+        let saveduser: InstaUser = CoreDataManager.sharedInstance.getUserById(self.user.id)
+        if CoreDataManager.sharedInstance.hasLocalProfilePhoto {
+            self.user = saveduser
+        }
+        else {
+            let serverPhotoURL = NSUserDefaults.standardUserDefaults().stringForKey("profilePicture")
+            self.user = saveduser
+            self.user.profilePicture = serverPhotoURL!
+        }
+    
+    }
+    
+    func getUserFromServer() {
+        InstagramAPIManager.apiManager.getUserInfoById(self.user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
+            if success {
+                self.user = user!
+                self.reloadTable()
+            
+            }
+            else {
+                self.reloadTable()
+            }
+        })
+    
     }
 
     

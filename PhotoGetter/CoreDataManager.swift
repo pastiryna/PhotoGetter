@@ -13,6 +13,7 @@ import UIKit
 class CoreDataManager {
     
     static let sharedInstance = CoreDataManager()
+    var hasLocalProfilePhoto: Bool = false
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -28,6 +29,7 @@ class CoreDataManager {
         newUser.setValue(user.profilePicture, forKey: "profilePicture")
         newUser.setValue(user.bio, forKey: "bio")
         newUser.setValue(user.website, forKey: "website")
+        
         
         //try to save the user
         do{
@@ -60,6 +62,7 @@ class CoreDataManager {
                     user.fullName = current.valueForKey("fullName") as! String
                     user.bio = current.valueForKey("bio") as! String
                     user.website = current.valueForKey("website") as! String
+                    user.profilePicture = current.valueForKey("profilePicture") as! String
                     break
                 }
             
@@ -88,6 +91,7 @@ class CoreDataManager {
             result.setValue(user.fullName, forKey: "fullName")
             result.setValue(user.bio, forKey: "bio")
             result.setValue(user.website, forKey: "website")
+            result.setValue(user.profilePicture, forKey: "profilePicture")
         }
         catch {
             print(error)

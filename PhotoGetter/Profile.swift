@@ -100,8 +100,8 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         
         self.prepareUI()
         
-        if NSUserDefaults.standardUserDefaults().boolForKey("isEdited") {
-            self.showUserFromDB()        
+        if CoreDataManager.sharedInstance.isSaved(self.user) {
+            self.showUserFromDB()
         }
         
     }
@@ -178,6 +178,20 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     
     func showUserFromDB() {
         self.user = CoreDataManager.sharedInstance.getUserById(self.user.id)
+         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.usernameTopLabel.text = self.user.username.uppercaseString
+            self.bioLabel.text = self.user.fullName })
+        
+        self.showFollowers(self.user)
+        
+        if self.profilePicture != "" {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.profilePicture.image = Utils.imageFromFile(self.user.profilePicture)
+            
+            })
+        
+        }
+        else {
         
         //profile picture
             if (CacheManager.sharedInstance.objectForKey(user.profilePicture) != nil) {
@@ -195,6 +209,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
                 })
     
                         
+            }
         }
     }
     
@@ -266,6 +281,32 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.view.layoutSubviews()
     }
     
+    func showFollowers(user: InstaUser) {
+        InstagramAPIManager.apiManager.getUserInfoById(user.id, accessToken: NSUserDefaults.standardUserDefaults().stringForKey("accessToken")!, completion: { (user, success) in
+            
+            if success {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")
+                    self.followersButton.setAttributedTitle(followers, forState: UIControlState.Normal)
+                    
+                    let following = NSMutableAttributedString(string: "\(user!.numberFollowing)\nfollowing")
+                    self.followingButton.setAttributedTitle(following, forState: UIControlState.Normal)
+                    
+                    let posts = NSMutableAttributedString(string: "\(user!.numberOfPosts)\nposts")
+                    self.postCountButton.setAttributedTitle(posts, forState: UIControlState.Normal)
+    
+                })
+            }
+        })
+    }
+    
+    @IBAction func changePhoto(sender: AnyObject) {
+        let url = CoreDataManager.sharedInstance.getUserById(self.user.id).profilePicture
+         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.profilePicture.image = Utils.imageFromFile(url) })
+    }
     
 
 

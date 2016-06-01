@@ -9,7 +9,7 @@
 import UIKit
 
 protocol GalleryDelegate {
-    func imageAssetChoosen(image: UIImage!)
+    func imageAssetChoosen(image: UIImage!, imagePath: String)
 }
 
 class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataSource, UITabBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -113,8 +113,10 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.pickedImage = image
+            print("URL \(info[UIImagePickerControllerReferenceURL]?.absoluteString)")
+            let path: String = info[UIImagePickerControllerReferenceURL]!.absoluteString
             if self.delegate != nil {
-                self.delegate.imageAssetChoosen(self.pickedImage)
+                self.delegate.imageAssetChoosen(self.pickedImage, imagePath: path)
             }
             dismissViewControllerAnimated(true, completion: nil)
 
@@ -122,7 +124,8 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
         else if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.pickedImage = image
             if self.delegate != nil {
-                self.delegate.imageAssetChoosen(self.pickedImage)
+                let path = info[UIImagePickerControllerReferenceURL]?.absoluteString 
+                self.delegate.imageAssetChoosen(self.pickedImage, imagePath: path!)
             }
             dismissViewControllerAnimated(true, completion: nil)
         } else {

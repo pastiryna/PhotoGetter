@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import Photos
+
+
 
 class Utils {
        
@@ -35,5 +38,19 @@ class Utils {
         image.clipsToBounds = true
     }
 
+    static func imageFromFile(imageURL: String) -> UIImage? {
+        var image = UIImage()
+        let asset = PHAsset.fetchAssetsWithALAssetURLs([NSURL(string: imageURL)!], options: nil).firstObject as! PHAsset
+        let targetSize = CGSizeMake(300, 300)
+        var options = PHImageRequestOptions()        
+        PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFit, options: options, resultHandler: {
+            (result, info) in
+            // imageE - UIImageView on scene
+            //self.imageE.image = result
+            image = result!
+        })
+        return image
+        
+    }
         
 }

@@ -223,6 +223,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="changePhoto:" destination="b9V-Rt-jNA" eventType="touchUpInside" id="wsq-7X-jk9"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ6-4O-ZqN">
                                 <rect key="frame" x="20" y="75" width="300" height="15"/>
@@ -388,7 +391,7 @@
         <!--Gallery Camera View Controller-->
         <scene sceneID="gtz-bm-SyS">
             <objects>
-                <viewController storyboardIdentifier="GalleryCameraViewController" id="d7j-h9-Dq4" customClass="GalleryCameraViewController" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GalleryCameraViewController" wantsFullScreenLayout="YES" id="d7j-h9-Dq4" customClass="GalleryCameraViewController" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xeE-qP-YZg"/>
                         <viewControllerLayoutGuide type="bottom" id="lV3-ug-doH"/>
@@ -827,7 +830,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QuZ-2X-qWp"/>
-        <segue reference="RbI-8y-VyU"/>
         <segue reference="ggO-nO-mX3"/>
+        <segue reference="Vlf-6U-kRj"/>
     </inferredMetricsTieBreakers>
 </document>

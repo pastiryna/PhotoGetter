@@ -47,7 +47,7 @@ class CoreDataManager {
     func getUserById(userId: String) -> InstaUser {
         //var result = [InstaUser]()
         let managedContext = appDelegate.managedObjectContext
-        var user = InstaUser()
+        let user = InstaUser()
         let request = NSFetchRequest(entityName: "InstaUser")
        
         do {
@@ -89,7 +89,7 @@ class CoreDataManager {
         
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-            var result = results[0]
+            let result = results[0]
             result.setValue(user.username, forKey: "username")
             result.setValue(user.fullName, forKey: "fullName")
             result.setValue(user.bio, forKey: "bio")

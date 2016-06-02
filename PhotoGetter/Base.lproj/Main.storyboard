@@ -558,7 +558,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCU-ED-rGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="1651"/>
+            <point key="canvasLocation" x="1806" y="1772"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="xQ7-3N-NJa">
@@ -721,39 +721,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="400" sectionHeaderHeight="30" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="Ure-Up-IU9" customClass="PhotoGetterTableView" customModule="PhotoGetter" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="697" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ure-Up-IU9" customClass="PhotoGetterTableView" customModule="PhotoGetter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.25891382600000001" green="1" blue="0.37761858590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Photo Cell" rowHeight="500" id="LVN-Rg-5Kc" customClass="NewCell" customModule="PhotoGetter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="30" width="600" height="500"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Photo Cell" rowHeight="697" id="LVN-Rg-5Kc" customClass="NewCell" customModule="PhotoGetter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="697"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LVN-Rg-5Kc" id="fCz-bR-eAc">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="499"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="696"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="Z30-6l-XdB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="415"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="Z30-6l-XdB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="189"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Z30-6l-XdB" secondAttribute="height" multiplier="1:1" id="lCv-aS-kU2"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuM-fo-jsI">
-                                                    <rect key="frame" x="30" y="425" width="541" height="17"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcc-ii-Ua9">
+                                                    <rect key="frame" x="23" y="197" width="27" height="27"/>
+                                                    <color key="backgroundColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="8tp-8e-Lez"/>
+                                                        <constraint firstAttribute="width" constant="27" id="u4j-pW-t2E"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuM-fo-jsI">
+                                                    <rect key="frame" x="59" y="205" width="541" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Z30-6l-XdB" secondAttribute="trailing" id="0ya-6A-CCg"/>
-                                                <constraint firstItem="SuM-fo-jsI" firstAttribute="top" secondItem="Z30-6l-XdB" secondAttribute="bottom" constant="10" id="Kl6-Ko-hD0"/>
+                                                <constraint firstItem="SuM-fo-jsI" firstAttribute="top" secondItem="Z30-6l-XdB" secondAttribute="bottom" constant="17" id="Kl6-Ko-hD0"/>
                                                 <constraint firstItem="Z30-6l-XdB" firstAttribute="top" secondItem="fCz-bR-eAc" secondAttribute="top" id="SDP-B2-sCX"/>
-                                                <constraint firstItem="Z30-6l-XdB" firstAttribute="leading" secondItem="fCz-bR-eAc" secondAttribute="leading" id="Vu0-oc-26Q"/>
+                                                <constraint firstItem="mcc-ii-Ua9" firstAttribute="top" secondItem="Z30-6l-XdB" secondAttribute="bottom" constant="10" id="Xg9-K1-HoS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Z30-6l-XdB" secondAttribute="trailing" id="YcN-8L-W5W"/>
+                                                <constraint firstItem="SuM-fo-jsI" firstAttribute="leading" secondItem="mcc-ii-Ua9" secondAttribute="trailing" constant="15" id="ZLc-s7-6JK"/>
                                                 <constraint firstItem="SuM-fo-jsI" firstAttribute="centerX" secondItem="fCz-bR-eAc" secondAttribute="centerX" id="cDM-Sj-sTY"/>
+                                                <constraint firstItem="Z30-6l-XdB" firstAttribute="leading" secondItem="fCz-bR-eAc" secondAttribute="leading" id="iUa-98-BZc"/>
+                                                <constraint firstItem="mcc-ii-Ua9" firstAttribute="leading" secondItem="fCz-bR-eAc" secondAttribute="leading" constant="20" id="jea-Ot-WXP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="SuM-fo-jsI" firstAttribute="width" secondItem="LVN-Rg-5Kc" secondAttribute="width" multiplier="0.9" constant="1" id="WQY-zm-irT"/>
-                                            <constraint firstItem="Z30-6l-XdB" firstAttribute="height" secondItem="LVN-Rg-5Kc" secondAttribute="height" multiplier="0.83" id="dIa-yS-ygd"/>
+                                            <constraint firstItem="SuM-fo-jsI" firstAttribute="width" secondItem="LVN-Rg-5Kc" secondAttribute="width" multiplier="0.65" constant="1" id="WQY-zm-irT"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="photo" destination="Z30-6l-XdB" id="TLZ-TG-wt2"/>

@@ -59,7 +59,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     }    
         
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return (self.view.frame.width * 1.2)
+        return (self.view.frame.width * 1.3)
     }
     
 //    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

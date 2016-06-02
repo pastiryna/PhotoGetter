@@ -155,7 +155,8 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     }
 
     @IBAction func saveEditedUser(sender: AnyObject) {
-        var editedUser = self.editedUser()
+        let editedUser = self.editedUser()
+        self.view.endEditing(true)
         if !self.verifyFieldsNotEmpty() {
             return
         }

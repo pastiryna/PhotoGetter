@@ -91,11 +91,10 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBarHidden = false
-        if  CoreDataManager.sharedInstance.isSaved(self.user) {
+        
+        if CoreDataManager.sharedInstance.isSaved(self.user) {
             self.showUserFromDB()
-            
         }
-            
         else {
             self.showUserFromServer()
         }
@@ -193,7 +192,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
             if success {
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                     self.navigationController?.navigationBar.topItem?.title = user!.username.uppercaseString
+                    self.navigationController?.navigationBar.topItem?.title = user!.username.uppercaseString
                     self.bioLabel.text = user!.fullName
                     
                     let followers = NSMutableAttributedString(string: "\(user!.numberOfFollowers)\nfollowers")

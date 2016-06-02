@@ -63,6 +63,8 @@ class CoreDataManager {
                     user.bio = current.valueForKey("bio") as! String
                     user.website = current.valueForKey("website") as! String
                     user.profilePicture = current.valueForKey("profilePicture") as! String
+                    print("Getting user")
+                    print(user.profilePicture)
                     break
                 }
             
@@ -82,11 +84,12 @@ class CoreDataManager {
         let predicate = NSPredicate(format: "%K == %@", "id", "\(user.id)")
         let fetchRequest = NSFetchRequest(entityName: "InstaUser")
         fetchRequest.predicate = predicate
+        print("On update")
+        print(user.profilePicture)
         
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
             var result = results[0]
-            print("Before update \(result.valueForKey("username"))")
             result.setValue(user.username, forKey: "username")
             result.setValue(user.fullName, forKey: "fullName")
             result.setValue(user.bio, forKey: "bio")

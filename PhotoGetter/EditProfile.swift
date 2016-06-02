@@ -61,6 +61,10 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
+    
+    
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         switch indexPath.row {
@@ -75,12 +79,13 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
                     editCell.profilePicture.image = self.picked })
             }
             else {
-//                if CoreDataManager.sharedInstance.hasLocalProfilePhoto {
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        Utils.makeImageRound(editCell.profilePicture)
-//                        editCell.profilePicture.image =  Utils.imageFromFile(self.user.profilePicture)!})
-//                }
-//                else {
+                //if CoreDataManager.sharedInstance.hasLocalProfilePhoto {
+                if  NSUserDefaults.standardUserDefaults().boolForKey("hasLocalProfilePhoto") {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        Utils.makeImageRound(editCell.profilePicture)
+                        editCell.profilePicture.image =  Utils.imageFromFile(self.user.profilePicture)!})
+                }
+                else {
                     if CacheManager.sharedInstance.objectForKey(self.user.profilePicture) != nil {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                              Utils.makeImageRound(editCell.profilePicture)
@@ -97,6 +102,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
                 
                     }
                 }
+            }
                 
             
             //set text
@@ -149,26 +155,31 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     }
 
     @IBAction func saveEditedUser(sender: AnyObject) {
+        var editedUser = self.editedUser()
         if !self.verifyFieldsNotEmpty() {
             return
         }
         else {
-            print("Edited \(self.isEdited())")
+            if self.picked != nil {
+                //CoreDataManager.sharedInstance.hasLocalProfilePhoto = true
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLocalProfilePhoto")
+            }
+            print("User was edited = \(self.isEdited())")
                 if self.isEdited() {
-                    
                     if CoreDataManager.sharedInstance.isSaved(self.user) {
-                        CoreDataManager.sharedInstance.updateUser(self.editedUser())
+                        CoreDataManager.sharedInstance.updateUser(editedUser)
                         self.pickedPath = ""
                         self.picked =  nil
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else {
-                        CoreDataManager.sharedInstance.saveNewUser(self.editedUser())
+                        CoreDataManager.sharedInstance.saveNewUser(editedUser)
                         self.pickedPath = ""
                         self.picked =  nil
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
                 }
+                    
                 else {
                     self.pickedPath = ""
                     self.picked =  nil
@@ -192,22 +203,26 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     func editedUser() -> InstaUser {
         let editedUser = InstaUser()
         var cells = self.editProfileTable.visibleCells 
-        editedUser.id = NSUserDefaults.standardUserDefaults().stringForKey("id")!
+        editedUser.id = self.user.id
         editedUser.username = (cells[0] as! EditProfileCell).usernameTextField.text!
         editedUser.fullName = (cells[0] as! EditProfileCell).fullNameTextField.text!
         editedUser.bio = (cells[1] as! EditProfileCell2).textField.text!
         editedUser.website = (cells[2] as! EditProfileCell2).textField.text!
         if self.picked != nil {
             editedUser.profilePicture = self.pickedPath
-            CoreDataManager.sharedInstance.hasLocalProfilePhoto = true
+            
+            //CoreDataManager.sharedInstance.hasLocalProfilePhoto = true
         }
-        
+        else {
+            editedUser.profilePicture = self.user.profilePicture
+        }
+        print("Path to picked on saving")
+        print(editedUser.profilePicture)
         return editedUser
-    
     }
     
     func verifyFieldsNotEmpty() -> Bool {
-        let cells = self.editProfileTable.visibleCells 
+        let cells = self.editProfileTable.visibleCells
         return (cells[0] as! EditProfileCell).usernameTextField.text?.characters.count > 0
 //            && cells[1].textField.text?.characters.count > 0
 //            && cells[2].textField.text?.characters.count > 0
@@ -219,36 +234,10 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
         return self.editedUser().username != self.user.username || self.editedUser().fullName != self.user.fullName || self.editedUser().bio != self.user.bio || self.editedUser().website != self.user.website || self.picked != nil
     }
     
+    
     func prepareUI() {
         self.topBar.backgroundColor = Constants.BRAND_COLOR
         self.topBar.barTintColor = Constants.BRAND_COLOR
-    }
-    
-    func showUserFromDB() {
-        self.user = CoreDataManager.sharedInstance.getUserById(self.user.id)
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            //add profile picture
-            
-            if (CacheManager.sharedInstance.objectForKey(self.user.profilePicture) != nil) {
-                // self.profilePicture.image = CacheManager.sharedInstance.objectForKey(self.user.profilePicture) as? UIImage
-                self.reloadTable()
-            }
-            else {
-                Utils.loadImage(self.user.profilePicture, completion: { (image, loaded) in
-                    if loaded {
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            //  self.profilePicture.image = image
-                        })
-                        self.reloadTable()
-                    }
-                    else {
-                        return
-                    }
-                })
-                
-            }
-        })
-        
     }
     
     func imageAssetChoosen(image: UIImage!, imagePath: String) {
@@ -256,7 +245,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
             print(imagePath)
             self.picked = image
             self.pickedPath = imagePath
-            self.reloadTable()
+            //self.reloadTable()
         });
     }
 
@@ -269,14 +258,15 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     
     func getUserFromDB() {
         let saveduser: InstaUser = CoreDataManager.sharedInstance.getUserById(self.user.id)
-        if CoreDataManager.sharedInstance.hasLocalProfilePhoto {
-            self.user = saveduser
-        }
-        else {
-            let serverPhotoURL = NSUserDefaults.standardUserDefaults().stringForKey("profilePicture")
-            self.user = saveduser
-            self.user.profilePicture = serverPhotoURL!
-        }
+        //if CoreDataManager.sharedInstance.hasLocalProfilePhoto {
+           self.user = saveduser
+//        }
+//        else {
+//            let serverPhotoURL = NSUserDefaults.standardUserDefaults().stringForKey("profilePicture")
+//            self.user = saveduser
+//            self.user.profilePicture = serverPhotoURL!
+//        }
+        self.reloadTable()
     
     }
     
@@ -288,7 +278,7 @@ class EditProfile: BaseViewController, UITableViewDelegate, UITableViewDataSourc
             
             }
             else {
-                self.reloadTable()
+                return
             }
         })
     

@@ -72,15 +72,18 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.profileContainer.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
         
-//        
-//        if CoreDataManager.sharedInstance.isSaved(self.user) { 
-//           self.showUserFromDB()
-//            
-//        }
-//        
-//        else {
+        
+        
+ 
+       if  CoreDataManager.sharedInstance.isSaved(self.user) {
+           self.showUserFromDB()
+            
+        }
+        
+        else {
             self.showUserFromServer()
-      //  }
+       }
+        
         
 }
     
@@ -88,6 +91,15 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBarHidden = false
+        if  CoreDataManager.sharedInstance.isSaved(self.user) {
+            self.showUserFromDB()
+            
+        }
+            
+        else {
+            self.showUserFromServer()
+        }
+
         
     }
     
@@ -169,16 +181,10 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         self.user = CoreDataManager.sharedInstance.getUserById(self.user.id)
          dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.navigationController?.title = self.user.username.uppercaseString
-            self.bioLabel.text = self.user.fullName })
-        
-        self.showFollowers(self.user.id)
-        
+            self.bioLabel.text = self.user.fullName  })
+            self.showFollowers(self.user.id)
+            self.updatePicture()
        
-        
-        //profile picture
-        
-    
-    
     }
     
     func showUserFromServer() {
@@ -273,7 +279,30 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         })
     }
     
-   
+    func updatePicture() {
+        if NSUserDefaults.standardUserDefaults().boolForKey("hasLocalProfilePhoto") {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.profilePicture.image = Utils.imageFromFile(self.user.profilePicture) })
+        }
+        
+        else {
+            if (CacheManager.sharedInstance.objectForKey(self.user.profilePicture) != nil) {
+                self.profilePicture.image = CacheManager.sharedInstance.objectForKey(self.user.profilePicture) as? UIImage
+            }
+            else {
+                Utils.loadImage(self.user.profilePicture, completion: { (image, loaded) in
+                    if loaded {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.profilePicture.image = image })
+                    }
+                    else {
+                        return
+                    }
+                })
+                
+            }
+        }
 
+    }
 }
 

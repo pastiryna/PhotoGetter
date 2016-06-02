@@ -124,7 +124,8 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
         else if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.pickedImage = image
             if self.delegate != nil {
-                let path = info[UIImagePickerControllerReferenceURL]?.absoluteString 
+                let path = info[UIImagePickerControllerReferenceURL]?.absoluteString
+                print("ASSET Path \(path)")
                 self.delegate.imageAssetChoosen(self.pickedImage, imagePath: path!)
             }
             dismissViewControllerAnimated(true, completion: nil)

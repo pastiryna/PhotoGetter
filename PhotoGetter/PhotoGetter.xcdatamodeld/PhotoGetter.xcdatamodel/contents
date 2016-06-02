@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="AffectedPhotos" syncable="YES">
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="isLiked" attributeType="Boolean" syncable="YES"/>
+        <relationship name="instauser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstaUser" inverseName="affectedphotos" inverseEntity="InstaUser" syncable="YES"/>
+    </entity>
     <entity name="InstaUser" syncable="YES">
         <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,8 +12,10 @@
         <attribute name="profilePicture" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="affectedphotos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AffectedPhotos" inverseName="instauser" inverseEntity="AffectedPhotos" syncable="YES"/>
     </entity>
     <elements>
-        <element name="InstaUser" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="InstaUser" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="AffectedPhotos" positionX="-54" positionY="36" width="128" height="90"/>
     </elements>
 </model>

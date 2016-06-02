@@ -739,37 +739,50 @@
                                                         <constraint firstAttribute="width" secondItem="Z30-6l-XdB" secondAttribute="height" multiplier="1:1" id="lCv-aS-kU2"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcc-ii-Ua9">
-                                                    <rect key="frame" x="23" y="197" width="27" height="27"/>
-                                                    <color key="backgroundColor" red="0.41568627450000001" green="0.4431372549" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="27" id="8tp-8e-Lez"/>
-                                                        <constraint firstAttribute="width" constant="27" id="u4j-pW-t2E"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuM-fo-jsI">
                                                     <rect key="frame" x="59" y="205" width="541" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fog-la-ZtM">
+                                                    <rect key="frame" x="51" y="252" width="510" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcc-ii-Ua9">
+                                                    <rect key="frame" x="24" y="195" width="27" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="8tp-8e-Lez"/>
+                                                        <constraint firstAttribute="width" constant="27" id="u4j-pW-t2E"/>
+                                                    </constraints>
+                                                    <state key="normal" title="heart"/>
+                                                    <connections>
+                                                        <action selector="like:" destination="Sd0-gP-1E5" eventType="touchUpInside" id="f4U-XK-o1P"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Fog-la-ZtM" firstAttribute="leading" secondItem="fCz-bR-eAc" secondAttribute="leading" constant="10" id="D7q-1j-c1G"/>
+                                                <constraint firstItem="Fog-la-ZtM" firstAttribute="top" secondItem="SuM-fo-jsI" secondAttribute="bottom" constant="15" id="Dgm-Ue-rmH"/>
                                                 <constraint firstItem="SuM-fo-jsI" firstAttribute="top" secondItem="Z30-6l-XdB" secondAttribute="bottom" constant="17" id="Kl6-Ko-hD0"/>
                                                 <constraint firstItem="Z30-6l-XdB" firstAttribute="top" secondItem="fCz-bR-eAc" secondAttribute="top" id="SDP-B2-sCX"/>
                                                 <constraint firstItem="mcc-ii-Ua9" firstAttribute="top" secondItem="Z30-6l-XdB" secondAttribute="bottom" constant="10" id="Xg9-K1-HoS"/>
                                                 <constraint firstAttribute="trailing" secondItem="Z30-6l-XdB" secondAttribute="trailing" id="YcN-8L-W5W"/>
-                                                <constraint firstItem="SuM-fo-jsI" firstAttribute="leading" secondItem="mcc-ii-Ua9" secondAttribute="trailing" constant="15" id="ZLc-s7-6JK"/>
+                                                <constraint firstItem="SuM-fo-jsI" firstAttribute="leading" secondItem="mcc-ii-Ua9" secondAttribute="trailing" constant="10" id="ZLc-s7-6JK"/>
                                                 <constraint firstItem="SuM-fo-jsI" firstAttribute="centerX" secondItem="fCz-bR-eAc" secondAttribute="centerX" id="cDM-Sj-sTY"/>
                                                 <constraint firstItem="Z30-6l-XdB" firstAttribute="leading" secondItem="fCz-bR-eAc" secondAttribute="leading" id="iUa-98-BZc"/>
-                                                <constraint firstItem="mcc-ii-Ua9" firstAttribute="leading" secondItem="fCz-bR-eAc" secondAttribute="leading" constant="20" id="jea-Ot-WXP"/>
+                                                <constraint firstItem="mcc-ii-Ua9" firstAttribute="leading" secondItem="fCz-bR-eAc" secondAttribute="leading" constant="10" id="jea-Ot-WXP"/>
+                                                <constraint firstItem="Fog-la-ZtM" firstAttribute="centerX" secondItem="fCz-bR-eAc" secondAttribute="centerX" id="ndu-Xw-DPJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="Fog-la-ZtM" secondAttribute="trailing" constant="10" id="tnI-HT-cLN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
                                             <constraint firstItem="SuM-fo-jsI" firstAttribute="width" secondItem="LVN-Rg-5Kc" secondAttribute="width" multiplier="0.65" constant="1" id="WQY-zm-irT"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="heartButton" destination="mcc-ii-Ua9" id="GAN-cS-DQh"/>
                                             <outlet property="photo" destination="Z30-6l-XdB" id="TLZ-TG-wt2"/>
                                             <outlet property="photoTitleLabel" destination="SuM-fo-jsI" id="Tgb-Ly-Tg8"/>
                                         </connections>

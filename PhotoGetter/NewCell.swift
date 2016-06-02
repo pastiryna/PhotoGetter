@@ -11,8 +11,8 @@ import UIKit
 class NewCell: UITableViewCell {    
     
     @IBOutlet weak var photo: UIImageView!
-    @IBOutlet weak var photoTitleLabel: UILabel!
-    
+    @IBOutlet weak var photoTitleLabel: UILabel!    
+    @IBOutlet weak var heartButton: UIButton!
     
 
 }

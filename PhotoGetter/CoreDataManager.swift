@@ -131,5 +131,93 @@ class CoreDataManager {
         return false        
     }
 
+    func saveLikedPhoto(url: String) {
+        let managedContext = appDelegate.managedObjectContext
+        let photo = NSEntityDescription.insertNewObjectForEntityForName("AffectedPhotos", inManagedObjectContext: managedContext)
+        photo.setValue(url, forKey: "url")
+        photo.setValue(true, forKey: "isLiked")
+        
+        do{
+            try managedContext.save()
+            print("Photo is saved!")
+            
+        }
+        catch let error as NSError {
+            print(error)
+            print("Can't save liked photo!")
+            
+        }
+
+    }
+    
+    func isLiked(url: String) -> Bool {
+        let managedContext = appDelegate.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "AffectedPhotos")
+        
+        do {
+            let result = try managedContext.executeFetchRequest(request) as! [NSManagedObject]
+            
+            for current in result {
+                if current.valueForKey("url") as! String == url {
+                    return current.valueForKey("isLiked") as! Bool
+                }
+            }
+        }
+            
+        catch {
+            print("Cannot get photos!")
+            
+        }
+        return false
+    }
+    
+    func isPhotoSaved(url: String) -> Bool {
+        let managedContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "AffectedPhotos")
+        
+        do {
+            let result = try managedContext.executeFetchRequest(request) as! [NSManagedObject]
+            
+            for current in result {
+                if current.valueForKey("url") as! String == url {
+                    return true
+                }
+            }
+        }
+            
+        catch {
+            print("Cannot get photos!")
+            
+        }
+        return false
+    }
+    
+    func updatePhoto(url: String, isLiked: Bool) {
+        let managedContext = appDelegate.managedObjectContext
+        let predicate = NSPredicate(format: "%K == %@", "url", "\(url)")
+        let fetchRequest = NSFetchRequest(entityName: "AffectedPhotos")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            let result = results[0]
+            result.setValue(isLiked, forKey: "isLiked")
+        }
+        catch {
+            print(error)
+            
+        }
+        
+        do {
+            try managedContext.save()
+            
+        } catch {
+            print(error)
+        }
+
+
+    
+    }
 
 }

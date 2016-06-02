@@ -16,7 +16,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     
     @IBOutlet weak var photoTable: PhotoGetterTableView!
     @IBOutlet weak var feedBarItem: UITabBarItem!
-    
+
     
     let user_id = "3152442007"
     var photoUrls: [String] = []
@@ -59,7 +59,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     }    
         
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return (self.view.frame.width * 1.3)
+        return (self.view.frame.width * 1.5)
     }
     
 //    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -88,6 +88,10 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Photo Cell", forIndexPath: indexPath) as! NewCell
+        cell.heartButton.tag = indexPath.row
+        cell.heartButton.setFAIcon(FAType.FAHeart, iconSize: 30, forState: UIControlState.Normal)
+        cell.heartButton.setFATitleColor(UIColor.redColor())
+        
         
         let photoUrl = self.photoUrls[indexPath.row]
         if (CacheManager.sharedInstance.objectForKey(photoUrl) != nil) {
@@ -212,5 +216,36 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
 //    func changeNumberOfRows() {
 //        if self.numberOfRows - self.
 //    }
+    
+    @IBAction func like(sender: AnyObject) {
+        let index = sender.tag
+        let cell = self.photoTable.visibleCells[index] as! NewCell
+        
+        if !CoreDataManager.sharedInstance.isPhotoSaved(self.photoUrls[index]) {
+            cell.heartButton.setFATitleColor(UIColor.redColor())
+            CoreDataManager.sharedInstance.saveLikedPhoto(self.photoUrls[index])
+        }
+        else {
+            if CoreDataManager.sharedInstance.isLiked(self.photoUrls[index]) {
+                cell.heartButton.setFATitleColor(UIColor.grayColor())
+                CoreDataManager.sharedInstance.updatePhoto(self.photoUrls[index], isLiked: false)
+            }
+            else {
+                cell.heartButton.setFATitleColor(UIColor.redColor())
+                CoreDataManager.sharedInstance.updatePhoto(self.photoUrls[index], isLiked: true)
+            }
+        }
+        
+    }
+    
+    func heartColor(index: Int) -> UIColor {
+//        if CoreDataManager.sharedInstance.isLiked(self.photoUrls[index]) {
+//            return UIColor.redColor()
+//        }
+        return UIColor.grayColor()
+    }
+    
+
+
 
 }

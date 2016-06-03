@@ -24,7 +24,7 @@ class FollowersList: BaseViewController, UITableViewDataSource, UITableViewDeleg
         
         self.followersTableView.delegate = self
         self.followersTableView.dataSource = self
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.hidden = false
         self.tabBarController?.hidesBottomBarWhenPushed = false
         
         self.navigationController?.navigationBar.barTintColor = Constants.BRAND_COLOR

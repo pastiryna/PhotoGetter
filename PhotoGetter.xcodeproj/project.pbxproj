@@ -32,6 +32,7 @@
 		CC91BA071CCF662900FA23AF /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91BA061CCF662900FA23AF /* PhotoCell.swift */; };
 		CCB8C79E1CE4C18200A60EC3 /* GalleryCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */; };
 		CCBD03821CE366AF002722EC /* ViewControllerWithTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */; };
+		CCD635C91D01810A0019D596 /* PhotoComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD635C81D01810A0019D596 /* PhotoComments.swift */; };
 		CCDCC0151CCA23BC00CB9A9E /* InstaUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */; };
 		CCE7EA9D1CF6F6B500FB3D91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE7EA9C1CF6F6B500FB3D91 /* Constants.swift */; };
 		CCE7EAA21CF72C1500FB3D91 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE7EAA11CF72C1500FB3D91 /* CoreDataManager.swift */; };
@@ -73,6 +74,7 @@
 		CC91BA061CCF662900FA23AF /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCameraViewController.swift; sourceTree = "<group>"; };
 		CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWithTabBar.swift; sourceTree = "<group>"; };
+		CCD635C81D01810A0019D596 /* PhotoComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoComments.swift; sourceTree = "<group>"; };
 		CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUser.swift; sourceTree = "<group>"; };
 		CCE7EA9C1CF6F6B500FB3D91 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CCE7EAA11CF72C1500FB3D91 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				CC74FA8F1CDA1250004C44CD /* ViewWithTable.swift */,
 				CC74FA931CDA16EF004C44CD /* PhotoGetterTableView.swift */,
 				CC74FA951CDA1D85004C44CD /* NewCell.swift */,
+				CCD635C81D01810A0019D596 /* PhotoComments.swift */,
 			);
 			name = PhotoTable;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				CC07BA871CC6888000FD276F /* Login.swift in Sources */,
 				CC40362C1CFD7016008A9094 /* EditProfileCell2.swift in Sources */,
 				CC74FA941CDA16EF004C44CD /* PhotoGetterTableView.swift in Sources */,
+				CCD635C91D01810A0019D596 /* PhotoComments.swift in Sources */,
 				CC11BD9C1CC7D12700696F07 /* InstagramAPIManager.swift in Sources */,
 				CCDCC0151CCA23BC00CB9A9E /* InstaUser.swift in Sources */,
 				CC74FA901CDA1250004C44CD /* ViewWithTable.swift in Sources */,

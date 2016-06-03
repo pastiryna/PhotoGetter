@@ -11,12 +11,12 @@ import MBProgressHUD
 
 
 
-class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
     
     @IBOutlet weak var photoTable: PhotoGetterTableView!
     @IBOutlet weak var feedBarItem: UITabBarItem!
-
+    @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
     
     let user_id = "3152442007"
     var photoUrls: [String] = []
@@ -38,13 +38,22 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         photoTable.delegate = self
         photoTable.dataSource = self
         
+        self.gestureRecognizer.delegate = self
+       
+        
         self.reloadTable()
         
         self.showLoader("Loading...")
         
-       
+        self.navigationController!.navigationBar.hidden = false
+
+        self.hidesBottomBarWhenPushed = false
+        self.navigationController!.navigationBar.barTintColor = Constants.BRAND_COLOR
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+
         
-        self.refreshControl.addTarget(self, action: "refreshHandler", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(ViewWithTable.refreshHandler), forControlEvents: UIControlEvents.ValueChanged)
         self.photoTable.addSubview(self.refreshControl)
         
 //        self.photoTable.tableFooterView?.addSubview(self.footerRefresh)
@@ -53,9 +62,16 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         self.refreshData()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        self.navigationController?.navigationBar.hidden = false
+
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.navigationBar.hidden = false
+
     }    
         
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -250,6 +266,13 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
             return UIColor.grayColor() }
     }
     
+    
+    @IBAction func showComments(sender: AnyObject) {
+//        let comments = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoComments") as! PhotoComments
+//        self.presentViewController(comments, animated: true, completion: nil)
+    
+    
+    }
 
 
 

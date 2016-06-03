@@ -111,14 +111,24 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
+        
+        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.pickedImage = image
-            print("URL \(info[UIImagePickerControllerReferenceURL]?.absoluteString)")
-            let path: String = info[UIImagePickerControllerReferenceURL]!.absoluteString
-            if self.delegate != nil {
-                self.delegate.imageAssetChoosen(self.pickedImage, imagePath: path)
+            if picker.sourceType == .Camera {
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.savedImage(_:didFinishSavingWithError:contextInfo:)), nil)
+                dismissViewControllerAnimated(true, completion: nil)
             }
-            dismissViewControllerAnimated(true, completion: nil)
+            else {
+                self.pickedImage = image
+                print("URL \(info[UIImagePickerControllerReferenceURL]?.absoluteString)")
+                let path: String = info[UIImagePickerControllerReferenceURL]!.absoluteString
+                if self.delegate != nil {
+                    self.delegate.imageAssetChoosen(self.pickedImage, imagePath: path)
+                }
+                dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+            
 
         }
         else if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
@@ -132,6 +142,14 @@ class GalleryCameraViewController: BaseViewController, UIPageViewControllerDataS
         } else {
             print("Nothing has been picked")
             return
+        }
+    }
+    
+    func savedImage(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+        if error == nil {
+            print(contextInfo)
+        } else {
+            
         }
     }
     

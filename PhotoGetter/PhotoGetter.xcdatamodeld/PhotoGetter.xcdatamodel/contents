@@ -3,6 +3,7 @@
     <entity name="AffectedPhotos" syncable="YES">
         <attribute name="isLiked" attributeType="Boolean" syncable="YES"/>
         <attribute name="url" attributeType="String" syncable="YES"/>
+        <relationship name="comment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PhotoComment" inverseName="affectedphotos" inverseEntity="PhotoComment" syncable="YES"/>
     </entity>
     <entity name="InstaUser" syncable="YES">
         <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,8 +13,13 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="PhotoComment" syncable="YES">
+        <attribute name="comment" attributeType="String" syncable="YES"/>
+        <relationship name="affectedphotos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AffectedPhotos" inverseName="comment" inverseEntity="AffectedPhotos" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="AffectedPhotos" positionX="-54" positionY="36" width="128" height="90"/>
         <element name="InstaUser" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="AffectedPhotos" positionX="-54" positionY="36" width="128" height="75"/>
+        <element name="PhotoComment" positionX="-54" positionY="27" width="128" height="75"/>
     </elements>
 </model>

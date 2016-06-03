@@ -851,7 +851,7 @@
                                         <state key="normal" title="Post"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.97292917653133992" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="tN4-Dv-s2W" firstAttribute="leading" secondItem="Ccv-j6-X30" secondAttribute="leading" constant="10" id="InM-Pw-rCn"/>
                                     <constraint firstAttribute="height" constant="48" id="KLv-v7-3oQ"/>

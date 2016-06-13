@@ -171,8 +171,27 @@ class CoreDataManager {
         }
         return false
     }
+//    
+//    func getAllPhotosWithComments() -> [String]? {
+//        var allPhotos: [String]?
+//        let managedContext = appDelegate.managedObjectContext
+//        let request = NSFetchRequest(entityName: "AffectedPhotos")
+//        do {
+//            let result = try managedContext.executeFetchRequest(request) as! [NSManagedObject]
+//            for current in result {
+//                allPhotos?.append(current as! String)
+//            }
+//        }
+//            
+//        catch {
+//            print("Cannot get photos!")
+//            
+//        }
+//        return allPhotos
+//    }
     
-    func isPhotoSaved(url: String) -> Bool {
+    
+    func isPhotoLiked(url: String) -> Bool {
         let managedContext = appDelegate.managedObjectContext
         let request = NSFetchRequest(entityName: "AffectedPhotos")
         
@@ -222,33 +241,33 @@ class CoreDataManager {
     func addCommentToPhoto(text: String, photoUrl: String) {
         let managedContext = appDelegate.managedObjectContext
         let comment = NSEntityDescription.insertNewObjectForEntityForName("PhotoComment", inManagedObjectContext: managedContext)
-        
         comment.setValue(text, forKey: "comment")
+        comment.setValue(photoUrl, forKey: "url")
      
-        do {
-            try managedContext.save()
-            //existingUsers.append(user as! User)
-            print("Comment is saved!")
-            
-        }
-        catch let error as NSError {
-            print(error)
-            print("Can't save a comment!")
-            
-        }
+//        do {
+//            try managedContext.save()
+//            //existingUsers.append(user as! User)
+//            print("Comment is saved!")
+//            
+//        }
+//        catch let error as NSError {
+//            print(error)
+//            print("Can't save a comment!")
+//            
+//        }
         
-        let predicate = NSPredicate(format: "%K == %@", "url", "\(photoUrl)")
-        let fetchRequest = NSFetchRequest(entityName: "AffectedPhotos")
-        fetchRequest.predicate = predicate
-        
-        do {
-            let results = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-            let result = results[0]
-            result.setValue(NSSet(object: comment), forKey: "comment")        }
-        catch {
-            print(error)
-            
-        }
+//        let predicate = NSPredicate(format: "%K == %@", "url", "\(photoUrl)")
+//        let fetchRequest = NSFetchRequest(entityName: "AffectedPhotos")
+//        fetchRequest.predicate = predicate
+//        
+//        do {
+//            let results = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+//            let result = results[0]
+//            result.setValue(NSSet(object: comment), forKey: "comment")        }
+//        catch {
+//            print(error)
+//            
+//        }
         
         do {
             try managedContext.save()
@@ -261,5 +280,77 @@ class CoreDataManager {
         }
 
     }
+   
+    
+    //check if works:
+    
+    func getPhotoComments(photoUrl: String) -> [String] {
+        var photoComments = [String]()
+        let managedContext = appDelegate.managedObjectContext
+        let predicate = NSPredicate(format: "%K == %@", "url", "\(photoUrl)")
+        let fetchRequest = NSFetchRequest(entityName: "PhotoComment")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            if results.count > 0 {
+                 for i in results {
+                    photoComments.append(i.valueForKey("comment") as! String)
+                    print(i)
+                }
+                            }
+        }
+        catch let error as NSError {
+            print(error)
+            return photoComments
+        }
+        return photoComments
 
+    }
+    
+    func getAllComments() -> [String]? {
+        var allComments: [String]?
+        let managedContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "PhotoComment")
+        
+        do {
+            let result = try managedContext.executeFetchRequest(request) as! [NSManagedObject]
+            for comment in result {
+                allComments?.append(comment as! String)
+            }
+            
+        }
+            
+        catch {
+            print("Cannot get comments!")
+            
+        }
+        return allComments
+    
+    }
+    
+    func isPhotoCommented(url: String) -> Bool {
+        let managedContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "PhotoComment")
+        
+        do {
+            let result = try managedContext.executeFetchRequest(request) as! [NSManagedObject]
+            
+            for current in result {
+                if current.valueForKey("url") as! String == url {
+                    return true
+                }
+            }
+        }
+            
+        catch {
+            print("Cannot get photos!")
+            
+        }
+        return false
+    }
+
+    
+    
+    
 }

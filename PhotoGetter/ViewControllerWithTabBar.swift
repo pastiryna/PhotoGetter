@@ -40,9 +40,10 @@ class ViewControllerWithTabBar: UIViewController, UIPageViewControllerDataSource
         
         
         self.navigationController?.navigationBarHidden = false
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
         self.feedBarItem.setFAIcon(FAType.FAHome)
         self.galleryCameraBarItem.setFAIcon(FAType.FACamera)
-        self.profileBarItem.setFAIcon(FAType.FAUser)
+        self.profileBarItem.setFAIcon(FAType.FAUser) })
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self

@@ -14,9 +14,13 @@ class PhotoComments: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentTable: UITableView!
     @IBOutlet weak var commentField: UITextField!
-  
+    @IBOutlet weak var postComment: UIButton!
+        
+    var commentProvider: CommentProvider = CommentProvider()
+    var photoUrl: String?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.navigationController?.navigationBarHidden = false
@@ -25,6 +29,12 @@ class PhotoComments: BaseViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         self.commentField.delegate = self
+        
+        self.commentTable.delegate = commentProvider
+        self.commentTable.dataSource = commentProvider
+        
+        
+       
 
     }
     
@@ -73,6 +83,33 @@ class PhotoComments: BaseViewController, UITextFieldDelegate {
             self.bottomConstraint.constant = CGRectGetMaxY(self.view.bounds) - CGRectGetMinY(convertedKeyboardEndFrame)
             }, completion: nil)
     }
+    
+    @IBAction func postComment(sender: AnyObject) {
+        
+        //update existing or add new
+        if let comment = self.commentField.text {
+             CoreDataManager.sharedInstance.addCommentToPhoto(comment, photoUrl: self.photoUrl!)
+             //self.view.endEditing(true)
+            self.commentField.resignFirstResponder()
+            self.bottomConstraint.constant = 0
+            self.commentField.text = ""
+             self.reloadTable()
+        }
+        else {
+            self.reloadTable()
+            return
+        }
+    }
+    
+    func reloadTable() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.commentTable.reloadData()
+        
+        })
+    
+    }
+    
+    
     
     
 

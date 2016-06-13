@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationBarDelegate {
+class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationBarDelegate, UIScrollViewDelegate, ScrollDelegate {
 
     @IBOutlet weak var switchToCollectionButton: UIButton!
     @IBOutlet weak var switchToTableButton: UIButton!
@@ -26,6 +26,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     @IBOutlet weak var followingButton: UIButton!    
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var editButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
     
     
     var viewWithTable: ViewWithTable!
@@ -35,6 +36,7 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
     var user: InstaUser = InstaUser()
     var followersUrl: String!
     var followingUrl: String!
+    
     
     
     
@@ -65,12 +67,15 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         
         let secondPage = self.storyboard?.instantiateViewControllerWithIdentifier("ViewWithTable") as! ViewWithTable
         secondPage.user.id = self.user.id
+        secondPage.scrollDelegate = self
+        
         self.contentPageViewControllers = [firstPage, secondPage]
         
         self.pageViewController.setViewControllers([self.contentPageViewControllers[0]], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         self.addChildViewController(self.pageViewController)
         self.profileContainer.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
+        //secondPage.photoTable.delegate = self
         
         
         
@@ -303,5 +308,12 @@ class Profile: BaseViewController, UIPageViewControllerDataSource, UINavigationB
         }
 
     }
+    
+    func tableWasScrolled(scrollView: UIScrollView) {
+        
+        
+    }
+    
+    
 }
 

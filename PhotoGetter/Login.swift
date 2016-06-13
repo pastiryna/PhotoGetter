@@ -34,13 +34,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITabBar
     
     
     @IBAction func login(sender: AnyObject) {
-        if self.isLoggedtoInstagram() {
-            self.performSegueWithIdentifier("Show Table", sender: sender)
-        }
-        
-        else {
+//        if self.isLoggedtoInstagram() {
+//            self.performSegueWithIdentifier("Show Table", sender: sender)
+//        }
+//        
+//        else {
             performSegueWithIdentifier("Show Login", sender: sender)
-        }
+//        }
         
     }
     

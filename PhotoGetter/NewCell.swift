@@ -8,10 +8,12 @@
 
 import UIKit
 
-class NewCell: UITableViewCell {    
+class NewCell: UITableViewCell {
     
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var photoTitleLabel: UILabel!    
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var commentsTable: UITableView!
-}
+    
+    
+  }

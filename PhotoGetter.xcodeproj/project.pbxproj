@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0144E11D0B008300B0648E /* CommentsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0144E01D0B008300B0648E /* CommentsProvider.swift */; };
 		CC07BA851CC6888000FD276F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07BA841CC6888000FD276F /* AppDelegate.swift */; };
 		CC07BA871CC6888000FD276F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07BA861CC6888000FD276F /* Login.swift */; };
 		CC07BA8A1CC6888000FD276F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC07BA881CC6888000FD276F /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		CCB8C79E1CE4C18200A60EC3 /* GalleryCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */; };
 		CCBD03821CE366AF002722EC /* ViewControllerWithTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */; };
 		CCD635C91D01810A0019D596 /* PhotoComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD635C81D01810A0019D596 /* PhotoComments.swift */; };
+		CCD635CB1D01DB320019D596 /* EmbeddedCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD635CA1D01DB320019D596 /* EmbeddedCommentCell.swift */; };
 		CCDCC0151CCA23BC00CB9A9E /* InstaUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */; };
 		CCE7EA9D1CF6F6B500FB3D91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE7EA9C1CF6F6B500FB3D91 /* Constants.swift */; };
 		CCE7EAA21CF72C1500FB3D91 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE7EAA11CF72C1500FB3D91 /* CoreDataManager.swift */; };
@@ -48,6 +50,7 @@
 /* Begin PBXFileReference section */
 		55BB3960C3A8323B0469A89F /* Pods-PhotoGetter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGetter.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoGetter/Pods-PhotoGetter.release.xcconfig"; sourceTree = "<group>"; };
 		588817ACDCD5D043A1B47EC6 /* Pods_PhotoGetter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoGetter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC0144E01D0B008300B0648E /* CommentsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsProvider.swift; sourceTree = "<group>"; };
 		CC07BA811CC6888000FD276F /* PhotoGetter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGetter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC07BA841CC6888000FD276F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC07BA861CC6888000FD276F /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 		CCB8C79D1CE4C18200A60EC3 /* GalleryCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCameraViewController.swift; sourceTree = "<group>"; };
 		CCBD03811CE366AF002722EC /* ViewControllerWithTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWithTabBar.swift; sourceTree = "<group>"; };
 		CCD635C81D01810A0019D596 /* PhotoComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoComments.swift; sourceTree = "<group>"; };
+		CCD635CA1D01DB320019D596 /* EmbeddedCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddedCommentCell.swift; sourceTree = "<group>"; };
 		CCDCC0141CCA23BC00CB9A9E /* InstaUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaUser.swift; sourceTree = "<group>"; };
 		CCE7EA9C1CF6F6B500FB3D91 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CCE7EAA11CF72C1500FB3D91 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -186,7 +190,9 @@
 				CC74FA8F1CDA1250004C44CD /* ViewWithTable.swift */,
 				CC74FA931CDA16EF004C44CD /* PhotoGetterTableView.swift */,
 				CC74FA951CDA1D85004C44CD /* NewCell.swift */,
+				CCD635CA1D01DB320019D596 /* EmbeddedCommentCell.swift */,
 				CCD635C81D01810A0019D596 /* PhotoComments.swift */,
+				CC0144E01D0B008300B0648E /* CommentsProvider.swift */,
 			);
 			name = PhotoTable;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 			files = (
 				CCE7EA9D1CF6F6B500FB3D91 /* Constants.swift in Sources */,
 				CCF2340F1CEDBBD800D56FE6 /* FollowersList.swift in Sources */,
+				CC0144E11D0B008300B0648E /* CommentsProvider.swift in Sources */,
 				CC91BA051CCF638900FA23AF /* PhotoTable.swift in Sources */,
 				CC78AF541CE9E40900004CF3 /* FAIcon.swift in Sources */,
 				CC74FA991CDA29B9004C44CD /* Profile.swift in Sources */,
@@ -401,6 +408,7 @@
 				CC07BA8D1CC6888000FD276F /* PhotoGetter.xcdatamodeld in Sources */,
 				CCE7EAA21CF72C1500FB3D91 /* CoreDataManager.swift in Sources */,
 				CC07BA851CC6888000FD276F /* AppDelegate.swift in Sources */,
+				CCD635CB1D01DB320019D596 /* EmbeddedCommentCell.swift in Sources */,
 				CCE7EAA71CF743CF00FB3D91 /* EditProfileCell.swift in Sources */,
 				CC11BD9A1CC7BA8E00696F07 /* LoginWebView.swift in Sources */,
 				CCFE499A1CEB19E20079C932 /* ProfileCollectionViewController.swift in Sources */,

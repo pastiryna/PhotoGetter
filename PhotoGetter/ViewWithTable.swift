@@ -9,15 +9,19 @@
 import UIKit
 import MBProgressHUD
 
+protocol ScrollDelegate {
+    func tableWasScrolled(scrollView: UIScrollView)
+}
 
 
 class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
     
     @IBOutlet weak var photoTable: PhotoGetterTableView!
-    @IBOutlet weak var feedBarItem: UITabBarItem!
-    @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
-    
+    @IBOutlet weak var feedBarItem: UITabBarItem!   
+    @IBOutlet var openCommentsGesture: UITapGestureRecognizer!
+
+   
     let user_id = "3152442007"
     var photoUrls: [String] = []
     let acc_tok = "3152442007.6080917.b6d6d78fd7d943b8bd86ca07258a5336"
@@ -28,6 +32,8 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     var numberOfRows = 2
     var isLoading = false
     var user = InstaUser()
+    var scrollDelegate: ScrollDelegate! = nil
+    var commentProvider: CommentProvider = CommentProvider()
     
     let mario = "http://www.imagenspng.com.br/wp-content/uploads/2015/02/small-super-mario.png"
     var userPhotos: [UserPhoto] = []
@@ -38,7 +44,8 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         photoTable.delegate = self
         photoTable.dataSource = self
         
-        self.gestureRecognizer.delegate = self
+        self.openCommentsGesture.delegate = self
+        //self.openCommentsGesture.view?.tag = 0
        
         
         self.reloadTable()
@@ -56,20 +63,24 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         self.refreshControl.addTarget(self, action: #selector(ViewWithTable.refreshHandler), forControlEvents: UIControlEvents.ValueChanged)
         self.photoTable.addSubview(self.refreshControl)
         
-//        self.photoTable.tableFooterView?.addSubview(self.footerRefresh)
+//       self.photoTable.tableFooterView?.addSubview(self.footerRefresh)
          self.photoTable.tableFooterView?.hidden = false
         
+        self.commentProvider.comments = CoreDataManager.sharedInstance.getAllComments()
+        //self.commentProvider.photoUrls = self.photoUrls
         self.refreshData()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        self.reloadTable()
         self.navigationController?.navigationBar.hidden = false
 
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        self.reloadTable()
         self.navigationController?.navigationBar.hidden = false
 
     }    
@@ -105,9 +116,10 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Photo Cell", forIndexPath: indexPath) as! NewCell
         cell.heartButton.tag = indexPath.row
+        //self.openCommentsGesture.view?.tag = indexPath.row
+        cell.tag = indexPath.row
         cell.heartButton.setFAIcon(FAType.FAHeart, iconSize: 30, forState: UIControlState.Normal)
         cell.heartButton.setFATitleColor(self.heartColor(indexPath.row))
-        
         
         let photoUrl = self.photoUrls[indexPath.row]
         if (CacheManager.sharedInstance.objectForKey(photoUrl) != nil) {
@@ -116,7 +128,6 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
             cell.photoTitleLabel.text = self.userPhotos[indexPath.row].timePassed()
             print("Date \(self.userPhotos[indexPath.row].timePassed())")
             print("Cashed Image for row \(indexPath.row)")
-            return cell
         }
         else {
             Utils.loadImage(photoUrl, completion: { (image, loaded) -> Void in
@@ -142,9 +153,25 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
                     })
                 }
             })
-            return cell
         }
+        //add comments to cell:
         
+        
+        //cell.commentsTable.delegate = cell
+        //cell.commentsTable.tag = indexPath.row
+        //cell.commentsTable.dataSource = cell
+        
+        
+        cell.commentsTable.tag = indexPath.row
+        cell.commentsTable.delegate = self.commentProvider
+        cell.commentsTable.dataSource = self.commentProvider
+        commentProvider.comments = CoreDataManager.sharedInstance.getPhotoComments(self.photoUrls[indexPath.row])
+       // commentProvider.commentsOnFeed = true
+        cell.commentsTable.reloadData()
+       
+        
+        return cell
+ 
     }
     
     func reloadTable() {
@@ -184,6 +211,10 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        if self.scrollDelegate != nil {
+            self.scrollDelegate.tableWasScrolled(scrollView)}
+        
         let currentOffset = scrollView.contentOffset.y
         let maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
         let deltaOffset = currentOffset - maxOffset
@@ -238,7 +269,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
        // print(index)
        //print(self.numberOfRows)
        
-        if !CoreDataManager.sharedInstance.isPhotoSaved(self.photoUrls[index]) {
+        if !CoreDataManager.sharedInstance.isPhotoLiked(self.photoUrls[index]) {
             (sender as! UIButton).setFATitleColor(UIColor.redColor())
             //cell.heartButton.setFATitleColor(UIColor.redColor())
             CoreDataManager.sharedInstance.saveLikedPhoto(self.photoUrls[index])
@@ -248,11 +279,13 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
                 (sender as! UIButton).setFATitleColor(UIColor.grayColor())
                 //cell.heartButton.setFATitleColor(UIColor.grayColor())
                 CoreDataManager.sharedInstance.updatePhoto(self.photoUrls[index], isLiked: false)
+                
             }
             else {
                // cell.heartButton.setFATitleColor(UIColor.redColor())
                 (sender as! UIButton).setFATitleColor(UIColor.redColor())
                 CoreDataManager.sharedInstance.updatePhoto(self.photoUrls[index], isLiked: true)
+                
             }
         }
         
@@ -268,12 +301,17 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
     
     
     @IBAction func showComments(sender: AnyObject) {
-//        let comments = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoComments") as! PhotoComments
-//        self.presentViewController(comments, animated: true, completion: nil)
-    
+        let index = sender.view.tag
+        print("Index = \(index)")
+        let commentsView = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoComments") as! PhotoComments
+        commentsView.photoUrl = self.photoUrls[index]        
+        commentsView.commentProvider.comments = CoreDataManager.sharedInstance.getPhotoComments(self.photoUrls[index])
+
+        commentsView.navigationController?.navigationBarHidden = false
+        commentsView.tabBarController?.tabBar.hidden = true
+       // self.navigationController?.presentViewController(comments, animated: true, completion: nil)
+        self.navigationController?.viewControllers.append(commentsView)
     
     }
-
-
 
 }

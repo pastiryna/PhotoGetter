@@ -339,6 +339,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bioLabel" destination="tYg-rc-XFb" id="WPi-99-hsL"/>
+                        <outlet property="containerHeightConstraint" destination="DO2-uC-eQk" id="CfQ-M0-fz4"/>
                         <outlet property="editButtonWidthConstraint" destination="eIX-6v-btA" id="6ps-zl-BtC"/>
                         <outlet property="editProfileButton" destination="PZz-qS-aBp" id="uUK-oE-IUm"/>
                         <outlet property="followersButton" destination="fuT-bF-EQN" id="kjH-l1-5DL"/>
@@ -756,22 +757,43 @@
                                                         <action selector="like:" destination="Sd0-gP-1E5" eventType="touchUpInside" id="f4U-XK-o1P"/>
                                                     </connections>
                                                 </button>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jRS-au-xim">
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jRS-au-xim">
                                                     <rect key="frame" x="0.0" y="241" width="600" height="313"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="128" id="aFi-2L-m9d"/>
                                                     </constraints>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="83" id="Tro-Vo-EjK">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmbeddedCommentCell" rowHeight="83" id="Tro-Vo-EjK" customClass="EmbeddedCommentCell" customModule="PhotoGetter" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="600" height="83"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tro-Vo-EjK" id="9i4-Xk-WH1">
-                                                                <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJk-I1-Hrr">
+                                                                        <rect key="frame" x="279" y="30" width="42" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="sJk-I1-Hrr" firstAttribute="leading" secondItem="9i4-Xk-WH1" secondAttribute="leading" constant="3" id="FHd-zi-Noq"/>
+                                                                    <constraint firstItem="sJk-I1-Hrr" firstAttribute="top" secondItem="9i4-Xk-WH1" secondAttribute="top" id="M0q-pS-45E"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="sJk-I1-Hrr" secondAttribute="bottom" id="pdf-We-hSY"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="sJk-I1-Hrr" secondAttribute="trailing" constant="3" id="tcn-jh-lpl"/>
+                                                                </constraints>
                                                             </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="commentLabel" destination="sJk-I1-Hrr" id="0tL-lr-oCb"/>
+                                                            </connections>
                                                         </tableViewCell>
                                                     </prototypes>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="8Vh-yQ-lyI" appends="YES" id="vGK-RV-3gW"/>
+                                                    </connections>
                                                 </tableView>
                                             </subviews>
                                             <constraints>
@@ -788,6 +810,7 @@
                                                 <constraint firstItem="jRS-au-xim" firstAttribute="leading" secondItem="fCz-bR-eAc" secondAttribute="leading" id="vBd-gT-jly"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="SuM-fo-jsI" firstAttribute="width" secondItem="LVN-Rg-5Kc" secondAttribute="width" multiplier="0.5" constant="1" id="WQY-zm-irT"/>
                                         </constraints>
@@ -815,19 +838,18 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="feedBarItem" destination="U4m-7G-QzI" id="H3M-YZ-wpq"/>
-                        <outlet property="gestureRecognizer" destination="LkV-5s-L4U" id="Iny-88-zEI"/>
+                        <outlet property="openCommentsGesture" destination="8Vh-yQ-lyI" id="cwh-Dm-M4R"/>
                         <outlet property="photoTable" destination="Ure-Up-IU9" id="ONT-7A-b0f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jd2-q0-Srk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="LkV-5s-L4U">
+                <tapGestureRecognizer id="8Vh-yQ-lyI">
                     <connections>
-                        <action selector="showComments:" destination="Sd0-gP-1E5" id="O5Q-m7-746"/>
-                        <segue destination="8Vb-yO-OeP" kind="show" id="AsM-Tc-mz2"/>
+                        <action selector="showComments:" destination="Sd0-gP-1E5" id="HOZ-XI-GDs"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2990" y="1214"/>
+            <point key="canvasLocation" x="2990" y="1202"/>
         </scene>
         <!--Photo Comments-->
         <scene sceneID="QSL-ho-fec">
@@ -844,6 +866,33 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IgV-ZP-do2">
                                 <rect key="frame" x="0.0" y="20" width="600" height="532"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmbeddedCommentCell" id="4K4-dX-RQ3" customClass="EmbeddedCommentCell" customModule="PhotoGetter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4K4-dX-RQ3" id="otM-gt-53N">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdY-ft-uYq">
+                                                    <rect key="frame" x="302" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="fdY-ft-uYq" secondAttribute="bottom" id="59v-gC-CF9"/>
+                                                <constraint firstItem="fdY-ft-uYq" firstAttribute="leading" secondItem="otM-gt-53N" secondAttribute="leading" id="NEj-4h-2Tp"/>
+                                                <constraint firstItem="fdY-ft-uYq" firstAttribute="top" secondItem="otM-gt-53N" secondAttribute="top" id="pKk-JQ-Nl3"/>
+                                                <constraint firstAttribute="trailing" secondItem="fdY-ft-uYq" secondAttribute="trailing" id="rUx-sj-hcY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="fdY-ft-uYq" id="UWZ-t6-nWx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ccv-j6-X30">
                                 <rect key="frame" x="0.0" y="552" width="600" height="48"/>
@@ -856,6 +905,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keV-tP-6sm">
                                         <rect key="frame" x="523" y="9" width="46" height="30"/>
                                         <state key="normal" title="Post"/>
+                                        <connections>
+                                            <action selector="postComment:" destination="8Vb-yO-OeP" eventType="touchUpInside" id="SvU-fI-pOr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.97292917653133992" alpha="1" colorSpace="calibratedWhite"/>
@@ -881,15 +933,17 @@
                             <constraint firstItem="Ccv-j6-X30" firstAttribute="top" secondItem="IgV-ZP-do2" secondAttribute="bottom" id="m37-4r-p3t"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="2bk-A8-P99"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="fvD-k2-2fv" id="u2j-dl-SQ9"/>
                         <outlet property="commentField" destination="tN4-Dv-s2W" id="tro-TU-vkr"/>
                         <outlet property="commentTable" destination="IgV-ZP-do2" id="hfQ-vd-Kvu"/>
+                        <outlet property="postComment" destination="keV-tP-6sm" id="Ssc-Jg-6LA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EXU-sU-c06" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3703" y="1214"/>
+            <point key="canvasLocation" x="4404" y="1202"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="01o-Jj-WOZ">
@@ -928,13 +982,28 @@
             </objects>
             <point key="canvasLocation" x="2286" y="1202"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JEZ-9O-zk9">
+            <objects>
+                <navigationController storyboardIdentifier="CommentsNavController" automaticallyAdjustsScrollViewInsets="NO" id="JPd-RR-rpA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UtO-NS-S1f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5rh-IH-fVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3703" y="1202"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="324" height="576"/>
         <image name="defaultImage" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vlf-6U-kRj"/>
+        <segue reference="RbI-8y-VyU"/>
         <segue reference="Djb-b6-cMX"/>
         <segue reference="ggO-nO-mX3"/>
     </inferredMetricsTieBreakers>

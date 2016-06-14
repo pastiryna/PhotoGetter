@@ -88,12 +88,17 @@ class PhotoComments: BaseViewController, UITextFieldDelegate {
         
         //update existing or add new
         if let comment = self.commentField.text {
-             CoreDataManager.sharedInstance.addCommentToPhoto(comment, photoUrl: self.photoUrl!)
-             //self.view.endEditing(true)
-            self.commentField.resignFirstResponder()
-            self.bottomConstraint.constant = 0
-            self.commentField.text = ""
-             self.reloadTable()
+            if comment == "" {
+                return
+            }
+            else {
+                 CoreDataManager.sharedInstance.addCommentToPhoto(comment, photoUrl: self.photoUrl!)
+                 //self.view.endEditing(true)
+                self.commentField.resignFirstResponder()
+                self.bottomConstraint.constant = 0
+                self.commentField.text = ""
+                 self.reloadTable()
+            }
         }
         else {
             self.reloadTable()

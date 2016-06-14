@@ -24,6 +24,9 @@ class CommentProvider: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if self.commentsOnFeed {
+            return 20
+        }
         return 30
     }
 

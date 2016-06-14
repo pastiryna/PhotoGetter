@@ -713,7 +713,7 @@
         <!--Feed-->
         <scene sceneID="pbM-3q-I1Y">
             <objects>
-                <viewController storyboardIdentifier="ViewWithTable" id="Sd0-gP-1E5" customClass="ViewWithTable" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewWithTable" automaticallyAdjustsScrollViewInsets="NO" id="Sd0-gP-1E5" customClass="ViewWithTable" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qc4-ay-EI0"/>
                         <viewControllerLayoutGuide type="bottom" id="t3r-Uj-wOO"/>
@@ -722,13 +722,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="697" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ure-Up-IU9" customClass="PhotoGetterTableView" customModule="PhotoGetter" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="697" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ure-Up-IU9" customClass="PhotoGetterTableView" customModule="PhotoGetter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.25891382600000001" green="1" blue="0.37761858590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="Photo Cell" rowHeight="697" id="LVN-Rg-5Kc" customClass="NewCell" customModule="PhotoGetter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="65" width="600" height="697"/>
+                                        <rect key="frame" x="0.0" y="1" width="600" height="697"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LVN-Rg-5Kc" id="fCz-bR-eAc">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="696"/>
@@ -854,7 +854,7 @@
         <!--Photo Comments-->
         <scene sceneID="QSL-ho-fec">
             <objects>
-                <viewController storyboardIdentifier="PhotoComments" id="8Vb-yO-OeP" customClass="PhotoComments" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoComments" automaticallyAdjustsScrollViewInsets="NO" id="8Vb-yO-OeP" customClass="PhotoComments" customModule="PhotoGetter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Wl-Mz-8Tr"/>
                         <viewControllerLayoutGuide type="bottom" id="aG1-CB-IcK"/>
@@ -883,9 +883,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="fdY-ft-uYq" secondAttribute="bottom" id="59v-gC-CF9"/>
-                                                <constraint firstItem="fdY-ft-uYq" firstAttribute="leading" secondItem="otM-gt-53N" secondAttribute="leading" id="NEj-4h-2Tp"/>
+                                                <constraint firstItem="fdY-ft-uYq" firstAttribute="leading" secondItem="otM-gt-53N" secondAttribute="leading" constant="2" id="NEj-4h-2Tp"/>
                                                 <constraint firstItem="fdY-ft-uYq" firstAttribute="top" secondItem="otM-gt-53N" secondAttribute="top" id="pKk-JQ-Nl3"/>
-                                                <constraint firstAttribute="trailing" secondItem="fdY-ft-uYq" secondAttribute="trailing" id="rUx-sj-hcY"/>
+                                                <constraint firstAttribute="trailing" secondItem="fdY-ft-uYq" secondAttribute="trailing" constant="2" id="rUx-sj-hcY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -14,7 +14,7 @@ import UIKit
 class CommentProvider: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     var comments: [String]?
-    //var commentsOnFeed: Bool = false
+    var commentsOnFeed: Bool = false
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 //        if self.comments == nil {
@@ -28,21 +28,26 @@ class CommentProvider: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if self.commentsOnFeed {
-//            if self.comments == nil {
-//                return 1
-//            }
-//            else if self.comments?.count > 2 {
-//                return 2
-//            }
-//        }
+        if self.commentsOnFeed {
+            if self.comments == nil {
+                return 1
+            }
+            else if self.comments?.count > 2 {
+                return 2
+            }
+        }
+        else {
         
         if self.comments == nil {
             return 1
         }
+    }
         return comments!.count
+
+        
     }
     
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("EmbeddedCommentCell") as! EmbeddedCommentCell

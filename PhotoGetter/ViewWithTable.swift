@@ -166,7 +166,7 @@ class ViewWithTable: BaseViewController, UITableViewDataSource, UITableViewDeleg
         cell.commentsTable.delegate = self.commentProvider
         cell.commentsTable.dataSource = self.commentProvider
         commentProvider.comments = CoreDataManager.sharedInstance.getPhotoComments(self.photoUrls[indexPath.row])
-       // commentProvider.commentsOnFeed = true
+        commentProvider.commentsOnFeed = true
         cell.commentsTable.reloadData()
        
         

@@ -103,6 +103,7 @@ class PhotoComments: BaseViewController, UITextFieldDelegate {
     
     func reloadTable() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.commentProvider.comments = CoreDataManager.sharedInstance.getPhotoComments(self.photoUrl!)
             self.commentTable.reloadData()
         
         })
